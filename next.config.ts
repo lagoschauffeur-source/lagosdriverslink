@@ -36,17 +36,6 @@ const nextConfig = {
     // Allow unoptimized images for development
     unoptimized: process.env.NODE_ENV === "development",
   },
-  // Disable Turbopack for production builds to avoid lightningcss issues
-  experimental: {
-    turbo: {
-      rules: {
-        '*.css': {
-          loaders: ['postcss-loader'],
-          as: '*.css',
-        },
-      },
-    },
-  },
 };
 
 module.exports = nextConfig;
