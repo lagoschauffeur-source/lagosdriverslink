@@ -43,17 +43,6 @@ async function fetchHomepageDataWithTimeout(
 export default async function HomePage() {
   const data: HomepageData | null = await fetchHomepageDataWithTimeout(4000);
 
-  // Common props for both HeroSection and FreerowSection
-  const heroProps = {
-    heroTitle:
-      data?.heroTitle ?? "Hire a Pro Driver in Lagos",
-    heroSubtitle:
-      data?.heroSubtitle ?? "Pre-vetted professionals for all driving needs",
-    heroImage:
-      data?.heroImage?.asset?.url ??
-      `${BASE_URL}/Whisk_cto1gtyyqgn4kjm40inxedotuwy3qtlhr2yi1yy.jpeg`,
-  };
-
   const freerowProps = {
     heroTitle: "Hire a Pro Driver in Lagos",
     heroSubtitle: "Pre-vetted professionals for all driving needs",
@@ -64,7 +53,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <HeroSection {...heroProps} />
+      <HeroSection />
       <ExtraHighlightOne />
       <ExtraHighlightTwo />
       <OtherServicesPromo />

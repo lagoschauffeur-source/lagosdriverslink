@@ -1,15 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import {
-  User,
-  LockKeyhole,
-  Mail,
-  Eye,
-  EyeOff,
-  Calendar,
-  ArrowLeft,
-} from "lucide-react";
+import { User, LockKeyhole, Mail, Eye, EyeOff, Calendar, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useToast, Toast } from "@/app/components/Toast";
@@ -87,16 +79,14 @@ export default function RegisterPage() {
       try {
         data = await response.json();
       } catch {
-        // If response is not JSON, create a default error message
         trigger("error", `Registration failed: ${response.status === 401 ? "Invalid credentials" : response.status === 404 ? "Service not found" : response.status === 409 ? "Email already exists" : `Server error (${response.status})`}`);
         setIsLoading(false);
         return;
       }
 
       if (!response.ok) {
-        // Handle specific error codes
         let errorMessage = data.error || "Something went wrong.";
-        
+
         if (response.status === 401) {
           errorMessage = "Invalid credentials. Please check your email and try again.";
         } else if (response.status === 404) {
@@ -108,7 +98,7 @@ export default function RegisterPage() {
         } else if (response.status === 500) {
           errorMessage = "Server error. Please try again later.";
         }
-        
+
         trigger("error", errorMessage);
       } else {
         trigger("success", "Account created successfully! Redirecting to login...");
@@ -117,9 +107,8 @@ export default function RegisterPage() {
         }, 1500);
       }
     } catch (error) {
-      // Handle network errors or other exceptions
-      const errorMessage = error instanceof Error 
-        ? `Network error: ${error.message}` 
+      const errorMessage = error instanceof Error
+        ? `Network error: ${error.message}`
         : "Unable to connect to server. Please check your internet connection and try again.";
       trigger("error", errorMessage);
     } finally {
@@ -127,203 +116,171 @@ export default function RegisterPage() {
     }
   };
 
+  const inputClass = (field: string) =>
+    `w-full bg-white border ${errors[field] ? "border-red-400 focus:ring-red-200 focus:border-red-400" : "border-gray-200 focus:ring-[#0099ff]/20 focus:border-[#0099ff]"
+    } rounded-xl py-3 pl-10 pr-4 text-gray-900 placeholder-gray-300 focus:outline-none focus:ring-2 transition-colors text-[15px]`;
+
+  const inputClassPr12 = (field: string) =>
+    `w-full bg-white border ${errors[field] ? "border-red-400 focus:ring-red-200 focus:border-red-400" : "border-gray-200 focus:ring-[#0099ff]/20 focus:border-[#0099ff]"
+    } rounded-xl py-3 pl-10 pr-12 text-gray-900 placeholder-gray-300 focus:outline-none focus:ring-2 transition-colors text-[15px]`;
+
   return (
     <>
       <Toast />
-      <div className="w-full max-w-md mx-auto px-4 py-10 text-white">
-      <div className="mb-6">
-        <Link
-          href="/"
-          className="inline-flex items-center text-sm text-yellow-500 hover:text-yellow-400 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" /> Back to home
-        </Link>
-      </div>
-
-      <div className="text-center mb-8">
-        <div className="flex justify-center mb-4">
-          <User className="h-10 w-10 text-yellow-400" />
-        </div>
-        <h2 className="text-3xl font-extrabold text-yellow-200">
-          Create Account
-        </h2>
-        <p className="text-yellow-300 mt-1">
-          Join our network of trusted clients
-        </p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Full Name */}
-        <label className="block">
-          <span className="text-sm text-yellow-300">Full Name</span>
-          <div className="relative mt-1">
-            <User className="absolute left-3 top-3 h-5 w-5 text-yellow-500" />
-            <input
-              type="text"
-              name="name"
-              placeholder="John Doe"
-              value={formData.name}
-              onChange={handleChange}
-              className={`w-full bg-black border ${
-                errors.name ? "border-red-500" : "border-yellow-700"
-              } rounded-lg py-3 pl-10 pr-4 text-yellow-100 placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500`}
-            />
-          </div>
-          {errors.name && (
-            <p className="text-sm text-red-500 mt-1">{errors.name}</p>
-          )}
-        </label>
-
-        {/* Email */}
-        <label className="block">
-          <span className="text-sm text-yellow-300">Email</span>
-          <div className="relative mt-1">
-            <Mail className="absolute left-3 top-3 h-5 w-5 text-yellow-500" />
-            <input
-              type="email"
-              name="email"
-              placeholder="you@example.com"
-              value={formData.email}
-              onChange={handleChange}
-              className={`w-full bg-black border ${
-                errors.email ? "border-red-500" : "border-yellow-700"
-              } rounded-lg py-3 pl-10 pr-4 text-yellow-100 placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500`}
-            />
-          </div>
-          {errors.email && (
-            <p className="text-sm text-red-500 mt-1">{errors.email}</p>
-          )}
-        </label>
-
-        {/* Password */}
-        <label className="block">
-          <span className="text-sm text-yellow-300">Password</span>
-          <div className="relative mt-1">
-            <LockKeyhole className="absolute left-3 top-3 h-5 w-5 text-yellow-500" />
-            <input
-              type={showPassword ? "text" : "password"}
-              name="password"
-              placeholder="********"
-              value={formData.password}
-              onChange={handleChange}
-              className={`w-full bg-black border ${
-                errors.password ? "border-red-500" : "border-yellow-700"
-              } rounded-lg py-3 pl-10 pr-12 text-yellow-100 placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500`}
-            />
-            <button
-              type="button"
-              onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-3"
-            >
-              {showPassword ? (
-                <EyeOff className="h-5 w-5 text-yellow-500" />
-              ) : (
-                <Eye className="h-5 w-5 text-yellow-500" />
-              )}
-            </button>
-          </div>
-          {errors.password && (
-            <p className="text-sm text-red-500 mt-1">{errors.password}</p>
-          )}
-        </label>
-
-        {/* Confirm Password */}
-        <label className="block">
-          <span className="text-sm text-yellow-300">Confirm Password</span>
-          <div className="relative mt-1">
-            <LockKeyhole className="absolute left-3 top-3 h-5 w-5 text-yellow-500" />
-            <input
-              type={showConfirmPassword ? "text" : "password"}
-              name="confirmPassword"
-              placeholder="********"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              className={`w-full bg-black border ${
-                errors.confirmPassword ? "border-red-500" : "border-yellow-700"
-              } rounded-lg py-3 pl-10 pr-12 text-yellow-100 placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500`}
-            />
-            <button
-              type="button"
-              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              className="absolute right-3 top-3"
-            >
-              {showConfirmPassword ? (
-                <EyeOff className="h-5 w-5 text-yellow-500" />
-              ) : (
-                <Eye className="h-5 w-5 text-yellow-500" />
-              )}
-            </button>
-          </div>
-          {errors.confirmPassword && (
-            <p className="text-sm text-red-500 mt-1">
-              {errors.confirmPassword}
-            </p>
-          )}
-        </label>
-
-        {/* Date of Birth */}
-        <label className="block">
-          <span className="text-sm text-yellow-300">Date of Birth</span>
-          <div className="relative mt-1">
-            <Calendar className="absolute left-3 top-3 h-5 w-5 text-yellow-500" />
-            <input
-              type="date"
-              name="dob"
-              value={formData.dob}
-              onChange={handleChange}
-              className={`w-full bg-black border ${
-                errors.dob ? "border-red-500" : "border-yellow-700"
-              } rounded-lg py-3 pl-10 pr-4 text-yellow-100 focus:outline-none focus:ring-2 focus:ring-yellow-500`}
-            />
-          </div>
-          {errors.dob && (
-            <p className="text-sm text-red-500 mt-1">{errors.dob}</p>
-          )}
-        </label>
-
-        {/* Terms and Conditions */}
-        <div className="flex items-center text-sm text-yellow-400">
-          <input
-            id="terms"
-            name="terms"
-            type="checkbox"
-            className="h-4 w-4 text-yellow-500 focus:ring-yellow-500 border-yellow-600 rounded bg-black"
-            required
-          />
-          <label htmlFor="terms" className="ml-2">
-            I agree to the{" "}
-            <Link href="/terms" className="text-yellow-300 hover:underline">
-              Terms of Service
-            </Link>{" "}
-            and{" "}
-            <Link href="/privacy" className="text-yellow-300 hover:underline">
-              Privacy Policy
-            </Link>
-          </label>
-        </div>
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={isLoading}
-          className={`w-full py-3 px-4 rounded-lg font-semibold text-black bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all duration-200 ${
-            isLoading ? "opacity-70 cursor-not-allowed" : ""
-          }`}
-        >
-          {isLoading ? "Creating account..." : "Sign Up"}
-        </button>
-
-        {/* Redirect to login */}
-        <p className="text-sm text-center text-yellow-400">
-          Already have an account?{" "}
+      <div className="w-full max-w-md mx-auto py-4">
+        {/* Back Link */}
+        <div className="mb-6">
           <Link
-            href="/auth/login"
-            className="font-medium text-yellow-300 hover:text-yellow-200 underline"
+            href="/"
+            className="inline-flex items-center text-sm text-gray-400 hover:text-gray-600 transition-colors"
           >
-            Sign in
+            <ArrowLeft className="h-4 w-4 mr-2" /> Back to home
           </Link>
-        </p>
-      </form>
+        </div>
+
+        {/* Header */}
+        <div className="mb-6">
+          <div className="w-12 h-12 rounded-2xl bg-[#0099ff]/[0.06] flex items-center justify-center mb-4">
+            <User className="h-6 w-6 text-[#0099ff]" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900">Create account</h2>
+          <p className="text-gray-400 mt-1 text-sm">Join our network of trusted clients</p>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Full Name */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name</label>
+            <div className="relative">
+              <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                type="text"
+                name="name"
+                placeholder="John Doe"
+                value={formData.name}
+                onChange={handleChange}
+                className={inputClass("name")}
+              />
+            </div>
+            {errors.name && <p className="text-sm text-red-500 mt-1">{errors.name}</p>}
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+            <div className="relative">
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                type="email"
+                name="email"
+                placeholder="you@example.com"
+                value={formData.email}
+                onChange={handleChange}
+                className={inputClass("email")}
+              />
+            </div>
+            {errors.email && <p className="text-sm text-red-500 mt-1">{errors.email}</p>}
+          </div>
+
+          {/* Password */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
+            <div className="relative">
+              <LockKeyhole className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="••••••••"
+                value={formData.password}
+                onChange={handleChange}
+                className={inputClassPr12("password")}
+              />
+              <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3.5 top-1/2 -translate-y-1/2">
+                {showPassword ? <EyeOff className="h-4 w-4 text-gray-400 hover:text-gray-600 transition-colors" /> : <Eye className="h-4 w-4 text-gray-400 hover:text-gray-600 transition-colors" />}
+              </button>
+            </div>
+            {errors.password && <p className="text-sm text-red-500 mt-1">{errors.password}</p>}
+          </div>
+
+          {/* Confirm Password */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Confirm Password</label>
+            <div className="relative">
+              <LockKeyhole className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirmPassword"
+                placeholder="••••••••"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className={inputClassPr12("confirmPassword")}
+              />
+              <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3.5 top-1/2 -translate-y-1/2">
+                {showConfirmPassword ? <EyeOff className="h-4 w-4 text-gray-400 hover:text-gray-600 transition-colors" /> : <Eye className="h-4 w-4 text-gray-400 hover:text-gray-600 transition-colors" />}
+              </button>
+            </div>
+            {errors.confirmPassword && <p className="text-sm text-red-500 mt-1">{errors.confirmPassword}</p>}
+          </div>
+
+          {/* Date of Birth */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Date of Birth</label>
+            <div className="relative">
+              <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                type="date"
+                name="dob"
+                value={formData.dob}
+                onChange={handleChange}
+                className={inputClass("dob")}
+              />
+            </div>
+            {errors.dob && <p className="text-sm text-red-500 mt-1">{errors.dob}</p>}
+          </div>
+
+          {/* Terms */}
+          <div className="flex items-start text-sm text-gray-500 pt-1">
+            <input
+              id="terms"
+              name="terms"
+              type="checkbox"
+              className="h-4 w-4 mt-0.5 text-[#0099ff] focus:ring-[#0099ff] border-gray-300 rounded"
+              required
+            />
+            <label htmlFor="terms" className="ml-2 leading-relaxed">
+              I agree to the{" "}
+              <Link href="/terms" className="text-[#0099ff] hover:text-[#007acc] font-medium transition-colors">
+                Terms of Service
+              </Link>{" "}
+              and{" "}
+              <Link href="/privacy" className="text-[#0099ff] hover:text-[#007acc] font-medium transition-colors">
+                Privacy Policy
+              </Link>
+            </label>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={`w-full py-3.5 px-4 rounded-xl font-semibold text-white bg-[#0099ff] hover:bg-[#0088ee] focus:outline-none focus:ring-2 focus:ring-[#0099ff]/30 transition-all duration-200 shadow-[0_4px_16px_rgba(0,153,255,0.3)] hover:shadow-[0_8px_32px_rgba(0,153,255,0.4)] text-[15px] ${isLoading ? "opacity-70 cursor-not-allowed" : ""
+              }`}
+          >
+            {isLoading ? "Creating account..." : "Sign Up"}
+          </button>
+
+          {/* Login link */}
+          <p className="text-sm text-center text-gray-400">
+            Already have an account?{" "}
+            <Link
+              href="/auth/login"
+              className="font-semibold text-[#0099ff] hover:text-[#007acc] transition-colors"
+            >
+              Sign in
+            </Link>
+          </p>
+        </form>
       </div>
     </>
   );

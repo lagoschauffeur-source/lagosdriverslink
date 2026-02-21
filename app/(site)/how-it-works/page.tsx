@@ -1,294 +1,184 @@
 "use client";
+
 import {
-  CheckCircle,
+  CheckCircle2,
   UserCheck,
   FileText,
   Clock,
   Handshake,
   ShieldCheck,
   ArrowRight,
-  Check,
-  Users,
   Zap,
-  Star,
+  Users,
+  Search,
+  MessageSquare
 } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function HowItWorksPage() {
   const steps = [
     {
       number: "01",
-      icon: <FileText className="h-8 w-8 text-yellow-400" />,
-      title: "Submit Your Request",
-      description:
-        "Fill out our simple form with your requirements. Tell us what type of driver you need, working hours, and any specific qualifications.",
-      image: "/confident-professional-driver-side-view-600nw-2149539983.webp",
+      icon: <FileText className="h-7 w-7" />,
+      title: "Define Your Scope",
+      description: "Specify your exact requirements—hours, vehicle type, and chauffeur expertise level. Our desk analyzes your logistical needs instantly.",
+      image: "/professional-driver-service.webp",
     },
     {
       number: "02",
-      icon: <UserCheck className="h-8 w-8 text-yellow-400" />,
-      title: "We Match You",
-      description:
-        "Our team reviews your requirements and matches you with the best vetted professional drivers from our network that meet your criteria.",
-      image: "/young-black-handsome-cab-driver-600nw-1434428810.webp",
+      icon: <Search className="h-7 w-7" />,
+      title: "Elite Matching",
+      description: "Our proprietary algorithm filters the top 3% of available chauffeurs who match your specific route and vehicle profile.",
+      image: "/confident-professional-driver-side-view-600nw-2149539983.webp",
     },
     {
       number: "03",
-      icon: <Handshake className="h-8 w-8 text-yellow-400" />,
-      title: "Interview & Selection",
-      description:
-        "Review driver profiles and conduct interviews. We facilitate the process to ensure you find the perfect match for your needs.",
+      icon: <Handshake className="h-7 w-7" />,
+      title: "The Handshake",
+      description: "Review curated digital profiles. Conduct a virtual or physical interview to ensure a perfect cultural and professional fit.",
       image: "/smiling-cheerful-young-adult-african-600nw-1850821510.webp",
     },
     {
       number: "04",
-      icon: <ShieldCheck className="h-8 w-8 text-yellow-400" />,
-      title: "Background Verification",
-      description:
-        "We handle all background checks, reference verification, and credential validation before finalizing any placement.",
+      icon: <ShieldCheck className="h-7 w-7" />,
+      title: "Verification Protocol",
+      description: "We execute multi-layer vetting—criminal record indexing, health certification, and reference validation—before deployment.",
       image: "/close-portrait-happy-black-man-600nw-151566872.webp",
     },
     {
       number: "05",
-      icon: <Clock className="h-8 w-8 text-yellow-400" />,
-      title: "Onboarding & Start",
-      description:
-        "Once verified, we help with onboarding and documentation. Your driver is ready to start, and we provide ongoing support.",
+      icon: <Zap className="h-7 w-7" />,
+      title: "Onboarding Flow",
+      description: "Digital documentation is finalized. Your designated chauffeur begins service with full 24/7 administrative oversight.",
       image: "/driver.jpg",
     },
   ];
 
-  const benefits = [
-    {
-      icon: <ShieldCheck className="h-6 w-6 text-yellow-400" />,
-      title: "Fully Vetted",
-      description: "All drivers undergo comprehensive background checks",
-    },
-    {
-      icon: <Users className="h-6 w-6 text-yellow-400" />,
-      title: "Extensive Network",
-      description: "Access to hundreds of pre-screened professional drivers",
-    },
-    {
-      icon: <Zap className="h-6 w-6 text-yellow-400" />,
-      title: "Quick Matching",
-      description: "Get matched with qualified drivers within 48 hours",
-    },
-    {
-      icon: <CheckCircle className="h-6 w-6 text-yellow-400" />,
-      title: "Ongoing Support",
-      description: "We provide continuous support throughout the hiring process",
-    },
-  ];
-
-  const faqs = [
-    {
-      question: "How long does the hiring process take?",
-      answer:
-        "Typically, you can have a matched driver within 2-5 business days after submitting your request. The timeline depends on your specific requirements and the verification process.",
-    },
-    {
-      question: "What qualifications do your drivers have?",
-      answer:
-        "All our drivers are professionally trained, licensed, and undergo rigorous background checks. They must meet our strict standards for experience, reliability, and professionalism.",
-    },
-    {
-      question: "Can I interview drivers before hiring?",
-      answer:
-        "Absolutely! We encourage interviews to ensure the perfect match. We facilitate the interview process and provide all necessary driver information beforehand.",
-    },
-    {
-      question: "What happens if a driver doesn't work out?",
-      answer:
-        "We offer a replacement guarantee. If a driver doesn't meet your expectations, we'll provide a qualified replacement quickly, usually within 48 hours.",
-    },
-  ];
-
   return (
-    <div className="bg-black text-white">
+    <div className="bg-white min-h-screen pt-24 text-gray-900">
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] flex items-center justify-center px-6 sm:px-12 md:px-16 lg:px-24 py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-yellow-900/10 to-black z-0" />
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-yellow-400/5 -skew-x-12 z-0" />
-
-        <div className="relative z-10 max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <CheckCircle className="h-6 w-6 text-yellow-400" />
-            <span className="text-yellow-400 font-medium">
-              SIMPLE PROCESS
-            </span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-300">
-              How It Works
-            </span>
-          </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Getting a professional driver in Lagos is simple. Follow our
-            streamlined 5-step process and have your driver ready in days.
-          </p>
+      <section className="relative py-24 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden text-center">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#0099ff]/[0.02] rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="max-w-4xl mx-auto relative z-10">
+          <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }}>
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#0099ff]/10 text-[#0099ff] text-sm font-bold mb-8 uppercase tracking-widest leading-none">The Logistics Protocol</span>
+            <h1 className="text-4xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
+              Streamlined <br /><span className="text-[#0099ff]">Intelligence.</span>
+            </h1>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-medium">
+              We've engineered the driver acquisition process to be seamless, secure, and rapid. From request to road in under 48 hours.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Steps Section */}
-      <section className="px-6 sm:px-12 md:px-16 lg:px-24 py-20 bg-gradient-to-b from-black to-gray-900/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Our <span className="text-yellow-400">5-Step Process</span>
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              From request to onboarding, we make it easy
-            </p>
-          </div>
-
-          <div className="space-y-24">
-            {steps.map((step, index) => (
-              <div
-                key={index}
-                className={`grid md:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "md:flex-row-reverse" : ""
-                }`}
+      {/* Cinematic Steps */}
+      <section className="py-24 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto space-y-32 md:space-y-48">
+          {steps.map((step, i) => (
+            <div key={i} className={`flex flex-col lg:flex-row items-center gap-20 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+              <motion.div
+                initial={{ opacity: 0, x: i % 2 === 1 ? 20 : -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="flex-1 space-y-8"
               >
-                <div
-                  className={`order-2 ${index % 2 === 1 ? "md:order-2" : "md:order-1"}`}
-                >
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="text-6xl font-bold text-yellow-400/20">
-                      {step.number}
-                    </div>
-                    <div className="bg-yellow-400/10 w-16 h-16 rounded-full flex items-center justify-center">
-                      {step.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-3xl font-bold mb-4 text-yellow-400">
-                    {step.title}
-                  </h3>
-                  <p className="text-lg text-gray-300 leading-relaxed">
-                    {step.description}
-                  </p>
-                  {index < steps.length - 1 && (
-                    <div className="flex items-center gap-2 mt-8 text-yellow-400">
-                      <ArrowRight className="h-5 w-5" />
-                      <span className="font-medium">Next Step</span>
-                    </div>
-                  )}
-                </div>
-                <div
-                  className={`relative order-1 ${index % 2 === 1 ? "md:order-1" : "md:order-2"}`}
-                >
-                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-400/20 rounded-full blur-xl"></div>
-                  <div className="absolute bottom-0 left-0 w-40 h-40 bg-yellow-600/20 rounded-full blur-xl"></div>
-                  <div className="relative w-full aspect-square rounded-xl overflow-hidden border border-gray-700/50">
-                    <Image
-                      src={step.image}
-                      alt={step.title}
-                      fill
-                      className="object-cover"
-                      priority={index < 2}
-                    />
+                <div className="flex items-center gap-6">
+                  <div className="text-7xl font-black text-[#0099ff] opacity-10 leading-none">{step.number}</div>
+                  <div className="w-14 h-14 rounded-2xl bg-[#0099ff]/10 text-[#0099ff] flex items-center justify-center">
+                    {step.icon}
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section className="px-6 sm:px-12 md:px-16 lg:px-24 py-20 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Why Choose <span className="text-yellow-400">Our Process</span>
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              We've streamlined the driver hiring process to save you time and
-              ensure quality
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="bg-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-yellow-500/30 transition-all duration-300"
+                <h3 className="text-4xl lg:text-6xl font-black tracking-tighter leading-tight text-gray-900">{step.title}</h3>
+                <p className="text-xl text-gray-500 leading-relaxed font-medium">{step.description}</p>
+                {i < steps.length - 1 && (
+                  <div className="flex items-center gap-3 text-[#0099ff] font-bold">
+                    <ArrowRight className="w-5 h-5" />
+                    <span className="uppercase text-xs tracking-widest">Next Phase</span>
+                  </div>
+                )}
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="flex-1 relative aspect-[4/3] w-full rounded-[4rem] overflow-hidden shadow-3xl border-4 border-slate-50"
               >
-                <div className="bg-yellow-400/10 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                  {benefit.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-                <p className="text-gray-400">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="px-6 sm:px-12 md:px-16 lg:px-24 py-20 bg-gradient-to-b from-black to-gray-900/50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Frequently Asked <span className="text-yellow-400">Questions</span>
-            </h2>
-            <p className="text-xl text-gray-400">
-              Everything you need to know about our process
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="bg-gray-900/50 p-8 rounded-xl border border-gray-800"
-              >
-                <h3 className="text-xl font-bold mb-3 text-yellow-400">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="px-6 sm:px-12 md:px-16 lg:px-24 py-32 bg-black relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-yellow-900/5 to-black"></div>
-        <div className="relative max-w-4xl mx-auto text-center">
-          <div className="flex justify-center mb-6">
-            <div className="bg-yellow-400/10 w-20 h-20 rounded-full flex items-center justify-center">
-              <CheckCircle className="h-10 w-10 text-yellow-400" />
+                <Image src={step.image} alt={step.title} fill className="object-cover" />
+              </motion.div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Core Advantages Grid */}
+      <section className="py-32 px-6 md:px-12 lg:px-24 bg-[#fafbfd]">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20 space-y-4">
+            <h2 className="text-3xl lg:text-6xl font-black tracking-tight">The Platform Edge</h2>
+            <p className="text-gray-500 font-medium">Why our methodology remains the industry standard.</p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            Ready to Get <span className="text-yellow-400">Started?</span>
-          </h2>
-          <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
-            Begin the process today and have your professional driver ready in
-            no time
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/hire"
-              className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black font-bold rounded-lg hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300 shadow-lg hover:shadow-yellow-500/30 flex items-center justify-center gap-2"
-            >
-              <Zap className="h-5 w-5" />
-              Start Your Request
-            </a>
-            <a
-              href="/contact"
-              className="px-8 py-4 border border-yellow-500 text-yellow-300 font-bold rounded-lg hover:bg-yellow-500/10 transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              <Users className="h-5 w-5" />
-              Contact Us
-            </a>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: <ShieldCheck />, title: "3D Vetting", desc: "Digital, physical, and reference checks on every hire." },
+              { icon: <MessageSquare />, title: "Handshake Guarantee", desc: "Interview as many as needed until it's a perfect fit." },
+              { icon: <Zap />, title: "Rapid Turnaround", desc: "Most matches are finalized within 24-48 business hours." },
+              { icon: <Users />, title: "Lifecycle Management", desc: "Ongoing payroll and performance overhead handled by us." }
+            ].map((adv, i) => (
+              <div key={i} className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl transition-all group text-center">
+                <div className="w-14 h-14 rounded-2xl bg-[#0099ff]/[0.06] text-[#0099ff] flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform">
+                  {adv.icon}
+                </div>
+                <h4 className="text-xl font-black mb-3">{adv.title}</h4>
+                <p className="text-gray-500 text-sm leading-relaxed font-medium">{adv.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Accordion-style Grid */}
+      <section className="py-32 px-6 md:px-12 lg:px-24">
+        <div className="max-w-5xl mx-auto space-y-16">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl lg:text-6xl font-black tracking-tight">Technical Queries</h2>
+            <p className="text-gray-500 font-medium">Deep diving into the operational specifics.</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              { q: "What is the vetting depth?", a: "We index criminal history, medical fitness, reference validation, and perform a specialized driving skills assessment." },
+              { q: "Can I swap a driver?", a: "Yes. Our replacement guarantee ensures you get a new vetted candidate within 48 hours if expectations aren't met." },
+              { q: "Who handles the legalities?", a: "Lagos Drivers Link manages all contracts, payroll taxes, and health insurance for the chauffeurs on your behalf." },
+              { q: "What about long-distance?", a: "Our elite tier chauffeurs are trained specifically for inter-state travel and overnight logistics." }
+            ].map((faq, i) => (
+              <div key={i} className="p-10 rounded-[3rem] bg-slate-50 border border-gray-100">
+                <h4 className="text-xl font-black text-[#0099ff] mb-4">{faq.q}</h4>
+                <p className="text-gray-500 font-medium leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Final */}
+      <section className="py-32 px-6 text-center">
+        <div className="max-w-4xl mx-auto bg-gray-900 rounded-[4rem] p-16 text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#0099ff]/20 rounded-full blur-[100px] pointer-events-none" />
+          <div className="relative z-10">
+            <h2 className="text-4xl lg:text-7xl font-black mb-12 tracking-tighter">Road Ready in Hours.</h2>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link href="/hire" className="bg-[#0099ff] hover:bg-[#0088ee] py-5 px-12 rounded-2xl font-black transition-all shadow-xl shadow-[#0099ff]/20">
+                Start Request
+              </Link>
+              <Link href="/contact" className="border border-white/10 hover:bg-white/5 py-5 px-12 rounded-2xl font-bold transition-all">
+                Speak to Specialist
+              </Link>
+            </div>
           </div>
         </div>
       </section>
     </div>
   );
 }
-
-

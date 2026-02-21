@@ -1,145 +1,129 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown, HelpCircle, ArrowRight, MessageCircle, ShieldCheck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 const faqs = [
   {
-    question: "How do I hire a driver?",
-    answer:
-      "Click on the &quot;Need a Driver?&quot; button on our homepage, select your preferred package, and complete the booking form.",
+    question: "How do I hire a professional driver?",
+    answer: "It's simple. Start by sharing your requirements through our hire form. We'll help you choose the best plan and match you with a vetted driver who fits your schedule.",
   },
   {
-    question: "Are drivers background checked?",
-    answer:
-      "Yes. All drivers undergo thorough identity verification, road tests, and provide official police clearance reports with full background checks.",
+    question: "How do you verify your drivers?",
+    answer: "Every driver undergoes a rigorous 4-step verification: background checks, criminal record clearance, home address verification, and a hands-on driving skills assessment.",
   },
   {
-    question: "What&apos;s special about your Spy Police Drivers?",
-    answer:
-      "Our elite Spy Police Drivers are specially trained professionals with law enforcement backgrounds. They offer discreet, secure transportation with tactical driving skills and emergency response training - perfect for executives and high-profile individuals.",
+    question: "What makes your Premium Drivers special?",
+    answer: "Our premium drivers are the best in the city—highly experienced, professionally trained in defensive driving, and experts at navigating Lagos traffic with poise and safety.",
   },
   {
-    question: "Can I book a driver for short-term gigs?",
-    answer:
-      "Absolutely! Whether for a day, weekend, or month — you can book based on your timeline.",
+    question: "Can I hire a driver for just a few days?",
+    answer: "Absolutely. We offer flexible plans ranging from daily event support to long-term dedicated driving, tailored to your specific needs.",
   },
 ];
 
 export default function FAQ() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  const toggle = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
-
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-white dark:from-zinc-950 dark:to-black py-24 px-6 sm:px-12 md:px-20">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-amber-600 dark:from-yellow-400 dark:to-amber-500"
-          >
-            Frequently Asked Questions
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-          >
-            Get answers to common questions about our driver services
-          </motion.p>
-        </div>
+    <section className="bg-white py-32 px-6 lg:px-24 relative overflow-hidden">
+      {/* Decorative Elements */}
+      <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-50/30 rounded-full blur-[120px] translate-x-1/2 translate-y-1/2 pointer-events-none" />
 
-        <motion.div
-          className="space-y-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className={`rounded-xl overflow-hidden transition-all duration-300 ${
-                activeIndex === index
-                  ? "bg-white dark:bg-zinc-900 shadow-lg border border-gray-200 dark:border-zinc-800"
-                  : "bg-white/80 dark:bg-zinc-900/80 hover:bg-white dark:hover:bg-zinc-900 shadow-sm border border-gray-100 dark:border-zinc-800"
-              }`}
-            >
-              <button
-                onClick={() => toggle(index)}
-                className="w-full flex items-center justify-between px-8 py-6 text-left group"
-                aria-expanded={activeIndex === index}
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid lg:grid-cols-2 gap-24">
+          {/* Left - Support Branding */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-12"
+          >
+            <div className="space-y-6">
+              <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-xs font-black uppercase tracking-widest leading-none">Support & Guidance</span>
+              <h2 className="text-4xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-none">
+                Common <br /><span className="text-blue-600">Questions.</span>
+              </h2>
+              <p className="text-xl text-gray-500 font-medium leading-relaxed max-w-lg">
+                Everything you need to know about our vetting process, matching standards, and getting started.
+              </p>
+            </div>
+
+            <div className="space-y-6 pt-6 border-t border-gray-100">
+              <div className="flex items-center gap-6 group">
+                <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                  <MessageCircle className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-lg font-black text-gray-900 leading-none mb-1">24/7 Support</div>
+                  <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">We're always here for you</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-6 group">
+                <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-lg font-black text-gray-900 leading-none mb-1">Safe & Secure</div>
+                  <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Premium Safety Standards</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-8">
+              <Link href="/contact" className="inline-flex items-center gap-3 text-blue-600 font-black uppercase text-xs tracking-[0.2em] group">
+                Talk to our Team <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+              </Link>
+            </div>
+          </motion.div>
+
+          {/* Right - Accordion Grid */}
+          <div className="space-y-6">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className={`rounded-[2.5rem] overflow-hidden transition-all duration-500 ${activeIndex === index
+                  ? "bg-[#fafbfd] shadow-2xl border-transparent"
+                  : "bg-white border border-gray-100 hover:border-[#0099ff]/20"
+                  }`}
               >
-                <div className="flex items-start gap-5">
-                  <div
-                    className={`p-2 rounded-lg transition-colors ${
-                      activeIndex === index
-                        ? "bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400"
-                        : "bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-gray-400"
-                    }`}
-                  >
-                    <HelpCircle size={22} />
-                  </div>
-                  <span
-                    className={`text-lg font-medium transition-colors ${
-                      activeIndex === index
-                        ? "text-gray-900 dark:text-white"
-                        : "text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white"
-                    }`}
-                  >
+                <button
+                  onClick={() => setActiveIndex(activeIndex === index ? null : index)}
+                  className="w-full flex items-center justify-between p-10 text-left group"
+                >
+                  <span className={`text-xl font-black pr-8 tracking-tight transition-colors ${activeIndex === index ? "text-[#0099ff]" : "text-gray-900"}`}>
                     {faq.question}
                   </span>
-                </div>
-                <ChevronDown
-                  className={`h-5 w-5 transition-all duration-300 ${
-                    activeIndex === index
-                      ? "rotate-180 text-amber-500 dark:text-amber-400"
-                      : "text-gray-400 dark:text-gray-500"
-                  }`}
-                />
-              </button>
+                  <div className={`w-10 h-10 rounded-2xl flex items-center justify-center transition-all ${activeIndex === index ? "bg-[#0099ff] text-white rotate-180" : "bg-slate-50 text-gray-300 hover:text-[#0099ff]"}`}>
+                    <ChevronDown className="w-5 h-5 flex-shrink-0" />
+                  </div>
+                </button>
 
-              <AnimatePresence>
-                {activeIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-8 pb-6 ml-16 text-gray-600 dark:text-gray-300">
-                      {faq.answer}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
-        </motion.div>
-
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <p className="text-gray-500 dark:text-gray-400 mb-6">
-            Still have questions? We&apos;re here to help.
-          </p>
-          <Link href="/hire">
-            <button className="px-8 py-3.5 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-600 hover:to-yellow-600 text-white font-medium rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 cursor-pointer">
-              Need a Driver? Book Now
-            </button>
-          </Link>
-        </motion.div>
+                <AnimatePresence>
+                  {activeIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: "circOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-10 pb-10 text-gray-500 font-medium text-[16px] leading-relaxed border-t border-gray-100/50 pt-6 mx-10">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

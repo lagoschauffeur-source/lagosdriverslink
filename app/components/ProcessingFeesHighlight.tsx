@@ -1,7 +1,9 @@
 "use client";
 
-import { ShieldCheck, AlertCircle, CheckCircle2, X, Info } from "lucide-react";
+import { ShieldCheck, AlertCircle, CheckCircle2, X, Info, Zap, ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ProcessingFeesHighlight() {
   const [selectedModal, setSelectedModal] = useState<number | null>(null);
@@ -16,161 +18,188 @@ export default function ProcessingFeesHighlight() {
         "Includes full training & verification",
         "Replacement at subsidized fee",
       ],
-      note: "Note: Businesses wanting worry-free driver management",
+      note: "For worry-free corporate driver management",
       popular: true,
       detailedInfo: `Under this service model, LagosDriversLink handles all HR administration for your assigned driver, ensuring complete personnel management without any administrative burden on your organization.
 
-**Complete HR Oversight**
-LagosDriversLink manages all human resources matters including salary processing, statutory payments, benefits administration, and personnel records. Our dedicated HR team handles every aspect of driver employment, allowing you to focus entirely on your business operations.
+Complete HR Oversight — LagosDriversLink manages all human resources matters including salary processing, statutory payments, benefits administration, and personnel records.
 
-**Qualified Staff Retention**
-The assigned driver remains our qualified staff member throughout the contract period. This ensures consistent professional standards, accountability, and service quality directly managed by LagosDriversLink.
+Qualified Staff Retention — The assigned driver remains our qualified staff member throughout the contract period.
 
-**Comprehensive Training & Verification**
-Every driver undergoes comprehensive training and verification processes. Our thorough onboarding covers background checks, security clearances, skill assessments, periodic training, reverification, address confirmation, and guarantor verification to ensure the highest service standards.
+Comprehensive Training & Verification — Every driver undergoes comprehensive training and verification processes including background checks, security clearances, skill assessments, periodic training, reverification, address confirmation, and guarantor verification.
 
-**Flexible Replacement Policy**
-Should replacement be necessary, we provide qualified substitutes at a subsidized fee. This ensures minimal disruption to your operations while maintaining the same high standards of service and professionalism.
-
-This model provides you with professional driver services while LagosDriversLink maintains complete administrative control and accountability through our established HR infrastructure.`,
+Flexible Replacement Policy — Should replacement be necessary, we provide qualified substitutes at a subsidized fee.`,
     },
     {
       name: "Direct Employment Plan",
       fee: "₦70,000",
       bullets: [
         "Driver becomes your direct employee",
-        "Complete background checks documentation",
-        "Full control over driver management",
-        "Thoroughly verified & background-checked drivers",
+        "Full background audit documentation",
+        "Complete control over driver management",
+        "Verified & background-checked",
       ],
-      note: "Note: Those wanting complete employment control",
+      note: "For those wanting complete employment control",
       popular: false,
-      detailedInfo: `This plan provides a verified driver to individuals and companies who want to have complete control over the welfare of the driver. This is a one-off service where the driver subsequently becomes the direct employee of the client.
+      detailedInfo: `This plan provides a verified driver to individuals and companies who want complete control over the welfare of the driver. This is a one-off service where the driver subsequently becomes your direct employee.
 
-Cost Implication: A one-off service charge of ₦70,000 to be paid before deployment. You get 2 drivers to select from. The background check details and personal data of the selected driver will be transferred to you as the direct employer. You are only entitled to 1 free replacement within the first month after selecting a driver. 
+Cost: A one-off service charge of ₦70,000 to be paid before deployment. You get 2 drivers to select from. The background check details and personal data of the selected driver will be transferred to you.
 
-Background check details to transfer include:
+Background check details include:
 • Driver Proof of Address
 • Driver Employment History Check
 • NIN verification
 • Guarantor Checks
 
-This service ensures complete transparency and gives you full control over your driver's employment while maintaining the highest standards of verification and background checking.`,
+You are entitled to 1 free replacement within the first month after selecting a driver.`,
     },
   ];
 
   return (
-    <section className="bg-black py-14">
-      <div className="w-[85%] mx-auto">
-        <div className="flex flex-col items-center text-center mb-8">
-          <div className="inline-flex items-center gap-2 text-yellow-400 font-semibold mb-2">
-            <AlertCircle className="w-5 h-5" />
-            One-time Processing Fee (Not Salary)
-          </div>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-            Start Your Request
-          </h2>
-          {/* <p className="text-yellow-100/80 mt-2 max-w-2xl">
-            This one-time fee helps us provide you with thoroughly vetted,
-            verified drivers. It covers our comprehensive background checks,
-            documentation, and seamless onboarding process.
-          </p> */}
+    <section className="bg-[#fafbfd] py-32 relative overflow-hidden">
+      <div className="max-w-5xl mx-auto px-6 lg:px-24">
+        <div className="text-center mb-20 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="inline-flex items-center gap-2 text-blue-600 text-xs font-black bg-blue-50 px-4 py-2 rounded-full mb-6 uppercase tracking-widest leading-none">
+              <AlertCircle className="w-3.5 h-3.5" /> Simple One-Time Fees
+            </span>
+            <h2 className="text-4xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-none mb-4">
+              Getting <span className="text-blue-600">Started.</span>
+            </h2>
+            <p className="text-xl text-gray-500 font-medium max-w-2xl mx-auto leading-relaxed">
+              These are one-time processing fees for vetting and matching your driver. Chauffeur salaries are paid separately.
+            </p>
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {plans.map((p, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className={`rounded-2xl p-6 border bg-yellow-500/5 ${
-                p.popular
-                  ? "border-yellow-500 ring-2 ring-yellow-300/30"
-                  : "border-yellow-700/40"
-              }`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              className={`rounded-[3.5rem] p-12 bg-white border transition-all duration-300 relative group overflow-hidden ${p.popular
+                ? "border-blue-600/30 shadow-2xl"
+                : "border-gray-100 hover:border-blue-600/20 shadow-sm hover:shadow-xl"
+                }`}
             >
               {p.popular && (
-                <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-yellow-500/20 text-yellow-300 mb-3">
-                  <ShieldCheck className="w-4 h-4 mr-1" /> Most Chosen
+                <div className="absolute top-0 right-0 py-2 px-10 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest -rotate-0 rounded-bl-[2rem]">
+                  Most Popular
                 </div>
               )}
-              <div className="flex items-baseline justify-between">
-                <h3 className="text-xl font-bold text-yellow-100">{p.name}</h3>
-                <div className="text-3xl md:text-4xl font-extrabold text-yellow-400">
-                  {p.fee}
+
+              <div className="space-y-8">
+                <div>
+                  <h3 className="text-2xl font-black text-gray-900 mb-2">{p.name}</h3>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-5xl font-black text-blue-600">{p.fee}</span>
+                    <span className="text-gray-400 font-bold text-xs uppercase tracking-widest">Processing Fee</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4 pt-4 border-t border-gray-50">
+                  {p.bullets.map((b, i) => (
+                    <div key={i} className="flex items-start gap-4">
+                      <div className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 mt-0.5 flex-shrink-0">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="text-gray-500 font-bold text-sm leading-relaxed">{b}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pt-6">
+                  <p className="text-[11px] text-gray-400 font-black uppercase tracking-widest mb-8">{p.note}</p>
+                  <div className="grid grid-cols-2 gap-4">
+                    <button
+                      onClick={() => setSelectedModal(idx)}
+                      className="flex-1 py-4 text-xs font-black text-blue-600 bg-blue-50 rounded-2xl hover:bg-blue-100 transition-colors flex items-center justify-center gap-2 uppercase tracking-widest"
+                    >
+                      <Info className="w-4 h-4" /> Why this plan?
+                    </button>
+                    <Link href="/hire" className="flex-1 py-4 text-xs font-black bg-gray-900 text-white rounded-2xl hover:bg-black transition-colors flex items-center justify-center gap-2 uppercase tracking-widest text-center">
+                      Select <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </div>
                 </div>
               </div>
-              <ul className="mt-4 space-y-2">
-                {p.bullets.map((b, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 text-yellow-100"
-                  >
-                    <CheckCircle2 className="w-5 h-5 text-yellow-400 mt-0.5" />
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-4 text-sm text-yellow-200/90">{p.note}</div>
-
-              <button
-                onClick={() => setSelectedModal(idx)}
-                className="mt-4 w-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 px-4 py-2 rounded-lg hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-200 flex items-center justify-center gap-2"
-              >
-                <Info className="w-4 h-4" />
-                Know More
-              </button>
-            </div>
+            </motion.div>
           ))}
-        </div>
-
-        <div className="mt-6 text-center text-sm text-yellow-200">
-          To avoid confusion: these amounts are processing fees only and are
-          separate from monthly salaries.
         </div>
       </div>
 
-      {/* Modal */}
-      {selectedModal !== null && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-gray-900 border border-yellow-500/30 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden">
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-yellow-500/20">
-              <div>
-                <h3 className="text-2xl font-bold text-white">
-                  {plans[selectedModal].name}
-                </h3>
-                <p className="text-yellow-400 text-lg font-semibold">
-                  {plans[selectedModal].fee}
-                </p>
-              </div>
-              <button
-                onClick={() => setSelectedModal(null)}
-                className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
-              >
-                <X className="w-6 h-6 text-yellow-400" />
-              </button>
-            </div>
-
-            {/* Modal Content */}
-            <div className="p-6 overflow-y-auto max-h-[60vh]">
-              <div className="prose prose-invert max-w-none">
-                <div className="text-yellow-100 leading-relaxed whitespace-pre-line">
-                  {plans[selectedModal].detailedInfo}
+      {/* Premium Modal */}
+      <AnimatePresence>
+        {selectedModal !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-gray-950/60 backdrop-blur-md z-[100] flex items-center justify-center p-6"
+            onClick={() => setSelectedModal(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.9, y: 20 }}
+              className="bg-white rounded-[4rem] max-w-xl w-full max-h-[85vh] overflow-hidden shadow-3xl relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-10 lg:p-14 overflow-y-auto max-h-[85vh] space-y-12">
+                <div className="flex justify-between items-start">
+                  <div className="space-y-2">
+                    <span className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[10px] font-black uppercase tracking-widest">Plan Details</span>
+                    <h3 className="text-3xl font-black text-gray-900">{plans[selectedModal].name}</h3>
+                    <p className="text-blue-600 text-2xl font-black">{plans[selectedModal].fee}</p>
+                  </div>
+                  <button onClick={() => setSelectedModal(null)} className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center hover:bg-slate-100 transition-colors">
+                    <X className="w-6 h-6 text-gray-400" />
+                  </button>
                 </div>
-              </div>
-            </div>
 
-            {/* Modal Footer */}
-            <div className="p-6 border-t border-yellow-500/20 bg-gray-800/50">
-              <button
-                onClick={() => setSelectedModal(null)}
-                className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded-lg transition-colors"
-              >
-                Got it, thanks!
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+                <div className="space-y-6 text-gray-500 font-medium text-[15px] leading-relaxed whitespace-pre-line border-t border-gray-100 pt-10">
+                  {selectedModal === 0 ? (
+                    `Our Managed Service is the ultimate worry-free experience for your personal or business logistics.
+
+Full HR Management — We take care of everything. From salary processing and benefits to all administrative records, you don't have to lift a finger.
+
+Qualified Staff — The driver is a member of our trusted team. We handle their career growth, training, and welfare.
+
+Continuous Training — Every driver in this plan receives ongoing support, background re-verifications, and skills training to maintain our elite standards.
+
+Seamless Replacements — If you ever need a change or your driver is unavailable, we provide a qualified substitute immediately.`
+                  ) : (
+                    `The Direct Employment plan is perfect if you want to be the primary manager of your driver's welfare.
+
+One-Off Matching — We find you the best talent, and they become a direct member of your household or team.
+
+Verified & Audited — You receive a complete portfolio of the driver's background, including identity verification, employment history, and guarantor checks.
+
+Personal Control — You manage the driver's daily schedule and compensation directly after the initial placement.
+
+Safety Guarantee — We ensure every candidate is thoroughly vetted before you even meet them.`
+                  )}
+                </div>
+
+                <button
+                  onClick={() => setSelectedModal(null)}
+                  className="w-full py-6 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-[2rem] transition-all shadow-2xl shadow-blue-500/30 flex items-center justify-center gap-3 group"
+                >
+                  I understand this plan
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

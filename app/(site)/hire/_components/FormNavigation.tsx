@@ -16,11 +16,11 @@ const formSections: {
   label: string;
   icon: JSX.Element;
 }[] = [
-  { id: "personal", label: "Personal Details", icon: <User size={18} /> },
-  { id: "driver", label: "Project Details", icon: <User size={18} /> },
-  { id: "vehicle", label: "Vehicle Details", icon: <Car size={18} /> },
-  { id: "address", label: "Address Information", icon: <Home size={18} /> },
-];
+    { id: "personal", label: "Personal Details", icon: <User size={18} /> },
+    { id: "driver", label: "Project Details", icon: <User size={18} /> },
+    { id: "vehicle", label: "Vehicle Details", icon: <Car size={18} /> },
+    { id: "address", label: "Address Information", icon: <Home size={18} /> },
+  ];
 
 export default function FormNavigation({
   activeSection,
@@ -30,7 +30,7 @@ export default function FormNavigation({
   const sectionStatus = getSectionStatus(formData);
 
   return (
-    <div className="grid grid-cols-4 border-b border-yellow-600/20">
+    <div className="grid grid-cols-4 border-b border-gray-100">
       {formSections.map((section) => {
         const isAccessible = canAccessSection(
           section.id,
@@ -51,29 +51,30 @@ export default function FormNavigation({
               }
             }}
             disabled={!isAccessible}
-            className={`flex items-center justify-center gap-2 py-4 px-2 text-sm font-medium transition-all relative ${
-              isActive
-                ? "bg-yellow-600/20 text-yellow-400"
+            className={`flex flex-col sm:flex-row items-center justify-center gap-2 py-6 px-2 text-xs sm:text-sm font-bold transition-all relative border-r border-gray-100 last:border-r-0 ${isActive
+                ? "bg-blue-50/50 text-blue-600 shadow-[inset_0_-2px_0_0_#2563eb]"
                 : isCompleted
-                  ? "text-green-400 hover:bg-zinc-800"
+                  ? "text-green-600 hover:bg-gray-50"
                   : isAccessible
-                    ? "text-yellow-200 hover:bg-zinc-800"
-                    : "text-gray-500 cursor-not-allowed opacity-50"
-            }`}
+                    ? "text-gray-500 hover:bg-gray-50"
+                    : "text-gray-300 cursor-not-allowed opacity-50"
+              }`}
           >
-            {isCompleted && !isActive && (
-              <CheckCircle className="w-4 h-4 text-green-400" />
-            )}
-            {!isAccessible && !isCompleted && (
-              <Lock className="w-4 h-4 text-gray-500" />
-            )}
-            {section.icon}
-            <span className="hidden sm:inline">{section.label}</span>
-
-            {/* Progress indicator */}
-            {isCompleted && (
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-green-500"></div>
-            )}
+            <div className={`p-2 rounded-xl transition-colors ${isActive ? "bg-blue-100 text-blue-600" :
+                isCompleted ? "bg-green-100 text-green-600" :
+                  "bg-gray-100 text-gray-400"
+              }`}>
+              {isCompleted && !isActive ? (
+                <CheckCircle className="w-4 h-4" />
+              ) : !isAccessible && !isCompleted ? (
+                <Lock className="w-4 h-4" />
+              ) : (
+                section.icon
+              )}
+            </div>
+            <span className="text-center sm:text-left leading-tight hidden xs:inline">
+              {section.label}
+            </span>
           </button>
         );
       })}

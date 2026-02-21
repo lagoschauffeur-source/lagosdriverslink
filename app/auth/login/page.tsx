@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { LockKeyhole, Mail, Eye, EyeOff, ArrowLeft } from "lucide-react";
+import { Mail, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -17,8 +17,7 @@ export default function LoginPage() {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    
-    // Basic validation
+
     if (!email || !password) {
       trigger("error", "Please enter both email and password.");
       return;
@@ -39,9 +38,8 @@ export default function LoginPage() {
           router.push("/dashboard");
         }, 1000);
       } else {
-        // Handle different error scenarios
         let errorMessage = "Invalid email or password.";
-        
+
         if (res?.error) {
           if (res.error === "CredentialsSignin") {
             errorMessage = "Invalid email or password. Please check your credentials and try again.";
@@ -53,13 +51,12 @@ export default function LoginPage() {
             errorMessage = res.error;
           }
         }
-        
+
         trigger("error", errorMessage);
       }
     } catch (error) {
-      // Handle network errors or other exceptions
-      const errorMessage = error instanceof Error 
-        ? `Login error: ${error.message}` 
+      const errorMessage = error instanceof Error
+        ? `Login error: ${error.message}`
         : "Unable to connect to server. Please check your internet connection and try again.";
       trigger("error", errorMessage);
     } finally {
@@ -70,132 +67,123 @@ export default function LoginPage() {
   return (
     <>
       <Toast />
-      <div className="text-white w-full max-w-md mx-auto">
-      <div className="mb-6">
-        <Link
-          href="/"
-          className="inline-flex items-center text-sm text-yellow-500 hover:text-yellow-400 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" /> Back to home
-        </Link>
-      </div>
-
-      <div className="text-center mb-8">
-        <div className="flex justify-center mb-4">
-          <LockKeyhole className="h-10 w-10 text-yellow-400" />
+      <div className="w-full max-w-md mx-auto">
+        {/* Back Link */}
+        <div className="mb-8">
+          <Link
+            href="/"
+            className="inline-flex items-center text-sm text-gray-400 hover:text-gray-600 transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" /> Back to home
+          </Link>
         </div>
-        <h2 className="text-3xl font-extrabold text-yellow-200">
-          Welcome Back
-        </h2>
-        <p className="text-yellow-300 mt-1 text-sm">Sign in to your account</p>
-      </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-4">
-          <label className="block">
-            <span className="text-sm text-yellow-300">Email</span>
-            <div className="relative mt-1">
-              <Mail className="absolute left-3 top-3 h-5 w-5 text-yellow-500" />
+        {/* Header */}
+        <div className="mb-8">
+          <div className="w-12 h-12 rounded-2xl bg-[#0099ff]/[0.06] flex items-center justify-center mb-5">
+            <Mail className="h-6 w-6 text-[#0099ff]" />
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900">Welcome back</h2>
+          <p className="text-gray-400 mt-1 text-sm">Sign in to your account</p>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Email */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
+            <div className="relative">
+              <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
                 type="email"
                 placeholder="you@example.com"
-                className="w-full bg-black border border-yellow-700 rounded-lg py-3 pl-10 pr-4 text-yellow-100 placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="w-full bg-white border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-gray-900 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ff]/20 focus:border-[#0099ff] transition-colors text-[15px]"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
-          </label>
+          </div>
 
-          <label className="block">
-            <span className="text-sm text-yellow-300">Password</span>
-            <div className="relative mt-1">
-              <LockKeyhole className="absolute left-3 top-3 h-5 w-5 text-yellow-500" />
+          {/* Password */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1.5">Password</label>
+            <div className="relative">
               <input
                 type={showPassword ? "text" : "password"}
-                placeholder="********"
-                className="w-full bg-black border border-yellow-700 rounded-lg py-3 pl-10 pr-12 text-yellow-100 placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                placeholder="••••••••"
+                className="w-full bg-white border border-gray-200 rounded-xl py-3 px-4 pr-12 text-gray-900 placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-[#0099ff]/20 focus:border-[#0099ff] transition-colors text-[15px]"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <button
                 type="button"
-                className="absolute right-3 top-3"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-yellow-500" />
+                  <EyeOff className="h-4 w-4 text-gray-400 hover:text-gray-600 transition-colors" />
                 ) : (
-                  <Eye className="h-5 w-5 text-yellow-500" />
+                  <Eye className="h-4 w-4 text-gray-400 hover:text-gray-600 transition-colors" />
                 )}
               </button>
             </div>
-          </label>
-        </div>
+          </div>
 
-        <div className="flex items-center justify-between text-sm text-yellow-300">
-          <label className="flex items-center">
-            <input
-              type="checkbox"
-              className="h-4 w-4 text-yellow-500 focus:ring-yellow-500 border-yellow-600 rounded bg-black"
-            />
-            <span className="ml-2">Remember me</span>
-          </label>
-          <Link
-            href="/auth/forgot-password"
-            className="text-yellow-300 hover:text-yellow-200"
+          {/* Remember & Forgot */}
+          <div className="flex items-center justify-between text-sm">
+            <label className="flex items-center text-gray-500">
+              <input
+                type="checkbox"
+                className="h-4 w-4 text-[#0099ff] focus:ring-[#0099ff] border-gray-300 rounded"
+              />
+              <span className="ml-2">Remember me</span>
+            </label>
+            <Link
+              href="/auth/forgot-password"
+              className="text-[#0099ff] hover:text-[#007acc] font-medium transition-colors"
+            >
+              Forgot password?
+            </Link>
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={`w-full py-3.5 px-4 rounded-xl font-semibold text-white bg-[#0099ff] hover:bg-[#0088ee] focus:outline-none focus:ring-2 focus:ring-[#0099ff]/30 transition-all duration-200 shadow-[0_4px_16px_rgba(0,153,255,0.3)] hover:shadow-[0_8px_32px_rgba(0,153,255,0.4)] text-[15px] ${isLoading ? "opacity-70 cursor-not-allowed" : ""
+              }`}
           >
-            Forgot password?
-          </Link>
-        </div>
+            {isLoading ? (
+              <span className="flex items-center justify-center">
+                <svg
+                  className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Signing in...
+              </span>
+            ) : (
+              "Sign in"
+            )}
+          </button>
 
-        <button
-          type="submit"
-          disabled={isLoading}
-          className={`w-full py-3 px-4 rounded-lg font-semibold text-black bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all duration-200 ${
-            isLoading ? "opacity-70 cursor-not-allowed" : ""
-          }`}
-        >
-          {isLoading ? (
-            <span className="flex items-center justify-center">
-              <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-black"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-              Signing in...
-            </span>
-          ) : (
-            "Sign in"
-          )}
-        </button>
-
-        <p className="text-sm text-center text-yellow-400 mt-4">
-          Don’t have an account?{" "}
-          <Link
-            href="/auth/register"
-            className="font-medium text-yellow-300 hover:text-yellow-200 underline"
-          >
-            Sign up
-          </Link>
-        </p>
-      </form>
+          {/* Register link */}
+          <p className="text-sm text-center text-gray-400 mt-6">
+            Don&apos;t have an account?{" "}
+            <Link
+              href="/auth/register"
+              className="font-semibold text-[#0099ff] hover:text-[#007acc] transition-colors"
+            >
+              Sign up
+            </Link>
+          </p>
+        </form>
       </div>
     </>
   );

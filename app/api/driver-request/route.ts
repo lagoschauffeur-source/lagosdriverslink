@@ -183,34 +183,65 @@ export async function POST(request: Request) {
       );
     }
 
-    // Step 8: Send notification email to team
+    // Step 8: Send notification email to team (with fallback)
     console.log("📋 Step 8: Sending notification email to team...");
-    let teamEmailResult;
+    let emailSent = false;
+    let lastError = null;
+
+    // First try: teams@lagosdriverslink.com (primary)
     try {
-      teamEmailResult = await resend.emails.send({
+      console.log("📧 Attempting to send to primary email: teams@lagosdriverslink.com");
+      const primaryEmailResult = await resend.emails.send({
         from: emailFrom,
         to: "teams@lagosdriverslink.com",
         subject: "New Driver Request Submitted",
         html: teamEmail.html,
       });
 
-      if (teamEmailResult.error) {
-        console.error(
-          "❌ Failed to send team notification email:",
-          teamEmailResult.error
-        );
-        throw new Error(
-          `Failed to send team notification email: ${teamEmailResult.error.message}`
-        );
+      if (primaryEmailResult.error) {
+        console.warn("⚠️ Primary email failed:", primaryEmailResult.error);
+        lastError = primaryEmailResult.error;
+      } else {
+        console.log("✅ Team notification email sent successfully to: teams@lagosdriverslink.com");
+        emailSent = true;
       }
+    } catch (primaryEmailError) {
+      console.warn("⚠️ Primary email error:", primaryEmailError);
+      lastError = primaryEmailError;
+    }
 
-      console.log(
-        "✅ Team notification email sent successfully to: teams@lagosdriverslink.com"
-      );
-    } catch (teamEmailError) {
-      console.error("❌ Team notification email error:", teamEmailError);
+    // Fallback: lagoschauffeur@gmail.com
+    if (!emailSent) {
+      try {
+        console.log("📧 Attempting fallback to: lagoschauffeur@gmail.com");
+        const fallbackEmailResult = await resend.emails.send({
+          from: emailFrom,
+          to: "lagoschauffeur@gmail.com",
+          subject: "New Driver Request Submitted",
+          html: teamEmail.html,
+        });
+
+        if (fallbackEmailResult.error) {
+          console.error(
+            "❌ Fallback email also failed:",
+            fallbackEmailResult.error
+          );
+          lastError = fallbackEmailResult.error;
+        } else {
+          console.log("✅ Team notification email sent successfully to: lagoschauffeur@gmail.com (fallback)");
+          emailSent = true;
+        }
+      } catch (fallbackEmailError) {
+        console.error("❌ Fallback email error:", fallbackEmailError);
+        lastError = fallbackEmailError;
+      }
+    }
+
+    // If both attempts failed, return error
+    if (!emailSent) {
+      console.error("❌ All email attempts failed. Last error:", lastError);
       return NextResponse.json(
-        { success: false, error: "Failed to send team notification email" },
+        { success: false, error: "Failed to send team notification email to any recipient" },
         { status: 500 }
       );
     }

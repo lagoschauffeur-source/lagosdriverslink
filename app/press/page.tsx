@@ -1,202 +1,141 @@
-import { Newspaper, Mic, Tv, Download, ArrowRight, Globe } from "lucide-react";
+"use client";
+
+import { Newspaper, Mic, Tv, Download, ArrowRight, Globe, Zap, Megaphone, FileText } from "lucide-react";
+import { motion } from "framer-motion";
 
 const PressPage = () => {
   const pressReleases = [
     {
-      title: "DrivePro Expands Fleet with 50 New Luxury Vehicles",
-      date: "May 15, 2023",
-      category: "Company News",
+      title: "Lagos Drivers Link Extends Fleet Network with Elite Chauffeur Standard",
+      date: "May 15, 2024",
+      category: "Growth",
     },
     {
-      title:
-        "DrivePro Named 'Logistics Company of the Year' at Industry Awards",
-      date: "March 28, 2023",
-      category: "Awards",
+      title: "Named 'Mobility Partner of the Year' at Lagos Tech Summit",
+      date: "March 28, 2024",
+      category: "Award",
     },
     {
-      title: "DrivePro Launches Eco-Friendly Transportation Initiative",
-      date: "February 10, 2023",
-      category: "Sustainability",
-    },
-    {
-      title: "DrivePro Secures $10M in Series B Funding",
-      date: "November 5, 2022",
-      category: "Funding",
+      title: "Launch of 'SecureMile' Safety Initiative for Corporate Commutes",
+      date: "February 10, 2024",
+      category: "Safety",
     },
   ];
 
   const mediaCoverage = [
     {
       outlet: "Business Day",
-      title: "How DrivePro is Revolutionizing Corporate Transport in Nigeria",
-      date: "April 3, 2023",
+      title: "Revolutionizing Chauffeur Standards in Nigeria's Tech Hub",
+      date: "April 3, 2024",
       type: "Print",
     },
     {
       outlet: "TechCabal",
-      title: "The Tech Behind DrivePro's Logistics Dominance",
-      date: "January 18, 2023",
+      title: "The Logistics Infrastructure Behind Nigeria's Top Driver Network",
+      date: "January 18, 2024",
       type: "Online",
     },
     {
       outlet: "Channels TV",
-      title: "DrivePro CEO Discusses Expansion Plans on Business Morning",
-      date: "December 7, 2022",
+      title: "CEO Discusses Future of Urban Mobility on Business Morning",
+      date: "December 7, 2023",
       type: "TV",
-    },
-    {
-      outlet: "The Guardian",
-      title: "DrivePro's Safety Initiatives Set New Industry Standards",
-      date: "October 22, 2022",
-      type: "Print",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white pt-24 text-gray-900">
       {/* Hero Section */}
-      <section className="relative py-28 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-black to-gray-900 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
-            Press Center
-          </h1>
-          <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
-            News, media resources, and company announcements from DrivePro.
-          </p>
-          <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-yellow-500/10 blur-3xl"></div>
-          <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-yellow-500/10 blur-3xl"></div>
+      <section className="relative py-24 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden text-center">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0099ff]/[0.02] rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+        <div className="max-w-4xl mx-auto relative z-10">
+          <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }}>
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#0099ff]/10 text-[#0099ff] text-sm font-bold mb-8 uppercase tracking-widest">Media Relations</span>
+            <h1 className="text-4xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
+              Press & <br /><span className="text-[#0099ff]">Insights Center</span>
+            </h1>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-medium">
+              Daily updates, brand resources, and global announcements from the Lagos Drivers Link newsroom.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Press Resources */}
-      <section className="py-20 px-6 md:px-12 lg:px-24 bg-gray-900">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-400">
-              Press Resources
-            </h2>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Newspaper className="w-10 h-10 text-yellow-500" />,
-                title: "Press Kit",
-                description:
-                  "Download our company overview, logos, and executive bios.",
-              },
-              {
-                icon: <Mic className="w-10 h-10 text-yellow-500" />,
-                title: "Media Inquiries",
-                description:
-                  "Contact our PR team for interviews and information.",
-              },
-              {
-                icon: <Tv className="w-10 h-10 text-yellow-500" />,
-                title: "Brand Assets",
-                description:
-                  "Access approved images, videos, and brand guidelines.",
-              },
-            ].map((resource, index) => (
-              <div
-                key={index}
-                className="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-yellow-500/50 transition-colors"
-              >
-                <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full bg-gray-700">
-                    {resource.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-center mb-3">
-                  {resource.title}
-                </h3>
-                <p className="text-gray-300 text-center mb-4">
-                  {resource.description}
-                </p>
-                <div className="flex justify-center">
-                  <a
-                    href="#"
-                    className="inline-flex items-center text-yellow-500 font-medium group hover:text-yellow-400 transition-colors"
-                  >
-                    Access Now
-                    <Download className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
-                  </a>
-                </div>
+      {/* Asset Grid */}
+      <section className="py-24 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+          {[
+            { icon: <FileText />, title: "Electronic Press Kit", desc: "Logos, executive bios, and company facts for rapid deployment." },
+            { icon: <Megaphone />, title: "Media Relations", desc: "Direct channel for interview requests and official statements." },
+            { icon: <Zap />, title: "Brand Assets", desc: "High-resolution cinematic shots and motion guidelines." }
+          ].map((asset, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all group cursor-pointer"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-[#0099ff]/[0.06] text-[#0099ff] flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
+                {asset.icon}
               </div>
-            ))}
-          </div>
+              <h3 className="text-2xl font-black mb-4 tracking-tight">{asset.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed mb-8">{asset.desc}</p>
+              <div className="flex items-center gap-2 text-[#0099ff] font-bold text-sm uppercase tracking-widest">
+                Download <Download className="w-4 h-4" />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Press Releases */}
-      <section className="py-20 px-6 md:px-12 lg:px-24 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-yellow-400">
-            Press Releases
-          </h2>
-
+      {/* Press Releases List */}
+      <section className="py-24 px-6 md:px-12 lg:px-24 bg-[#fafbfd]">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl lg:text-5xl font-black mb-16 tracking-tight">Recent Releases</h2>
           <div className="space-y-6">
-            {pressReleases.map((release, index) => (
-              <div
-                key={index}
-                className="bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-yellow-500/50 transition-colors"
+            {pressReleases.map((pr, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="bg-white p-10 rounded-[2.5rem] border border-gray-50 shadow-sm hover:border-[#0099ff]/20 transition-all flex flex-col md:flex-row md:items-center justify-between gap-8 group"
               >
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold mb-1">{release.title}</h3>
-                    <div className="flex items-center text-sm text-gray-400">
-                      <span>{release.date}</span>
-                      <span className="mx-2">•</span>
-                      <span className="text-yellow-500">
-                        {release.category}
-                      </span>
-                    </div>
+                <div>
+                  <div className="flex items-center gap-3 text-sm font-bold text-[#0099ff] mb-2">
+                    <span className="px-3 py-1 bg-[#0099ff]/10 rounded-full">{pr.category}</span>
+                    <span className="text-gray-400">&bull;</span>
+                    <span className="text-gray-400 uppercase tracking-widest">{pr.date}</span>
                   </div>
-                  <a
-                    href="#"
-                    className="mt-4 md:mt-0 inline-flex items-center text-yellow-500 font-medium group hover:text-yellow-400 transition-colors"
-                  >
-                    Read More
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  <h3 className="text-xl font-black text-gray-900 group-hover:text-[#0099ff] transition-colors">{pr.title}</h3>
                 </div>
-              </div>
+                <div className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center group-hover:bg-[#0099ff] group-hover:text-white transition-all">
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Media Coverage */}
-      <section className="py-20 px-6 md:px-12 lg:px-24 bg-gray-900">
+      {/* Coverage Grid */}
+      <section className="py-24 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-yellow-400">
-            Media Coverage
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {mediaCoverage.map((item, index) => (
-              <div
-                key={index}
-                className="bg-gray-800 rounded-lg p-6 border border-gray-700 hover:border-yellow-500/50 transition-colors"
-              >
-                <div className="flex items-center mb-3">
-                  <div className="bg-gray-700 rounded-full w-10 h-10 flex items-center justify-center mr-4">
-                    {item.type === "TV" ? (
-                      <Tv className="w-5 h-5 text-yellow-500" />
-                    ) : item.type === "Online" ? (
-                      <Globe className="w-5 h-5 text-yellow-500" />
-                    ) : (
-                      <Newspaper className="w-5 h-5 text-yellow-500" />
-                    )}
+          <h2 className="text-3xl lg:text-5xl font-black mb-16 tracking-tight">Global Coverage</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {mediaCoverage.map((cover, i) => (
+              <div key={i} className="p-10 rounded-[3rem] bg-slate-50 border border-gray-50 hover:bg-white hover:border-[#0099ff]/20 transition-all group">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-[#0099ff]">
+                    {cover.type === "TV" ? <Tv className="w-5 h-5" /> : cover.type === "Online" ? <Globe className="w-5 h-5" /> : <Newspaper className="w-5 h-5" />}
                   </div>
-                  <h3 className="font-bold">{item.outlet}</h3>
+                  <span className="font-bold text-gray-900">{cover.outlet}</span>
                 </div>
-                <h4 className="text-lg mb-2">{item.title}</h4>
-                <div className="flex items-center text-sm text-gray-400">
-                  <span>{item.date}</span>
-                  <span className="mx-2">•</span>
-                  <span>{item.type}</span>
+                <h4 className="text-xl font-black text-gray-900 mb-6 leading-tight">{cover.title}</h4>
+                <div className="text-gray-400 text-sm font-bold uppercase tracking-widest">
+                  {cover.date} <span className="mx-2">&bull;</span> {cover.type}
                 </div>
               </div>
             ))}

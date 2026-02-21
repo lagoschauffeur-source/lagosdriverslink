@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  CheckCircle,
+  CheckCircle2,
   Star,
   Handshake,
   TrendingUp,
@@ -11,14 +11,13 @@ import {
   Globe,
   Award,
   Target,
+  ArrowRight,
+  Zap
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Partnerships | Lagos Drivers Link",
-  description:
-    "Partner with Lagos Drivers Link to expand your business reach. Join our network of trusted partners and grow together in the transportation industry.",
-  keywords:
-    "partnerships, business partners, driver network, transportation partners, Lagos business, collaboration",
+  description: "Partner with Lagos Drivers Link to expand your business reach. Join our network of trusted partners and grow together in the transportation industry.",
 };
 
 export default function PartnersPage() {
@@ -26,113 +25,56 @@ export default function PartnersPage() {
     {
       icon: <Users className="h-6 w-6" />,
       title: "Driver Partners",
-      description:
-        "Join our network of professional drivers and access consistent work opportunities with competitive rates.",
+      description: "Join our elite network and access consistent high-margin opportunities with total flexibility.",
     },
     {
       icon: <Handshake className="h-6 w-6" />,
       title: "Corporate Partners",
-      description:
-        "Partner with us to provide transportation solutions for your employees and clients.",
+      description: "Scale your organization's mobility with our dedicated white-glove chauffeur solutions.",
     },
     {
       icon: <Globe className="h-6 w-6" />,
-      title: "Technology Partners",
-      description:
-        "Collaborate with us to enhance our platform and services through innovative technology solutions.",
+      title: "Tech Partners",
+      description: "Integrate with our API to enhance mobility ecosystems through innovative tech solutions.",
     },
     {
       icon: <Award className="h-6 w-6" />,
-      title: "Service Partners",
-      description:
-        "Partner with complementary services to offer comprehensive solutions to our customers.",
-    },
-  ];
-
-  const benefits = [
-    {
-      title: "Increased Revenue",
-      description:
-        "Access to a large customer base and consistent booking opportunities.",
-    },
-    {
-      title: "Brand Recognition",
-      description:
-        "Leverage our established brand to grow your business reputation.",
-    },
-    {
-      title: "Technology Support",
-      description:
-        "Access to our booking platform and customer management tools.",
-    },
-    {
-      title: "Marketing Support",
-      description:
-        "Co-marketing opportunities and promotional support for your services.",
-    },
-  ];
-
-  const testimonials = [
-    {
-      name: "David Okonkwo",
-      role: "Driver Partner",
-      content:
-        "Joining Lagos Drivers Link as a partner has transformed my business. I now have consistent bookings and better income stability.",
-      rating: 5,
-    },
-    {
-      name: "TechStart Nigeria",
-      role: "Corporate Partner",
-      content:
-        "The partnership has been mutually beneficial. Our employees love the reliable transportation service, and it's improved our productivity.",
-      rating: 5,
-    },
-    {
-      name: "Sarah Adebayo",
-      role: "Service Partner",
-      content:
-        "Working with Lagos Drivers Link has expanded our customer base significantly. The partnership is professional and profitable.",
-      rating: 5,
+      title: "Strategic Partners",
+      description: "Collaborate on high-impact initiatives to redefine transportation standards across Africa.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-24 text-gray-900">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-20">
-        <div className="w-[85%] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-                Partnerships
+      <section className="relative py-28 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#0099ff]/[0.02] rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-10">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-[#0099ff]/10 text-[#0099ff] text-sm font-bold uppercase tracking-widest">Global Partnerships</span>
+              <h1 className="text-5xl lg:text-8xl font-black tracking-tighter leading-none mb-8">
+                Build the <br /><span className="text-[#0099ff]">Future</span> of Mobility.
               </h1>
-              <p className="text-xl mb-8 text-gray-800">
-                Grow your business with Lagos Drivers Link. Join our network of
-                trusted partners and unlock new opportunities in the
-                transportation industry.
+              <p className="text-xl text-gray-500 max-w-xl leading-relaxed font-medium">
+                Join our elite network of trusted partners. We're building Africa's most reliable driver ecosystem, and we want you with us.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/contact"
-                  className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-center"
-                >
+              <div className="flex flex-col sm:flex-row gap-5">
+                <Link href="/contact" className="bg-[#0099ff] text-white px-10 py-5 rounded-2xl font-black hover:bg-[#0088ee] transition-all shadow-xl shadow-[#0099ff]/20 flex items-center justify-center gap-3">
                   Become a Partner
+                  <ArrowRight className="w-5 h-5" />
                 </Link>
-                <Link
-                  href="#partnership-types"
-                  className="border-2 border-black text-black px-8 py-4 rounded-lg font-semibold hover:bg-black hover:text-white transition-colors text-center"
-                >
-                  Learn More
+                <Link href="#partnership-types" className="border border-gray-200 text-gray-900 px-10 py-5 rounded-2xl font-bold hover:bg-gray-50 transition-all flex items-center justify-center">
+                  Explore Programs
                 </Link>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative aspect-[4/5] rounded-[4rem] overflow-hidden shadow-3xl border-8 border-white">
               <Image
                 src="/smiling-cheerful-young-adult-african-600nw-1850821510.webp"
                 alt="Business Partnership"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-2xl"
+                fill
+                className="object-cover"
                 priority
               />
             </div>
@@ -140,172 +82,88 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* Partnership Types Section */}
-      <section id="partnership-types" className="py-20 bg-gray-50">
-        <div className="w-[85%] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Partnership Opportunities
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We offer various partnership models to suit different business
-              needs and goals.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {partnershipTypes.map((type, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-lg text-center"
-              >
-                <div className="text-yellow-500 mb-4 flex justify-center">
-                  {type.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{type.title}</h3>
-                <p className="text-gray-600">{type.description}</p>
+      {/* Program Types Grid */}
+      <section id="partnership-types" className="py-32 px-6 md:px-12 lg:px-24 bg-[#fafbfd]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {partnershipTypes.map((type, i) => (
+            <div key={i} className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-xl hover:border-[#0099ff]/20 transition-all group">
+              <div className="w-14 h-14 rounded-2xl bg-[#0099ff]/[0.06] text-[#0099ff] flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
+                {type.icon}
               </div>
-            ))}
-          </div>
+              <h3 className="text-2xl font-black mb-4 tracking-tight">{type.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">{type.description}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20">
-        <div className="w-[85%] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                Why Partner With Us?
-              </h2>
-              <div className="space-y-6">
-                {benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-yellow-500 mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-lg mb-2">
-                        {benefit.title}
-                      </h3>
-                      <p className="text-gray-600">{benefit.description}</p>
-                    </div>
+      {/* Benefits Content Block */}
+      <section className="py-32 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+          <div className="relative aspect-square rounded-[4rem] overflow-hidden shadow-2xl">
+            <Image
+              src="/portrait-of-a-confident-young-black-man-for-lifestyle-or-fashion-marketing-free-photo.jpeg"
+              alt="Partner Impact"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="space-y-12">
+            <h2 className="text-4xl lg:text-6xl font-black tracking-tighter leading-tight">Scale with the <span className="text-[#0099ff]">Platform Advantage.</span></h2>
+            <div className="space-y-8">
+              {[
+                { title: "Network Access", desc: "Instantly tap into Nigeria's largest pool of vetteed, certified professional chauffeurs." },
+                { title: "Growth Capital", desc: "Benefit from co-marketing budgets and performance-based incentive programs." },
+                { title: "Elite Tech Stack", desc: "Get full white-label access to our dispatching and analytics dashboard suite." }
+              ].map((benefit, i) => (
+                <div key={i} className="flex gap-6">
+                  <div className="w-8 h-8 rounded-full bg-[#0099ff]/10 flex items-center justify-center text-[#0099ff] flex-shrink-0 mt-1">
+                    <CheckCircle2 className="w-5 h-5" />
                   </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <Image
-                src="/portrait-of-a-confident-young-black-man-for-lifestyle-or-fashion-marketing-free-photo.jpeg"
-                alt="Successful Business Partnership"
-                width={500}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
+                  <div className="space-y-1">
+                    <h4 className="font-black text-xl">{benefit.title}</h4>
+                    <p className="text-gray-500 leading-relaxed font-medium">{benefit.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Requirements Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="w-[85%] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Partnership Requirements
-            </h2>
-            <p className="text-xl text-gray-600">
-              What we look for in our partners
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-              <Target className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-3">
-                Professional Standards
-              </h3>
-              <p className="text-gray-600">
-                Maintain high standards of service quality and customer
-                satisfaction.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-              <TrendingUp className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-3">Growth Mindset</h3>
-              <p className="text-gray-600">
-                Commitment to continuous improvement and business growth.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-              <Handshake className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-3">Reliability</h3>
-              <p className="text-gray-600">
-                Consistent delivery of services and adherence to agreements.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20">
-        <div className="w-[85%] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Partner Success Stories
-            </h2>
-            <p className="text-xl text-gray-600">
-              Hear from our successful partners about their experience.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-lg">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 text-yellow-500 fill-current"
-                    />
-                  ))}
+      {/* Requirements Matrix */}
+      <section className="py-32 px-6 md:px-12 lg:px-24 bg-gray-900 text-white rounded-[5rem] mx-6 md:mx-12 lg:mx-24 mb-32 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0099ff]/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="max-w-5xl mx-auto relative z-10 text-center">
+          <h2 className="text-3xl lg:text-5xl font-black mb-16 tracking-tight">The Partner <span className="text-[#0099ff]">Maturity</span> Model</h2>
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              { icon: <Target className="h-8 w-8" />, title: "Standards", desc: "Uncompromising commitment to premium service safety levels." },
+              { icon: <TrendingUp className="h-8 w-8" />, title: "Vision", desc: "Long-term mindset focused on sustainable mobility expansion." },
+              { icon: <Zap className="h-8 w-8" />, title: "Speed", desc: "Agile operational response times and logistical precision." }
+            ].map((item, i) => (
+              <div key={i} className="space-y-6">
+                <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-[#0099ff] mx-auto">
+                  {item.icon}
                 </div>
-                <p className="text-gray-600 mb-4 italic">
-                  "{testimonial.content}"
-                </p>
-                <div>
-                  <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-gray-500 text-sm">{testimonial.role}</p>
-                </div>
+                <h4 className="text-xl font-black">{item.title}</h4>
+                <p className="text-gray-400 font-medium">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-black text-white">
-        <div className="w-[85%] mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Ready to Partner With Us?
-          </h2>
-          <p className="text-xl mb-8 text-gray-300">
-            Join our network of successful partners and grow your business with
-            Lagos Drivers Link.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-yellow-500 text-black px-8 py-4 rounded-lg font-semibold hover:bg-yellow-600 transition-colors"
-            >
-              Apply for Partnership
-            </Link>
-            <Link
-              href="mailto:partnerships@lagosdriverslink.com"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors"
-            >
-              Email Us
-            </Link>
-          </div>
+      {/* Final Call */}
+      <section className="py-32 px-6 text-center">
+        <h2 className="text-4xl lg:text-7xl font-black tracking-tighter text-gray-900 mb-12">Ready to <span className="text-[#0099ff]">Handshake?</span></h2>
+        <div className="flex flex-col sm:flex-row gap-5 justify-center">
+          <Link href="/contact" className="bg-[#0099ff] text-white px-12 py-5 rounded-2xl font-black hover:bg-[#0088ee] transition-all shadow-2xl shadow-[#0099ff]/30">
+            Apply for Partnership
+          </Link>
+          <Link href="mailto:partnerships@lagosdriverslink.com" className="border border-gray-200 text-gray-900 px-12 py-5 rounded-2xl font-bold hover:bg-gray-50 transition-all">
+            Direct Inquiries
+          </Link>
         </div>
       </section>
     </div>

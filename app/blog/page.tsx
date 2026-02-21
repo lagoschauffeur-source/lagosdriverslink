@@ -1,292 +1,201 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, User, ArrowRight, Clock } from "lucide-react";
+import { Calendar, User, ArrowRight, Clock, Bookmark, Share2, MessageSquare, Zap } from "lucide-react";
+import { motion } from "framer-motion";
 
-// Sample blog posts data
 const blogPosts = [
   {
     id: 1,
-    title: "The Future of Professional Driving in Lagos",
-    excerpt:
-      "Discover how technology and innovation are transforming the professional driving industry in Lagos, Nigeria.",
-    content:
-      "Lagos is experiencing a revolution in professional driving services...",
-    author: "Lagos Drivers Link Team",
-    date: "2024-01-15",
-    readTime: "5 min read",
-    category: "Industry Insights",
+    title: "The Future of Chauffeur Standards in Nigeria's Tech Hub",
+    excerpt: "Exploring the intersection of high-tier vetting and AI-driven logistics in Lagos' corporate mobility landscape.",
+    author: "Protocol Desk",
+    date: "JAN 15, 2025",
+    readTime: "5 min",
+    category: "Logistics",
     image: "/blog-driving-future.jpg",
     featured: true,
   },
   {
     id: 2,
-    title: "Safety First: Essential Tips for Corporate Drivers",
-    excerpt:
-      "Learn the essential safety protocols and best practices that every professional driver should follow.",
-    content: "Safety is paramount in professional driving...",
-    author: "Safety Team",
-    date: "2024-01-10",
-    readTime: "7 min read",
+    title: "SecureMile: Redefining Road Safety for Executives",
+    excerpt: "A deep dive into our multi-layer monitoring system that ensures uncompromising passenger security.",
+    author: "Safety Ops",
+    date: "JAN 10, 2025",
+    readTime: "7 min",
     category: "Safety",
     image: "/blog-safety-tips.jpg",
     featured: false,
   },
   {
     id: 3,
-    title: "Building Trust: The Driver-Client Relationship",
-    excerpt:
-      "Understanding how to build and maintain strong relationships with clients in the professional driving industry.",
-    content:
-      "Trust is the foundation of any successful driver-client relationship...",
-    author: "Customer Success Team",
-    date: "2024-01-05",
-    readTime: "6 min read",
-    category: "Customer Service",
+    title: "Etiquette 2.0: The Art of Professional Chauffeurism",
+    excerpt: "Why technical driving skills are only 30% of the value we provide to our high-net-worth clients.",
+    author: "Experience Lead",
+    date: "JAN 05, 2025",
+    readTime: "6 min",
+    category: "Hospitality",
     image: "/blog-trust-building.jpg",
     featured: false,
   },
   {
     id: 4,
-    title: "Lagos Traffic: Navigating the City Like a Pro",
-    excerpt:
-      "Expert tips and strategies for navigating Lagos traffic efficiently and safely.",
-    content:
-      "Lagos traffic can be challenging, but with the right strategies...",
-    author: "Local Experts",
-    date: "2024-01-01",
-    readTime: "8 min read",
-    category: "Local Knowledge",
+    title: "Navigating Lagos: Beyond the GPS Algorithms",
+    excerpt: "Internal field reports on route optimization and traffic psychology in the world's most dynamic city.",
+    author: "Field Report",
+    date: "JAN 01, 2025",
+    readTime: "8 min",
+    category: "Mobility",
     image: "/blog-lagos-traffic.jpg",
-    featured: false,
-  },
-  {
-    id: 5,
-    title: "Technology in Modern Transportation",
-    excerpt:
-      "How GPS, ride-sharing apps, and other technologies are changing the transportation landscape.",
-    content:
-      "Technology continues to reshape how we think about transportation...",
-    author: "Tech Team",
-    date: "2023-12-28",
-    readTime: "6 min read",
-    category: "Technology",
-    image: "/blog-technology.jpg",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "The Economics of Professional Driving",
-    excerpt:
-      "Understanding the business side of professional driving services in Lagos.",
-    content:
-      "Professional driving is not just about getting from point A to point B...",
-    author: "Business Team",
-    date: "2023-12-25",
-    readTime: "9 min read",
-    category: "Business",
-    image: "/blog-economics.jpg",
     featured: false,
   },
 ];
 
-const categories = [
-  "All",
-  "Industry Insights",
-  "Safety",
-  "Customer Service",
-  "Local Knowledge",
-  "Technology",
-  "Business",
-];
+const categories = ["All Insights", "Logistics", "Safety", "Hospitality", "Mobility", "Tech"];
 
 export default function BlogPage() {
   const featuredPost = blogPosts.find((post) => post.featured);
   const regularPosts = blogPosts.filter((post) => !post.featured);
 
   return (
-    <div className="min-h-screen bg-black text-white relative">
-      {/* Background with hero-style but lighter */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black opacity-90"></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-yellow-400/5 to-yellow-600/5"></div>
-      
-      {/* Header spacing */}
-      <div className="h-[88px] relative z-10"></div>
-
-      {/* Hero Section */}
-      <section className="relative py-20 px-6 sm:px-12 md:px-16 lg:px-24 z-10">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
-              Lagos Drivers Link Blog
-            </span>
-          </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Stay updated with the latest insights, tips, and trends in
-            professional driving services across Lagos.
-          </p>
-          <div className="w-32 h-1 bg-gradient-to-r from-yellow-500 to-yellow-400 mx-auto rounded-full"></div>
+    <div className="min-h-screen bg-white pt-24 text-gray-900">
+      {/* Hero Header */}
+      <section className="relative py-24 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden text-center">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0099ff]/[0.02] rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+        <div className="max-w-4xl mx-auto relative z-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <span className="inline-block px-4 py-1.5 rounded-full bg-[#0099ff]/10 text-[#0099ff] text-sm font-bold mb-8 uppercase tracking-widest">The Newsroom</span>
+            <h1 className="text-4xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
+              Insights for <br /><span className="text-[#0099ff]">Modern Mobility.</span>
+            </h1>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-medium">
+              Field reports, safety protocols, and industry analyses from the Lagos Drivers Link logistics desk.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Featured Post */}
+      {/* Featured Article Cinematic */}
       {featuredPost && (
-        <section className="relative py-16 px-6 sm:px-12 md:px-16 lg:px-24 z-10">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-yellow-100 mb-8 text-center">
-              Featured Article
-            </h2>
-            <div className="bg-gradient-to-r from-yellow-900/20 to-amber-900/20 rounded-2xl overflow-hidden border border-yellow-500/20">
-              <div className="grid md:grid-cols-2 gap-8 p-8">
-                <div className="relative">
-                  <Image
-                    src={featuredPost.image}
-                    alt={featuredPost.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-64 object-cover rounded-lg"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-semibold">
-                      Featured
-                    </span>
-                  </div>
-                </div>
-                <div className="flex flex-col justify-center">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-sm">
-                      {featuredPost.category}
-                    </span>
-                    <div className="flex items-center text-gray-400 text-sm">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {featuredPost.readTime}
-                    </div>
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    {featuredPost.title}
-                  </h3>
-                  <p className="text-gray-300 mb-6">{featuredPost.excerpt}</p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-400 text-sm">
-                      <User className="w-4 h-4 mr-2" />
-                      {featuredPost.author}
-                      <Calendar className="w-4 h-4 ml-4 mr-2" />
-                      {new Date(featuredPost.date).toLocaleDateString()}
-                    </div>
-                    <Link
-                      href={`/blog/${featuredPost.id}`}
-                      className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
-                    >
-                      Read More <ArrowRight className="w-4 h-4 ml-1" />
-                    </Link>
-                  </div>
+        <section className="py-24 px-6 md:px-12 lg:px-24">
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              whileHover={{ y: -8 }}
+              className="bg-white rounded-[4rem] overflow-hidden border border-gray-100 shadow-2xl flex flex-col lg:flex-row h-full min-h-[600px] group cursor-pointer"
+            >
+              <div className="flex-1 relative overflow-hidden">
+                <Image src={featuredPost.image} alt={featuredPost.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute top-10 left-10">
+                  <div className="bg-[#0099ff] text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest shadow-xl">Featured Insight</div>
                 </div>
               </div>
-            </div>
+              <div className="flex-1 p-12 md:p-20 flex flex-col justify-center space-y-8">
+                <div className="flex items-center gap-6 text-xs font-bold text-gray-400 uppercase tracking-widest">
+                  <span className="text-[#0099ff]">{featuredPost.category}</span>
+                  <span>&bull;</span>
+                  <span>{featuredPost.readTime} Read</span>
+                </div>
+                <h2 className="text-3xl md:text-6xl font-black tracking-tighter leading-tight group-hover:text-[#0099ff] transition-colors">
+                  {featuredPost.title}
+                </h2>
+                <p className="text-xl text-gray-500 leading-relaxed font-medium">
+                  {featuredPost.excerpt}
+                </p>
+                <div className="flex items-center justify-between pt-8 border-t border-gray-100">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-[#0099ff]">
+                      <User className="w-6 h-6" />
+                    </div>
+                    <div>
+                      <div className="font-black text-gray-900 leading-none mb-1">{featuredPost.author}</div>
+                      <div className="text-xs font-bold text-gray-400 uppercase">{featuredPost.date}</div>
+                    </div>
+                  </div>
+                  <Link href={`/blog/${featuredPost.id}`} className="w-14 h-14 rounded-full bg-gray-900 text-white flex items-center justify-center hover:bg-[#0099ff] transition-all">
+                    <ArrowRight className="w-6 h-6" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
       )}
 
-      {/* Categories Filter */}
-      <section className="relative py-8 px-6 sm:px-12 md:px-16 lg:px-24 z-10">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                className="px-6 py-2 rounded-full border border-gray-700 text-gray-300 hover:border-yellow-500 hover:text-yellow-400 transition-all duration-300"
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Blog Posts Grid */}
-      <section className="relative py-16 px-6 sm:px-12 md:px-16 lg:px-24 z-10">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-yellow-100 mb-12 text-center">
-            Latest Articles
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {regularPosts.map((post) => (
-              <article
-                key={post.id}
-                className="bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-yellow-500/50 transition-all duration-300 hover:-translate-y-1 group"
-              >
-                <div className="relative">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    width={400}
-                    height={250}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-yellow-500/20 text-yellow-300 px-3 py-1 rounded-full text-sm">
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className="flex items-center text-gray-400 text-sm">
-                      <Clock className="w-4 h-4 mr-1" />
-                      {post.readTime}
-                    </div>
-                    <div className="flex items-center text-gray-400 text-sm">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {new Date(post.date).toLocaleDateString()}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-yellow-400 transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-400 text-sm">
-                      <User className="w-4 h-4 mr-2" />
-                      {post.author}
-                    </div>
-                    <Link
-                      href={`/blog/${post.id}`}
-                      className="inline-flex items-center text-yellow-400 hover:text-yellow-300 transition-colors"
-                    >
-                      Read More <ArrowRight className="w-4 h-4 ml-1" />
-                    </Link>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter Signup */}
-      <section className="relative py-16 px-6 sm:px-12 md:px-16 lg:px-24 z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-yellow-100 mb-4">
-            Stay Updated
-          </h2>
-          <p className="text-gray-300 mb-8">
-            Subscribe to our newsletter for the latest insights and updates from
-            Lagos Drivers Link.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            />
-            <button className="px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-black rounded-lg font-semibold hover:from-yellow-500 hover:to-yellow-600 transition-all duration-300">
-              Subscribe
+      {/* Filter Menu */}
+      <section className="py-12 px-6 border-y border-gray-50 sticky top-[88px] bg-white/80 backdrop-blur-md z-40">
+        <div className="max-w-7xl mx-auto flex overflow-x-auto gap-4 no-scrollbar">
+          {categories.map((cat, i) => (
+            <button key={i} className={`px-8 py-3 rounded-full text-sm font-black whitespace-nowrap transition-all ${i === 0 ? 'bg-gray-900 text-white shadow-xl shadow-gray-900/10' : 'bg-slate-50 text-gray-400 hover:bg-slate-100'}`}>
+              {cat}
             </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Regular Feed Grid */}
+      <section className="py-32 px-6 md:px-12 lg:px-24 bg-[#fafbfd]">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {regularPosts.map((post) => (
+            <motion.article
+              key={post.id}
+              whileHover={{ y: -12 }}
+              className="bg-white rounded-[3.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all group flex flex-col h-full"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute top-6 left-6">
+                  <span className="bg-white/90 backdrop-blur-sm text-gray-900 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
+                    {post.category}
+                  </span>
+                </div>
+              </div>
+              <div className="p-10 flex flex-col flex-grow">
+                <div className="flex items-center gap-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-6 leading-none">
+                  <span>{post.date}</span>
+                  <span>&bull;</span>
+                  <span>{post.readTime} Read</span>
+                </div>
+                <h3 className="text-2xl font-black text-gray-900 mb-6 leading-tight group-hover:text-[#0099ff] transition-colors">{post.title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-10 flex-grow font-medium">{post.excerpt}</p>
+                <div className="flex items-center justify-between pt-8 border-t border-gray-50">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-[#0099ff]">
+                      <User className="w-4 h-4" />
+                    </div>
+                    <span className="text-xs font-black text-gray-900">{post.author}</span>
+                  </div>
+                  <div className="flex gap-4">
+                    <button className="text-gray-400 hover:text-[#0099ff] transition-colors"><Bookmark className="w-5 h-5" /></button>
+                    <button className="text-gray-400 hover:text-[#0099ff] transition-colors"><Share2 className="w-5 h-5" /></button>
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </section>
+
+      {/* Newsletter Clean Slate */}
+      <section className="py-32 px-6 md:px-12 lg:px-24">
+        <div className="max-w-4xl mx-auto bg-[#0099ff] rounded-[4rem] p-16 text-center text-white relative overflow-hidden shadow-2xl shadow-[#0099ff]/20">
+          <div className="absolute bottom-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-[100px] translate-y-1/2 translate-x-1/2" />
+          <div className="relative z-10">
+            <Zap className="w-12 h-12 text-white/50 mx-auto mb-8" />
+            <h2 className="text-4xl lg:text-6xl font-black mb-10 tracking-tighter">Insights in your <br /> Inbox. Weekly.</h2>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto bg-white/10 p-2 rounded-3xl border border-white/20">
+              <input
+                type="email"
+                placeholder="Enter work email"
+                className="flex-1 bg-transparent border-none focus:ring-0 text-white placeholder:text-white/40 font-bold px-6 py-4"
+              />
+              <button className="bg-white text-[#0099ff] px-10 py-5 rounded-2xl font-black hover:bg-slate-50 transition-all">
+                Subscribe
+              </button>
+            </div>
           </div>
         </div>
       </section>
     </div>
   );
 }
-

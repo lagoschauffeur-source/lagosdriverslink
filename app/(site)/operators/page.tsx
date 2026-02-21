@@ -10,7 +10,7 @@ import {
   MapPin,
   Award,
   Car,
-  CheckCircle,
+  CheckCircle2,
   Phone,
   Mail,
   ArrowRight,
@@ -24,373 +24,127 @@ export default function DriversPage() {
     {
       value: "1000+",
       label: "Verified Drivers",
-      icon: <BadgeCheck className="h-8 w-8 text-yellow-500" />,
-      description: "Professionally trained and background-checked",
+      icon: <BadgeCheck className="h-7 w-7" />,
+      description: "Professionally trained beyond standards",
     },
     {
       value: "24/7",
       label: "Availability",
-      icon: <Clock className="h-8 w-8 text-yellow-500" />,
-      description: "Round-the-clock service availability",
+      icon: <Clock className="h-7 w-7" />,
+      description: "Round-the-clock logistical support",
     },
     {
       value: "4.9",
-      label: "Average Rating",
-      icon: <Star className="h-8 w-8 text-yellow-500" />,
-      description: "Based on client satisfaction surveys",
+      label: "Client Rating",
+      icon: <Star className="h-7 w-7" />,
+      description: "Based on verified trip feedback",
     },
     {
       value: "50+",
-      label: "Locations Covered",
-      icon: <MapPin className="h-8 w-8 text-yellow-500" />,
-      description: "Across Lagos and surrounding areas",
+      label: "Zones Covered",
+      icon: <MapPin className="h-7 w-7" />,
+      description: "Across Lagos and major cities",
     },
   ];
 
   const features = [
     {
-      title: "Thoroughly Vetted",
-      description:
-        "Every driver undergoes comprehensive background checks, identity verification, and police clearance reports.",
-      icon: <ShieldCheck className="h-6 w-6 text-yellow-500" />,
-      details: [
-        "Criminal background check",
-        "Identity verification",
-        "Police clearance",
-        "Reference checks",
-      ],
+      title: "Radical Vetting",
+      description: "Multi-layer verification process including criminal history and reference checks.",
+      icon: <ShieldCheck className="h-6 w-6" />,
+      details: ["Criminal profiling", "KYC Verification", "Reference validation", "Address mapping"],
     },
     {
-      title: "Professional Training",
-      description:
-        "Certified drivers with defensive driving, customer service, and safety training programs.",
-      icon: <BadgeCheck className="h-6 w-6 text-yellow-500" />,
-      details: [
-        "Defensive driving certification",
-        "Customer service training",
-        "Safety protocols",
-        "Route optimization",
-      ],
+      title: "Elite Training",
+      description: "Beyond driving: customer excellence and defensive road management training.",
+      icon: <BadgeCheck className="h-6 w-6" />,
+      details: ["Defensive training", "Elite etiquette", "Emergency response", "Route AI"],
     },
     {
-      title: "Flexible Options",
-      description:
-        "Choose from hourly, daily, weekly, or long-term driver solutions tailored to your needs.",
-      icon: <Clock className="h-6 w-6 text-yellow-500" />,
-      details: [
-        "Hourly bookings",
-        "Daily services",
-        "Weekly contracts",
-        "Long-term arrangements",
-      ],
-    },
-    {
-      title: "Premium Fleet",
-      description:
-        "Well-maintained vehicles with modern amenities and safety features for your comfort.",
-      icon: <Car className="h-6 w-6 text-yellow-500" />,
-      details: [
-        "Regular maintenance",
-        "Modern amenities",
-        "Safety features",
-        "Comfort accessories",
-      ],
-    },
-    {
-      title: "Quality Assurance",
-      description:
-        "Continuous monitoring and feedback systems ensure consistent high-quality service delivery.",
-      icon: <Award className="h-6 w-6 text-yellow-500" />,
-      details: [
-        "Performance monitoring",
-        "Client feedback system",
-        "Quality standards",
-        "Service improvements",
-      ],
-    },
-    {
-      title: "Global Standards",
-      description:
-        "International best practices in driver management and customer service excellence.",
-      icon: <Globe className="h-6 w-6 text-yellow-500" />,
-      details: [
-        "International standards",
-        "Best practices",
-        "Industry compliance",
-        "Continuous improvement",
-      ],
-    },
-  ];
-
-  const driverCategories = [
-    {
-      title: "Executive Drivers",
-      description:
-        "Premium chauffeur services for corporate executives and VIPs",
-      features: [
-        "Luxury vehicles",
-        "Discrete service",
-        "Professional attire",
-        "Advanced scheduling",
-      ],
-      price: "From ₦50,000/day",
-      image: "/professional-driver-service.webp",
-    },
-    {
-      title: "Daily Commute Drivers",
-      description:
-        "Reliable transportation for daily work commutes and routine travel",
-      features: [
-        "Consistent scheduling",
-        "Familiar routes",
-        "Time efficiency",
-        "Cost-effective",
-      ],
-      price: "From ₦35,000/day",
-      image: "/confident-professional-driver-side-view-600nw-2149539983.webp",
-    },
-    {
-      title: "Logistics Drivers",
-      description:
-        "Specialized drivers for business logistics and cargo transportation",
-      features: [
-        "Cargo handling",
-        "Route planning",
-        "Documentation",
-        "Delivery tracking",
-      ],
-      price: "From ₦40,000/day",
-      image: "/young-black-handsome-cab-driver-600nw-1434428810.webp",
-    },
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "CEO, Tech Solutions Ltd",
-      content:
-        "LagosDriversLink has been instrumental in our business operations. Their drivers are professional, punctual, and reliable.",
-      rating: 5,
-    },
-    {
-      name: "Michael Adebayo",
-      role: "Managing Director, Finance Corp",
-      content:
-        "The quality of service is exceptional. Our executive driver has become an integral part of our team.",
-      rating: 5,
-    },
-    {
-      name: "Jennifer Okonkwo",
-      role: "Operations Manager, Logistics Plus",
-      content:
-        "Their logistics drivers have significantly improved our delivery efficiency and customer satisfaction.",
-      rating: 5,
+      title: "Logistics Fleet",
+      description: "Modern, specialized vehicles for every individual or corporate requirement.",
+      icon: <Car className="h-6 w-6" />,
+      details: ["Luxury sedans", "Secure logistics", "Group shuttles", "Specialized cabs"],
     },
   ];
 
   return (
-    <div className="bg-black min-h-screen">
+    <div className="bg-white min-h-screen pt-24">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-black via-black to-yellow-900/10 text-white py-24 px-6 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-[url('/professional-driver-service.webp')] bg-cover bg-center opacity-5"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-yellow-400/5 rounded-full blur-3xl"></div>
-
-        <div className="relative max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-8"
-          >
-            <div className="inline-flex items-center gap-2 bg-yellow-500/10 border border-yellow-500/20 rounded-full px-6 py-2 mb-6">
-              <Zap className="h-4 w-4 text-yellow-400" />
-              <span className="text-yellow-300 text-sm font-medium">
-                Premium Driver Network
-              </span>
+      <section className="relative py-24 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#0099ff]/[0.02] rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+            <div className="inline-flex items-center gap-2 bg-[#0099ff]/10 rounded-full px-6 py-2 mb-8">
+              <Zap className="h-4 w-4 text-[#0099ff]" />
+              <span className="text-[#0099ff] text-sm font-bold tracking-wide uppercase">Elite Driver Network</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Access Our Network of{" "}
-              <span className="bg-gradient-to-r from-yellow-400 to-yellow-600 bg-clip-text text-transparent">
-                1000+ Professional Drivers
-              </span>
+            <h1 className="text-5xl md:text-8xl font-black mb-8 text-gray-900 tracking-tighter leading-none">
+              The <span className="text-[#0099ff]">Gold</span> Standard <br className="hidden md:block" /> of Chauffeurs
             </h1>
-            <p className="text-xl md:text-2xl text-yellow-100 max-w-4xl mx-auto mb-10 leading-relaxed">
-              Verified, trained, and ready to serve your transportation needs
-              across Lagos and surrounding areas. Experience the gold standard
-              in professional chauffeur services.
+            <p className="text-xl md:text-2xl text-gray-500 max-w-4xl mx-auto mb-12 leading-relaxed">
+              Access 1,000+ verified, elite-trained drivers ready to serve across Lagos. Uncompromising quality in every mile.
             </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto"
-          >
-            <Link href="/hire">
-              <button className="group bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-yellow-500/25 flex items-center gap-2">
-                Request a Driver Now
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
+              <Link href="/hire" className="bg-[#0099ff] text-white px-12 py-5 rounded-2xl font-bold hover:bg-[#0088ee] transition-all shadow-xl shadow-[#0099ff]/20">
+                Request a Driver
+              </Link>
+              <button className="border border-gray-200 text-gray-900 px-12 py-5 rounded-2xl font-bold hover:bg-gray-50 transition-all">
+                Our Standards
               </button>
-            </Link>
-            <button className="border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-bold px-8 py-4 rounded-xl transition-all duration-300">
-              View Our Fleet
-            </button>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 px-6 bg-black border-t border-yellow-500/10">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 mb-4">
-              Trusted by Thousands of Clients
-            </h2>
-            <p className="text-xl text-yellow-100 max-w-3xl mx-auto">
-              Our numbers speak for themselves - we deliver exceptional service
-              consistently.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-black to-yellow-900/5 p-8 rounded-2xl border border-yellow-700/30 text-center hover:border-yellow-500/50 transition-all duration-300"
-              >
-                <div className="flex justify-center mb-4">{stat.icon}</div>
-                <h3 className="text-4xl font-bold text-yellow-400 mb-2">
-                  {stat.value}
-                </h3>
-                <p className="text-yellow-200 font-medium mb-2">{stat.label}</p>
-                <p className="text-yellow-300/70 text-sm">{stat.description}</p>
-              </motion.div>
-            ))}
-          </div>
+      {/* Stats Cards */}
+      <section className="py-24 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-10 rounded-[2.5rem] bg-white border border-gray-100 hover:border-[#0099ff]/20 hover:shadow-xl transition-all"
+            >
+              <div className="text-[#0099ff] mb-6 w-12 h-12 rounded-2xl bg-[#0099ff]/[0.06] flex items-center justify-center">
+                {stat.icon}
+              </div>
+              <div className="text-4xl font-black text-gray-900 mb-2">{stat.value}</div>
+              <h4 className="text-[#0099ff] font-bold text-sm uppercase tracking-widest mb-3">{stat.label}</h4>
+              <p className="text-gray-400 text-sm leading-relaxed">{stat.description}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
-      {/* Driver Categories Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-black to-yellow-900/5">
+      {/* Feature Blocks */}
+      <section className="py-24 px-6 md:px-12 lg:px-24 bg-[#fafbfd]">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 mb-4">
-              Choose Your Perfect Driver Category
-            </h2>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-            <p className="text-xl text-yellow-100 max-w-3xl mx-auto">
-              We offer specialized driver services tailored to different
-              business needs and requirements.
-            </p>
+          <div className="text-center mb-20">
+            <h2 className="text-3xl lg:text-6xl font-black text-gray-900 tracking-tight">Vetted Beyond Compare</h2>
           </div>
-
           <div className="grid md:grid-cols-3 gap-8">
-            {driverCategories.map((category, index) => (
+            {features.map((feature, i) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="bg-gradient-to-br from-black to-yellow-900/5 rounded-2xl border border-yellow-700/30 overflow-hidden hover:border-yellow-500/50 transition-all duration-300 group"
+                className="bg-white p-10 rounded-[3rem] border border-gray-100 shadow-sm"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={category.image}
-                    alt={category.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-xl font-bold text-yellow-400 mb-2">
-                      {category.title}
-                    </h3>
-                    <p className="text-yellow-200 text-sm">
-                      {category.description}
-                    </p>
-                  </div>
+                <div className="w-14 h-14 rounded-2xl bg-[#0099ff]/10 flex items-center justify-center text-[#0099ff] mb-8">
+                  {feature.icon}
                 </div>
-
-                <div className="p-6">
-                  <div className="mb-4">
-                    {category.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2 mb-2">
-                        <CheckCircle className="h-4 w-4 text-yellow-500 flex-shrink-0" />
-                        <span className="text-yellow-100 text-sm">
-                          {feature}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-yellow-400 font-bold text-lg">
-                      {category.price}
-                    </span>
-                    <Link href="/hire">
-                      <button className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium px-4 py-2 rounded-lg transition-colors text-sm">
-                        Book Now
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 px-6 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 mb-4">
-              Why Choose Our Professional Drivers
-            </h2>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-            <p className="text-xl text-yellow-100 max-w-3xl mx-auto">
-              Our drivers are more than just chauffeurs — they&apos;re trained
-              professionals dedicated to your safety and comfort.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-black to-yellow-900/5 p-8 rounded-2xl border border-yellow-700/30 hover:border-yellow-500/50 transition-all duration-300 group"
-              >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="bg-yellow-500/10 p-3 rounded-xl border border-yellow-500/20 group-hover:bg-yellow-500/20 transition-colors">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-yellow-400 mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-yellow-100 mb-4">
-                      {feature.description}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  {feature.details.map((detail, idx) => (
-                    <div key={idx} className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 bg-yellow-500 rounded-full"></div>
-                      <span className="text-yellow-300 text-sm">{detail}</span>
+                <h3 className="text-2xl font-black text-gray-900 mb-4">{feature.title}</h3>
+                <p className="text-gray-500 mb-8 leading-relaxed">{feature.description}</p>
+                <div className="space-y-3">
+                  {feature.details.map((d, j) => (
+                    <div key={j} className="flex items-center gap-3 text-sm font-bold text-gray-700">
+                      <CheckCircle2 className="w-4 h-4 text-[#0099ff]" />
+                      {d}
                     </div>
                   ))}
                 </div>
@@ -400,88 +154,59 @@ export default function DriversPage() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-yellow-900/5 to-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 mb-4">
-              What Our Clients Say
-            </h2>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-            <p className="text-xl text-yellow-100 max-w-3xl mx-auto">
-              Don&apos;t just take our word for it - hear from satisfied clients
-              who trust our services.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-gradient-to-br from-black to-yellow-900/5 p-8 rounded-2xl border border-yellow-700/30"
-              >
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 text-yellow-400 fill-current"
-                    />
-                  ))}
-                </div>
-                <p className="text-yellow-100 mb-6 italic">
-                  &ldquo;{testimonial.content}&rdquo;
-                </p>
-                <div>
-                  <p className="text-yellow-400 font-bold">
-                    {testimonial.name}
-                  </p>
-                  <p className="text-yellow-300 text-sm">{testimonial.role}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+      {/* Categories Modern Layout */}
+      <section className="py-32 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto space-y-32">
+          {[
+            {
+              title: "Executive Chauffeurs",
+              desc: "Polished, professional drivers for corporate leadership and high-net-worth clients.",
+              img: "/professional-driver-service.webp",
+              reverse: false
+            },
+            {
+              title: "Daily Support",
+              desc: "Steady, reliable hands for your family's daily commute and school runs.",
+              img: "/confident-professional-driver-side-view-600nw-2149539983.webp",
+              reverse: true
+            },
+            {
+              title: "Logistics Elite",
+              desc: "Precision driving for high-value logistics and business equipment transport.",
+              img: "/young-black-handsome-cab-driver-600nw-1434428810.webp",
+              reverse: false
+            }
+          ].map((cat, i) => (
+            <div key={i} className={`flex flex-col lg:flex-row items-center gap-20 ${cat.reverse ? 'lg:flex-row-reverse' : ''}`}>
+              <div className="flex-1 space-y-8">
+                <h3 className="text-4xl lg:text-6xl font-black text-gray-900 tracking-tighter leading-tight">{cat.title}</h3>
+                <p className="text-xl text-gray-500 leading-relaxed">{cat.desc}</p>
+                <Link href="/hire" className="inline-flex items-center gap-3 text-[#0099ff] font-bold text-lg group">
+                  Book This Category
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+                </Link>
+              </div>
+              <div className="flex-1 relative aspect-[4/3] w-full rounded-[4rem] overflow-hidden shadow-2xl">
+                <Image src={cat.img} alt={cat.title} fill className="object-cover" />
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 px-6 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-br from-yellow-900/10 to-black rounded-2xl border border-yellow-700/30 p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-yellow-400 mb-6">
-              Ready to Experience Premium Driver Services?
-            </h2>
-            <p className="text-xl text-yellow-100 mb-8 max-w-3xl mx-auto">
-              Join thousands of satisfied clients who trust LagosDriversLink for
-              their transportation needs. Get started today with our
-              professional driver network.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link href="/hire">
-                <button className="bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold px-8 py-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-yellow-500/25">
-                  Request a Driver Now
-                </button>
+      {/* CTA Final */}
+      <section className="py-32 px-6 md:px-12 lg:px-24">
+        <div className="max-w-6xl mx-auto bg-gray-900 rounded-[4rem] p-16 text-center text-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#0099ff]/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
+          <div className="relative z-10">
+            <h2 className="text-4xl lg:text-7xl font-black mb-12 tracking-tighter">Your Elite Driver <br /> is One Click Away</h2>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-2xl mx-auto">
+              <Link href="/hire" className="flex-1 bg-[#0099ff] hover:bg-[#0088ee] py-5 rounded-2xl font-bold transition-all shadow-2xl">
+                Hire Now
               </Link>
-              <Link href="/contact">
-                <button className="border-2 border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black font-bold px-8 py-4 rounded-xl transition-all duration-300">
-                  Contact Us
-                </button>
+              <Link href="/contact" className="flex-1 border border-white/10 hover:bg-white/5 py-5 rounded-2xl font-bold transition-all">
+                Contact Support
               </Link>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-8 justify-center items-center text-yellow-300">
-              <div className="flex items-center gap-2">
-                <Phone className="h-5 w-5" />
-                <span>+234 123 456 7890</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="h-5 w-5" />
-                <span>info@lagosdriverslink.com</span>
-              </div>
             </div>
           </div>
         </div>

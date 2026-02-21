@@ -1,238 +1,137 @@
+"use client";
+
 import {
   Shield,
   AlertTriangle,
   Ambulance,
   Camera,
   Award,
-  CheckCircle,
-  Badge,
+  CheckCircle2,
+  BadgeCheck,
   Car,
+  Zap,
 } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const SafetyPage = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white pt-24">
       {/* Hero Section */}
-      <section className="relative py-28 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-black to-gray-900 overflow-hidden">
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600">
-            Safety First
-          </h1>
-          <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
-            Our unwavering commitment to protecting our clients, employees, and
-            communities.
-          </p>
-          <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-yellow-500/10 blur-3xl"></div>
-          <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-yellow-500/10 blur-3xl"></div>
+      <section className="relative py-24 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0099ff]/[0.02] rounded-full blur-[100px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+            <div className="w-16 h-16 rounded-2xl bg-[#0099ff]/10 flex items-center justify-center text-[#0099ff] mx-auto mb-8">
+              <Shield className="h-8 w-8" />
+            </div>
+            <h1 className="text-4xl md:text-7xl font-black text-gray-900 mb-8 tracking-tight">
+              Safety <span className="text-[#0099ff]">Without</span> Compromise
+            </h1>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+              At Lagos Drivers Link, safety is the foundation of every mile journey. We protect what matters most.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Safety Commitment */}
-      <section className="py-20 px-6 md:px-12 lg:px-24 bg-black">
+      {/* Commitment Section */}
+      <section className="py-24 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-400">
-              Our Safety Commitment
-            </h2>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-            <p className="text-yellow-100 max-w-2xl mx-auto">
-              At Lagos Drivers Link, safety isn&apos;t just a priority—it&apos;s
-              the foundation of everything we do.
-            </p>
-          </div>
-
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Shield className="w-10 h-10 text-yellow-500" />,
-                title: "Vehicle Safety",
-                description:
-                  "Regular maintenance and inspections on all fleet vehicles",
+                icon: <Shield className="w-7 h-7" />,
+                title: "Vehicle Integrity",
+                description: "Rigorous daily maintenance and weekly multi-point inspections on all network vehicles.",
               },
               {
-                icon: <AlertTriangle className="w-10 h-10 text-yellow-500" />,
-                title: "Driver Training",
-                description:
-                  "Rigorous certification and ongoing safety training",
+                icon: <Zap className="w-7 h-7" />,
+                title: "Elite Training",
+                description: "Continuous professional development and defensive driving certification for all drivers.",
               },
               {
-                icon: <Ambulance className="w-10 h-10 text-yellow-500" />,
-                title: "Emergency Preparedness",
-                description: "Comprehensive protocols for any situation",
+                icon: <Ambulance className="w-7 h-7" />,
+                title: "Rapid Response",
+                description: "24/7 emergency coordination and real-time incident management protocols.",
               },
             ].map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-black p-6 rounded-xl border border-yellow-500/30 hover:border-yellow-500/50 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white p-10 rounded-[2.5rem] border border-gray-100 hover:border-[#0099ff]/20 hover:shadow-xl transition-all group"
               >
-                <div className="flex justify-center mb-4">
-                  <div className="p-4 rounded-full bg-yellow-500/10 border border-yellow-500/30">
-                    {item.icon}
-                  </div>
+                <div className="w-14 h-14 rounded-2xl bg-[#0099ff]/[0.06] text-[#0099ff] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                  {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-center mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-yellow-100 text-center">
-                  {item.description}
-                </p>
-              </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{item.title}</h3>
+                <p className="text-gray-500 leading-relaxed text-sm">{item.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Safety Features */}
-      <section className="py-20 px-6 md:px-12 lg:px-24 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6 text-yellow-400">
-                Advanced Safety Features
-              </h2>
-              <p className="text-yellow-100 mb-6">
-                Our vehicles are equipped with state-of-the-art safety
-                technology to ensure peace of mind.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "GPS tracking with real-time monitoring",
-                  "Dash cams for incident recording",
-                  "Emergency SOS buttons in all vehicles",
-                  "Regular vehicle health diagnostics",
-                  "24/7 roadside assistance",
-                  "Two-way communication systems",
-                ].map((feature, index) => (
-                  <li key={index} className="flex items-start">
-                    <span className="flex-shrink-0 w-5 h-5 mt-0.5 mr-3 text-yellow-500">
-                      ✓
-                    </span>
-                    <span className="text-yellow-100">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+      {/* Features Grid */}
+      <section className="py-24 px-6 md:px-12 lg:px-24 bg-[#fafbfd]">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+            <h2 className="text-3xl font-black text-gray-900 mb-8 tracking-tight leading-tight">Technology-First Safety</h2>
+            <p className="text-gray-500 text-lg mb-12 leading-relaxed">
+              We leverage cutting-edge tech to monitor, protect, and optimize every trip.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-8">
+              {[
+                "Real-time GPS Monitoring",
+                "Advanced AI Dashcams",
+                "In-App SOS Buttons",
+                "Vehicle Health Telematics",
+                "24/7 Roadside Network",
+                "Encrypted Comms"
+              ].map((f, i) => (
+                <div key={i} className="flex items-center gap-3 text-gray-900 font-bold">
+                  <CheckCircle2 className="w-5 h-5 text-[#0099ff]" />
+                  {f}
+                </div>
+              ))}
             </div>
-            <div className="bg-black rounded-xl p-2 border border-yellow-500/30">
-              <div className="bg-black rounded-lg overflow-hidden aspect-video relative">
-                <Image
-                  src="/safety-features.jpg"
-                  alt="Safety Features"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative aspect-video rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white"
+          >
+            <Image
+              src="/safety-features.jpg"
+              alt="Safety Technology"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
         </div>
       </section>
 
-      {/* Driver Standards */}
-      <section className="py-20 px-6 md:px-12 lg:px-24 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-400">
-              Driver Standards
-            </h2>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Certifications */}
+      <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl lg:text-5xl font-black text-gray-900 mb-16 tracking-tight">Accredited Safety Standards</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              {
-                icon: <Car className="w-8 h-8 text-yellow-500" />,
-                title: "Rigorous Screening",
-                description:
-                  "Comprehensive background checks and driving history verification",
-              },
-              {
-                icon: <Shield className="w-8 h-8 text-yellow-500" />,
-                title: "Certification",
-                description:
-                  "Defensive driving certification required for all drivers",
-              },
-              {
-                icon: <Camera className="w-8 h-8 text-yellow-500" />,
-                title: "Continuous Training",
-                description: "Monthly safety training and performance reviews",
-              },
-              {
-                icon: <AlertTriangle className="w-8 h-8 text-yellow-500" />,
-                title: "Zero Tolerance",
-                description:
-                  "Strict policies against distracted or impaired driving",
-              },
-            ].map((standard, index) => (
-              <div
-                key={index}
-                className="bg-black p-6 rounded-xl border border-yellow-500/30 hover:border-yellow-500/50 transition-colors"
-              >
-                <div className="flex items-center mb-4">
-                  <div className="p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/30 mr-4">
-                    {standard.icon}
-                  </div>
-                  <h3 className="text-xl font-bold">{standard.title}</h3>
+              { icon: <Award className="w-8 h-8" />, title: "ISO 9001:2015", desc: "Quality Management" },
+              { icon: <Shield className="w-8 h-8" />, title: "DOT Compliant", desc: "Transit Standards" },
+              { icon: <BadgeCheck className="w-8 h-8" />, title: "NSAF Certified", desc: "National Authority" },
+              { icon: <CheckCircle2 className="w-8 h-8" />, title: "OHSAS 18001", desc: "Health & Safety" }
+            ].map((cert, i) => (
+              <div key={i} className="p-8 rounded-[2rem] bg-slate-50 border border-gray-50 hover:bg-white hover:border-[#0099ff]/20 transition-all group">
+                <div className="w-16 h-16 rounded-2xl bg-white text-[#0099ff] flex items-center justify-center mx-auto mb-6 shadow-sm group-hover:scale-110 transition-transform">
+                  {cert.icon}
                 </div>
-                <p className="text-yellow-100">{standard.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Safety Certifications */}
-      <section className="py-20 px-6 md:px-12 lg:px-24 bg-black">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-400">
-              Certifications &amp; Compliance
-            </h2>
-            <div className="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <Award className="w-12 h-12 text-yellow-400" />,
-                title: "ISO 9001:2015",
-                description: "Quality Management System",
-                color: "from-yellow-500/20 to-yellow-600/10",
-              },
-              {
-                icon: <Shield className="w-12 h-12 text-yellow-400" />,
-                title: "DOT Compliance",
-                description: "Department of Transportation",
-                color: "from-yellow-500/20 to-yellow-600/10",
-              },
-              {
-                icon: <CheckCircle className="w-12 h-12 text-yellow-400" />,
-                title: "NSAF Certified",
-                description: "National Safety Authority",
-                color: "from-yellow-500/20 to-yellow-600/10",
-              },
-              {
-                icon: <Badge className="w-12 h-12 text-yellow-400" />,
-                title: "OHSAS 18001",
-                description: "Occupational Health & Safety",
-                color: "from-yellow-500/20 to-yellow-600/10",
-              },
-            ].map((cert, index) => (
-              <div
-                key={index}
-                className={`relative overflow-hidden rounded-2xl border border-yellow-500/30 bg-gradient-to-br ${cert.color} p-6 text-center`}
-              >
-                <div className="pointer-events-none absolute -top-8 -right-8 w-24 h-24 rounded-full bg-yellow-400/10 blur-2xl" />
-                <div className="pointer-events-none absolute -bottom-8 -left-8 w-24 h-24 rounded-full bg-yellow-300/5 blur-2xl" />
-
-                <div className="relative z-10 flex flex-col items-center">
-                  <div className="mb-4 p-4 rounded-full bg-yellow-500/10 border border-yellow-500/30">
-                    {cert.icon}
-                  </div>
-                  <h3 className="text-lg font-bold text-white mb-2">
-                    {cert.title}
-                  </h3>
-                  <p className="text-yellow-100 text-sm">{cert.description}</p>
-                </div>
+                <h4 className="font-bold text-gray-900 mb-2">{cert.title}</h4>
+                <p className="text-gray-400 text-sm font-medium">{cert.desc}</p>
               </div>
             ))}
           </div>

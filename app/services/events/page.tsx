@@ -1,307 +1,189 @@
 /* eslint-disable react/no-unescaped-entities */
+"use client";
+
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle, Star, Calendar, Users, MapPin, Gift } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Event Drivers Service | Lagos Drivers Link",
-  description:
-    "Professional event drivers for weddings, parties, corporate events, and special occasions in Lagos. Reliable transportation for your important events.",
-  keywords:
-    "event drivers, wedding drivers, party transportation, corporate events, special occasion drivers, Lagos events",
-};
+import { Star, Calendar, Users, MapPin, Gift, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function EventDriversPage() {
   const eventTypes = [
     {
       icon: <Gift className="h-6 w-6" />,
       title: "Weddings",
-      description:
-        "Elegant transportation for the bride, groom, and wedding party. Special wedding car decorations available.",
+      description: "Elegant transportation for the bride, groom, and wedding party. Special wedding car decorations available.",
     },
     {
       icon: <Users className="h-6 w-6" />,
       title: "Corporate Events",
-      description:
-        "Professional transportation for business meetings, conferences, and corporate gatherings.",
+      description: "Professional transportation for business meetings, conferences, and corporate gatherings.",
     },
     {
       icon: <Calendar className="h-6 w-6" />,
       title: "Parties & Celebrations",
-      description:
-        "Reliable drivers for birthday parties, anniversaries, and other special celebrations.",
+      description: "Reliable drivers for birthday parties, anniversaries, and other special celebrations.",
     },
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Airport Pickups",
-      description:
-        "VIP airport transfers for important guests and business travelers.",
+      description: "VIP airport transfers for important guests and business travelers.",
     },
   ];
 
   const features = [
     {
       title: "Event-Specific Planning",
-      description:
-        "Customized transportation plans tailored to your event timeline and requirements.",
+      description: "Customized transportation plans tailored to your event timeline and requirements.",
     },
     {
       title: "Professional Attire",
-      description:
-        "Drivers dressed appropriately for your event - formal wear for weddings, business attire for corporate events.",
+      description: "Drivers dressed appropriately for your event - formal wear for weddings, business attire for corporate events.",
     },
     {
       title: "Flexible Scheduling",
-      description:
-        "Extended hours and flexible timing to accommodate your event schedule.",
+      description: "Extended hours and flexible timing to accommodate your event schedule.",
     },
     {
       title: "Backup Vehicles",
-      description:
-        "Contingency plans with backup vehicles to ensure your event runs smoothly.",
-    },
-  ];
-
-  const testimonials = [
-    {
-      name: "Adunni & Tunde",
-      role: "Wedding Couple",
-      content:
-        "Our wedding day transportation was flawless. The driver was professional, punctual, and made our special day even more memorable.",
-      rating: 5,
-    },
-    {
-      name: "TechCorp Nigeria",
-      role: "Corporate Client",
-      content:
-        "We've used Lagos Drivers Link for multiple corporate events. Always reliable and professional - highly recommended for business events.",
-      rating: 5,
-    },
-    {
-      name: "Mrs. Adebayo",
-      role: "Event Organizer",
-      content:
-        "The event drivers are exceptional. They understand the importance of timing and always deliver beyond expectations.",
-      rating: 5,
+      description: "Contingency plans with backup vehicles to ensure your event runs smoothly.",
     },
   ];
 
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-20">
-        <div className="w-[85%] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-                Event Drivers
+      <section className="relative pt-32 pb-20 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#0099ff]/[0.02] rounded-full blur-[80px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
+              <span className="inline-block px-4 py-1.5 rounded-full bg-[#0099ff]/10 text-[#0099ff] text-sm font-bold mb-6">
+                Special Occasions
+              </span>
+              <h1 className="text-4xl lg:text-7xl font-black mb-6 text-gray-900 tracking-tight leading-none">
+                Elite <span className="text-[#0099ff]">Event</span> Drivers
               </h1>
-              <p className="text-xl mb-8 text-gray-800">
-                Make your special occasions unforgettable with our professional
-                event drivers. From weddings to corporate events, we provide
-                reliable, elegant transportation.
+              <p className="text-xl mb-10 text-gray-500 leading-relaxed max-w-xl">
+                Make your special occasions unforgettable with our professional event drivers. From weddings to high-profile corporate summits.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/hire"
-                  className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-center"
+                  className="bg-[#0099ff] text-white px-10 py-4 rounded-2xl font-bold hover:bg-[#0088ee] transition-all shadow-lg shadow-[#0099ff]/20 text-center"
                 >
                   Book Event Driver
                 </Link>
                 <Link
                   href="/contact"
-                  className="border-2 border-black text-black px-8 py-4 rounded-lg font-semibold hover:bg-black hover:text-white transition-colors text-center"
+                  className="border border-gray-200 text-gray-900 px-10 py-4 rounded-2xl font-bold hover:bg-gray-50 transition-all text-center"
                 >
                   Plan Your Event
                 </Link>
               </div>
-            </div>
-            <div className="relative">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+              className="relative aspect-[4/3] rounded-[3rem] overflow-hidden shadow-2xl"
+            >
               <Image
                 src="/young-black-handsome-cab-driver-600nw-1434428810.webp"
                 alt="Professional Event Driver"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-2xl"
+                fill
+                className="object-cover"
                 priority
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Event Types Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="w-[85%] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Perfect for Every Occasion
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our event drivers are experienced in handling all types of special
-              occasions with professionalism and care.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Event Types */}
+      <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl lg:text-5xl font-black mb-16 tracking-tight text-gray-900">
+            Perfect for Every Occasion
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {eventTypes.map((event, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-lg text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-slate-50 p-8 rounded-[2.5rem] text-center border border-gray-50 hover:border-[#0099ff]/20 hover:bg-white transition-all group"
               >
-                <div className="text-yellow-500 mb-4 flex justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-[#0099ff]/[0.06] text-[#0099ff] mb-6 mx-auto flex items-center justify-center group-hover:scale-110 transition-transform">
                   {event.icon}
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{event.title}</h3>
-                <p className="text-gray-600">{event.description}</p>
-              </div>
+                <h3 className="text-xl font-bold mb-3 text-gray-900">{event.title}</h3>
+                <p className="text-gray-500 leading-relaxed text-sm">{event.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20">
-        <div className="w-[85%] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                Why Choose Our Event Drivers?
+      {/* Features */}
+      <section className="py-24 px-6 md:px-12 lg:px-24 bg-[#fafbfd]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-12">
+              <h2 className="text-3xl lg:text-5xl font-black tracking-tight text-gray-900">
+                The Gold Standard in Event Logistics
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-8">
                 {features.map((feature, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <CheckCircle className="h-6 w-6 text-yellow-500 mt-1 flex-shrink-0" />
+                  <div key={index} className="flex items-start gap-5">
+                    <div className="w-10 h-10 rounded-xl bg-[#0099ff]/10 flex items-center justify-center flex-shrink-0 text-[#0099ff]">
+                      <CheckCircle2 className="w-6 h-6" />
+                    </div>
                     <div>
-                      <h3 className="font-semibold text-lg mb-2">
-                        {feature.title}
-                      </h3>
-                      <p className="text-gray-600">{feature.description}</p>
+                      <h3 className="font-bold text-xl mb-2 text-gray-900">{feature.title}</h3>
+                      <p className="text-gray-500 leading-relaxed">{feature.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative">
+            <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl">
               <Image
                 src="/close-portrait-happy-black-man-600nw-151566872.webp"
                 alt="Happy Professional Driver"
-                width={500}
-                height={400}
-                className="rounded-lg shadow-lg"
+                fill
+                className="object-cover"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="w-[85%] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              How It Works
-            </h2>
-            <p className="text-xl text-gray-600">
-              Simple steps to book your event transportation
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-yellow-500 text-black w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                1
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Book Your Event</h3>
-              <p className="text-gray-600">
-                Contact us with your event details, date, and specific
-                requirements.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-yellow-500 text-black w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                2
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Customize Service</h3>
-              <p className="text-gray-600">
-                We'll create a tailored transportation plan for your event.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-yellow-500 text-black w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                3
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Enjoy Your Event</h3>
-              <p className="text-gray-600">
-                Relax and enjoy your special occasion with reliable
-                transportation.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20">
-        <div className="w-[85%] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Event Success Stories
-            </h2>
-            <p className="text-xl text-gray-600">
-              Hear from clients who made their events memorable with our
-              drivers.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-lg">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 text-yellow-500 fill-current"
-                    />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4 italic">
-                  "{testimonial.content}"
-                </p>
-                <div>
-                  <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-gray-500 text-sm">{testimonial.role}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="py-20 bg-black text-white">
-        <div className="w-[85%] mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Make Your Event Unforgettable
-          </h2>
-          <p className="text-xl mb-8 text-gray-300">
-            Trust Lagos Drivers Link to provide professional, reliable
-            transportation for your special occasions.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/hire"
-              className="bg-yellow-500 text-black px-8 py-4 rounded-lg font-semibold hover:bg-yellow-600 transition-colors"
-            >
-              Book Event Transportation
-            </Link>
-            <Link
-              href="/contact"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors"
-            >
-              Discuss Your Event
-            </Link>
+      <section className="py-24 px-6 md:px-12 lg:px-24 bg-white">
+        <div className="max-w-5xl mx-auto bg-[#0099ff] rounded-[3rem] p-12 text-center relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2" />
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-6">Make Your Event Unforgettable</h2>
+            <p className="text-white/80 mb-10 max-w-2xl mx-auto text-lg">
+              Trust Lagos Drivers Link to provide professional, reliable transportation for your special occasions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
+              <Link
+                href="/hire"
+                className="bg-white text-[#0099ff] px-10 py-4 rounded-2xl font-bold hover:bg-gray-50 transition-all shadow-xl"
+              >
+                Book Your Driver
+              </Link>
+              <Link
+                href="/contact"
+                className="border border-white/20 text-white px-10 py-4 rounded-2xl font-bold hover:bg-white/10 transition-all"
+              >
+                Discuss Your Event
+              </Link>
+            </div>
           </div>
         </div>
       </section>

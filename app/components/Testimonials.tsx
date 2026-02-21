@@ -1,59 +1,37 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, Star, ShieldCheck, BadgeCheck } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
     name: "Tehilah Adekunle",
-    role: "Restaurant Owner, Victoria Island",
-    quote:
-      "As a business owner who's always on the road, I needed someone reliable. My LagosDriversLink chauffeur arrives 15 minutes early every single day - rain or shine!",
+    role: "Proprietor, High-End Hospitality",
+    quote: "Reliability is everything for my business. My driver is consistently on time, professional, and handles Lagos traffic with incredible patience and skill.",
     photo: "/Fanta_blog_2020-08-28-Traore-29-Edit-800x533.jpg",
+    rating: 5
   },
   {
     name: "Emmanuel Kalu",
-    role: "Wedding Planner, Lekki",
-    quote:
-      "For high-profile weddings, transportation can make or break the experience. LagosDriversLink provided discreet, professional chauffeurs who handled our VIP guests perfectly.",
+    role: "Executive Director",
+    quote: "Finding a driver who understands executive standards is tough, but Lagos Drivers Link made it easy. Our driver is polished, discrete, and highly professional.",
     photo: "/360_F_246149382_KHkt8Mw8pptlmVuiqmhavvHBC4SEqBu1.jpg",
+    rating: 5
   },
   {
     name: "Tolulope Adebayo",
-    role: "HR Director, Fortune 500 Company",
-    quote:
-      "We've reduced our transportation costs by 40% while improving service quality. The verification process gives us peace of mind for our executives' safety.",
+    role: "Fleet Operations Manager",
+    quote: "The depth of vetting here is unmatched. We saved time and costs while significantly improving the quality and safety of our travel experience.",
     photo: "/rose.jpeg",
+    rating: 5
   },
   {
     name: "Chinedu Okoro",
-    role: "Medical Doctor, Ikoyi",
-    quote:
-      "After night shifts at the hospital, I can't risk driving tired. My assigned driver knows all the quick routes home and even remembers my preferred AC temperature!",
+    role: "Chief Medical Consultant",
+    quote: "After long clinical shifts, the last thing I want is to drive in traffic. My driver manages the road with such skill that I can finally relax on my way home.",
     photo: "/istockphoto-1081381240-612x612.jpg",
-  },
-  {
-    name: "Obinna Eze",
-    role: "Diplomat, Lagos Island",
-    quote:
-      "Security and discretion are paramount in my line of work. The drivers understand protocol and handle sensitive situations with utmost professionalism.",
-    photo: "/200603_gma_digital_lessons_hpMain_1x1_992.jpg",
-  },
-  {
-    name: "Amina Mohammed",
-    role: "Bank Executive, Ajah",
-    quote:
-      "I've been using the corporate plan for 2 years now. The consistent quality means I never have to worry about transportation for important client meetings.",
-    photo:
-      "https://img.freepik.com/free-photo/african-american-woman-smiling-beige-background_53876-126965.jpg?semt=ais_incoming&w=740&q=80",
-  },
-  {
-    name: "Fatima Usman",
-    role: "Tour Operator, Ikeja",
-    quote:
-      "My tourism business depends on reliable transportation. With LagosDriversLink, I can focus on my clients knowing the driving is in expert hands.",
-    photo: "/11776683.webp",
+    rating: 5
   },
 ];
 
@@ -63,124 +41,132 @@ export default function Testimonials() {
 
   const handlePrevious = () => {
     setDirection("left");
-    setIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
+    setIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
     setDirection("right");
-    setIndex((prevIndex) =>
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    );
+    setIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 6000);
+    const interval = setInterval(handleNext, 8000);
     return () => clearInterval(interval);
   }, []);
 
-  const currentTestimonial = testimonials[index];
+  const t = testimonials[index];
 
   return (
-    <section className="bg-black py-24 px-6 sm:px-12 md:px-20">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-12 text-center text-white">
-          Voices of <span className="text-yellow-500">Trust</span>
-        </h2>
+    <section className="bg-white py-32 px-6 lg:px-24 relative overflow-hidden">
+      {/* Background patterns */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-50/30 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
-        <div className="relative h-[460px] md:h-[520px]">
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={index}
-              initial={{
-                opacity: 0,
-                x: direction === "right" ? 150 : -150,
-                scale: 0.95,
-              }}
-              animate={{
-                opacity: 1,
-                x: 0,
-                scale: 1,
-              }}
-              exit={{
-                opacity: 0,
-                x: direction === "right" ? -150 : 150,
-                scale: 0.95,
-              }}
-              transition={{
-                type: "spring",
-                damping: 25,
-                stiffness: 400,
-                duration: 0.5,
-              }}
-              className="absolute inset-0 flex items-center justify-center"
-            >
-              <div className="w-full">
-                <div className="bg-black border border-yellow-500/30 p-8 md:p-12 rounded-3xl shadow-2xl shadow-yellow-500/20 w-full max-w-3xl mx-auto transform hover:scale-[1.02] transition-transform duration-300">
-                  <div className="flex flex-col md:flex-row items-center gap-8">
-                    <div className="relative w-36 h-36 flex-shrink-0 group">
-                      <Image
-                        src={currentTestimonial.photo}
-                        alt={currentTestimonial.name}
-                        fill
-                        className="rounded-full object-cover border-4 border-yellow-500 shadow-lg group-hover:border-yellow-400 group-hover:shadow-yellow-500/50 transition-all duration-300"
-                      />
-                      <div className="absolute inset-0 rounded-full bg-yellow-500/10 group-hover:bg-yellow-500/20 transition-all duration-300"></div>
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid lg:grid-cols-2 gap-24 items-center">
+          {/* Left - Branding */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-10"
+          >
+            <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-xs font-black uppercase tracking-widest leading-none">Trusted by Leaders</span>
+            <h2 className="text-4xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-none">
+              Loved by our <br /><span className="text-blue-600">Community.</span>
+            </h2>
+            <p className="text-xl text-gray-500 font-medium leading-relaxed max-w-lg">
+              We take pride in every match we make. Read how Lagos residents and businesses are transforming their daily travel.
+            </p>
+            <div className="flex gap-8 items-center pt-8 border-t border-gray-100">
+              <div className="flex -space-x-3">
+                {testimonials.map((test, i) => (
+                  <div key={i} className="relative w-12 h-12 rounded-full border-4 border-white overflow-hidden shadow-sm">
+                    <Image src={test.photo} alt={test.name} fill className="object-cover" />
+                  </div>
+                ))}
+              </div>
+              <div>
+                <div className="flex items-center gap-1 text-blue-600 mb-1">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
+                </div>
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Top Rated Service</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right - Interactive Slider */}
+          <div className="relative">
+            <div className="absolute inset-0 bg-[#0099ff]/[0.02] rounded-[4rem] blur-[60px] translate-y-10" />
+            <div className="relative min-h-[440px] flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.95, x: direction === "right" ? 40 : -40 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, x: direction === "right" ? -40 : 40 }}
+                  transition={{ type: "spring", damping: 25, stiffness: 200 }}
+                  className="w-full"
+                >
+                  <div className="bg-white rounded-[4rem] p-10 lg:p-16 border border-gray-100 shadow-3xl hover:shadow-2xl transition-all duration-500 relative">
+                    <div className="absolute top-12 right-12 opacity-5">
+                      <Quote className="w-24 h-24 text-gray-900" />
                     </div>
-                    <div className="text-center md:text-left">
-                      <p className="text-lg md:text-xl italic text-gray-200 mb-6 leading-relaxed">
-                        &ldquo;{currentTestimonial.quote}&rdquo;
+
+                    <div className="relative z-10 space-y-10">
+                      <div className="flex gap-2">
+                        {[...Array(t.rating)].map((_, i) => <Star key={i} className="w-4 h-4 text-[#0099ff] fill-current" />)}
+                      </div>
+
+                      <p className="text-2xl lg:text-3xl text-gray-700 font-black leading-tight tracking-tight">
+                        &ldquo;{t.quote}&rdquo;
                       </p>
-                      <div>
-                        <div className="font-bold text-2xl text-yellow-500 tracking-tight">
-                          {currentTestimonial.name}
+
+                      <div className="flex items-center gap-6 pt-10 border-t border-gray-50">
+                        <div className="relative w-20 h-20 rounded-[2rem] overflow-hidden shadow-xl ring-4 ring-[#0099ff]/5">
+                          <Image src={t.photo} alt={t.name} fill className="object-cover" />
                         </div>
-                        <div className="text-sm text-gray-400 font-medium">
-                          {currentTestimonial.role}
+                        <div className="space-y-1">
+                          <div className="font-black text-gray-900 text-xl tracking-tight flex items-center gap-2">
+                            {t.name} <BadgeCheck className="w-5 h-5 text-[#0099ff]" />
+                          </div>
+                          <div className="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em]">{t.role}</div>
                         </div>
                       </div>
                     </div>
                   </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Refined Navigation */}
+              <div className="absolute -bottom-16 left-0 right-0 flex items-center justify-between pointer-events-none">
+                <div className="flex gap-4 pointer-events-auto">
+                  <button
+                    onClick={handlePrevious}
+                    className="w-14 h-14 rounded-2xl bg-white border border-gray-100 text-gray-400 hover:text-[#0099ff] hover:border-[#0099ff]/20 shadow-sm hover:shadow-xl transition-all flex items-center justify-center group"
+                  >
+                    <ChevronLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform" />
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="w-14 h-14 rounded-2xl bg-white border border-gray-100 text-gray-400 hover:text-[#0099ff] hover:border-[#0099ff]/20 shadow-sm hover:shadow-xl transition-all flex items-center justify-center group"
+                  >
+                    <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+
+                {/* Progress Dots */}
+                <div className="flex gap-2 pointer-events-auto">
+                  {testimonials.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => { setDirection(i > index ? "right" : "left"); setIndex(i); }}
+                      className={`h-2 rounded-full transition-all duration-500 ${i === index ? "bg-[#0099ff] w-12" : "bg-gray-200 hover:bg-gray-300 w-2"}`}
+                    />
+                  ))}
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
-
-          <button
-            onClick={handlePrevious}
-            className="absolute left-0 md:-left-20 top-1/2 -translate-y-1/2 p-4 rounded-full bg-yellow-500 hover:bg-yellow-600 text-black shadow-lg hover:shadow-yellow-500/50 transition-all duration-300 z-10"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={handleNext}
-            className="absolute right-0 md:-right-20 top-1/2 -translate-y-1/2 p-4 rounded-full bg-yellow-500 hover:bg-yellow-600 text-black shadow-lg hover:shadow-yellow-500/50 transition-all duration-300 z-10"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-
-        <div className="flex justify-center gap-3 mt-10">
-          {testimonials.map((_, testimonialIndex) => (
-            <button
-              key={testimonialIndex}
-              onClick={() => {
-                setDirection(testimonialIndex > index ? "right" : "left");
-                setIndex(testimonialIndex);
-              }}
-              className={`h-4 rounded-full transition-all duration-300 ${
-                testimonialIndex === index
-                  ? "bg-yellow-500 w-8 shadow-yellow-500/50"
-                  : "bg-gray-600 hover:bg-gray-500 w-4"
-              }`}
-              aria-label={`Go to testimonial ${testimonialIndex + 1}`}
-            />
-          ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

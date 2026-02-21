@@ -6,7 +6,6 @@ import Image from "next/image";
 import clsx from "clsx";
 
 const backgroundImages = [
-  // "/istockphoto-1218844586-612x612.jpg",
   "/young-black-handsome-cab-driver-600nw-1434428810.webp",
   "/blog-post-ZA-1024x536.webp",
   "/dreamstime_xxl_99965748-600x400.jpg",
@@ -37,7 +36,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="flex h-screen overflow-hidden">
-      {/* Background */}
+      {/* Left Panel — Image Showcase */}
       <div className="relative w-1/2 hidden md:block">
         {backgroundImages.map((src, i) => (
           <Image
@@ -51,40 +50,41 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             )}
           />
         ))}
-        <div className="absolute inset-0 bg-black/60 z-20" />
-        <div className="absolute inset-0 z-30 text-white p-10 flex flex-col justify-center">
-          {/* Logo */}
-          <div className="mb-4">
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0099ff]/70 via-[#0077cc]/60 to-gray-950/80 z-20" />
+
+        {/* Text content */}
+        <div className="absolute inset-0 z-30 p-10 flex flex-col justify-end pb-20">
+          <div className="mb-6">
             <Image
               src="/ldl_logo.png"
               alt="Lagos Drivers Logo"
-              width={148}
-              height={148}
+              width={120}
+              height={120}
               className="mb-2"
             />
           </div>
-          <h1 className="text-4xl font-extrabold leading-tight text-yellow-400 drop-shadow">
+          <h1 className="text-4xl font-extrabold leading-tight text-white">
             Lagos Drivers Link
           </h1>
-          <p className="mt-2 text-lg text-gray-200 max-w-sm">
+          <p className="mt-2 text-lg text-white/70 max-w-sm">
             Trusted. Verified. Available across Lagos.
           </p>
         </div>
 
-        {/* Animated dots with progress bars */}
-        <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-40">
+        {/* Progress indicators */}
+        <div className="absolute bottom-8 left-10 right-10 flex gap-2 z-40">
           {backgroundImages.map((_, i) => (
             <div
               key={i}
-              className="relative h-2 w-10 bg-black rounded overflow-hidden"
+              className="relative h-1 flex-1 bg-white/20 rounded-full overflow-hidden"
             >
               <div
                 className={clsx(
-                  "absolute top-0 left-0 h-full bg-yellow-400 transition-all",
+                  "absolute top-0 left-0 h-full bg-white rounded-full transition-all",
                   {
                     "w-full": i < index,
                     "w-0": i > index,
-                    "w-[length:var(--progress)%]": i === index,
                   }
                 )}
                 style={i === index ? { width: `${progress}%` } : {}}
@@ -94,9 +94,9 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         </div>
       </div>
 
-      {/* Form Content */}
-      <div className="w-full md:w-1/2 h-full overflow-y-auto bg-black text-white px-6 py-10 flex flex-col items-center justify-start">
-        <div className="w-full max-w-md mt-6">{children}</div>
+      {/* Right Panel — Form */}
+      <div className="w-full md:w-1/2 h-full overflow-y-auto bg-white px-6 py-10 flex flex-col items-center justify-center">
+        <div className="w-full max-w-md">{children}</div>
       </div>
     </div>
   );

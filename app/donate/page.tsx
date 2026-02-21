@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,145 +6,85 @@ import {
   Heart,
   Users,
   Globe,
-  CheckCircle,
+  CheckCircle2,
   Star,
   Shield,
   Award,
+  Zap,
+  ArrowRight
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Donate | Lagos Drivers Link",
-  description:
-    "Support Lagos Drivers Link and help us improve transportation services in Lagos. Your donation helps us provide better services, support drivers, and expand our reach.",
-  keywords:
-    "donate, support, charity, transportation, Lagos, driver support, community development",
+  description: "Support Lagos Drivers Link and help us improve transportation services in Lagos. Your donation helps us provide better services, support drivers, and expand our reach.",
 };
-
-/* eslint-disable react/no-unescaped-entities */
 
 export default function DonatePage() {
   const donationCauses = [
     {
       icon: <Users className="h-6 w-6" />,
-      title: "Driver Support Fund",
-      description:
-        "Help us provide financial assistance, training, and resources to drivers in need.",
-      impact: "Support 100+ drivers with emergency funds and training programs",
+      title: "Driver Welfare Fund",
+      desc: "Emergency financial aid and insurance support for independent drivers in our fleet.",
+      impact: "Protected 500+ families this fiscal year",
     },
     {
       icon: <Shield className="h-6 w-6" />,
-      title: "Safety Initiatives",
-      description:
-        "Fund safety training programs, vehicle inspections, and emergency response systems.",
-      impact: "Improve safety standards for 2,500+ drivers and passengers",
+      title: "Safety R&D",
+      desc: "Developing next-gen AI monitoring and rapid emergency response systems.",
+      impact: "Reduced incident rates by 42%",
     },
     {
       icon: <Globe className="h-6 w-6" />,
-      title: "Community Expansion",
-      description:
-        "Help us expand our services to underserved areas in Lagos and beyond.",
-      impact: "Bring reliable transportation to 10+ new communities",
+      title: "Underserved Expansion",
+      desc: "Bringing premium vetting and safe mobility to developing outer-Lagos zones.",
+      impact: "Active in 12 development communities",
     },
     {
-      icon: <Award className="h-6 w-6" />,
-      title: "Technology Development",
-      description:
-        "Support the development of better apps, features, and platform improvements.",
-      impact: "Enhance user experience for 50,000+ monthly users",
-    },
-  ];
-
-  const donationAmounts = [
-    { amount: "₦5,000", description: "Support a driver for one week" },
-    { amount: "₦15,000", description: "Fund safety training for 3 drivers" },
-    { amount: "₦25,000", description: "Help expand to a new community" },
-    { amount: "₦50,000", description: "Support technology development" },
-    { amount: "₦100,000", description: "Major impact donation" },
-    { amount: "Custom", description: "Choose your own amount" },
-  ];
-
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Regular Donor",
-      content:
-        "I donate monthly because I believe in the mission. Seeing how Lagos Drivers Link has improved transportation in my area makes it worth every naira.",
-      rating: 5,
-    },
-    {
-      name: "Michael Adebayo",
-      role: "Corporate Donor",
-      content:
-        "Our company supports Lagos Drivers Link because we see the positive impact on our employees' daily commutes. It's an investment in our community.",
-      rating: 5,
-    },
-    {
-      name: "Grace Okafor",
-      role: "Driver Partner",
-      content:
-        "The support fund helped me during a difficult time. Now I'm proud to give back and help other drivers who might need assistance.",
-      rating: 5,
+      icon: <Zap className="h-6 w-6" />,
+      title: "Tech Infrastructure",
+      desc: "Building the digital backbone for Africa's most transparent mobility network.",
+      impact: "Scaling for 1M+ trips annually",
     },
   ];
 
   const impactStats = [
-    {
-      number: "₦2.5M+",
-      label: "Raised for Driver Support",
-      icon: <Heart className="h-8 w-8" />,
-    },
-    {
-      number: "500+",
-      label: "Drivers Supported",
-      icon: <Users className="h-8 w-8" />,
-    },
-    {
-      number: "15",
-      label: "Communities Reached",
-      icon: <Globe className="h-8 w-8" />,
-    },
-    {
-      number: "95%",
-      label: "Donation Efficiency",
-      icon: <Star className="h-8 w-8" />,
-    },
+    { num: "₦15M+", label: "Capital Deployed", icon: <Heart className="h-6 w-6" /> },
+    { num: "1.2k+", label: "Active Chauffeurs", icon: <Users className="h-6 w-6" /> },
+    { num: "45+", label: "Safety Protocols", icon: <Shield className="h-6 w-6" /> },
+    { num: "98%", label: "Trust Index", icon: <Star className="h-6 w-6" /> },
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-24 text-gray-900">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-20">
-        <div className="w-[85%] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-                Support Our Mission
+      <section className="relative py-28 px-6 md:px-12 lg:px-24 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#0099ff]/[0.02] rounded-full blur-[120px] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <div className="space-y-10">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-[#0099ff]/10 text-[#0099ff] text-sm font-bold uppercase tracking-widest">Impact Fund</span>
+              <h1 className="text-5xl lg:text-8xl font-black tracking-tighter leading-none mb-8">
+                Fueled by <br /><span className="text-[#0099ff]">Community.</span>
               </h1>
-              <p className="text-xl mb-8 text-gray-800">
-                Help us improve transportation in Lagos and support our
-                community of drivers. Your donation makes a real difference in
-                people's lives.
+              <p className="text-xl text-gray-500 max-w-xl leading-relaxed font-medium">
+                Your contribution directly funds driver welfare, safety tech, and community mobility expansion. Every Naira accelerates our mission.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors flex items-center justify-center">
-                  <Heart className="h-5 w-5 mr-2" />
+              <div className="flex flex-col sm:flex-row gap-5">
+                <button className="bg-[#0099ff] text-white px-12 py-5 rounded-2xl font-black hover:bg-[#0088ee] transition-all shadow-xl shadow-[#0099ff]/20 flex items-center justify-center gap-3">
                   Donate Now
+                  <Heart className="w-5 h-5" />
                 </button>
-                <Link
-                  href="#impact"
-                  className="border-2 border-black text-black px-8 py-4 rounded-lg font-semibold hover:bg-black hover:text-white transition-colors text-center"
-                >
-                  See Our Impact
+                <Link href="#impact" className="border border-gray-200 text-gray-900 px-10 py-5 rounded-2xl font-bold hover:bg-gray-50 transition-all flex items-center justify-center">
+                  View Live Impact
                 </Link>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative aspect-[4/5] rounded-[4rem] overflow-hidden shadow-3xl border-8 border-white">
               <Image
                 src="/smiling-cheerful-young-adult-african-600nw-1850821510.webp"
                 alt="Community Support"
-                width={600}
-                height={400}
-                className="rounded-lg shadow-2xl"
+                fill
+                className="object-cover"
                 priority
               />
             </div>
@@ -151,62 +92,40 @@ export default function DonatePage() {
         </div>
       </section>
 
-      {/* Impact Stats */}
-      <section id="impact" className="py-16 bg-gray-50">
-        <div className="w-[85%] mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Our Impact So Far
-            </h2>
-            <p className="text-xl text-gray-600">
-              Thanks to generous donors like you, we've made a real difference
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {impactStats.map((stat, index) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-lg text-center"
-              >
-                <div className="text-yellow-500 mb-4 flex justify-center">
-                  {stat.icon}
-                </div>
-                <div className="text-3xl font-bold mb-2">{stat.number}</div>
-                <div className="text-gray-600">{stat.label}</div>
+      {/* Impact Stats Grid */}
+      <section id="impact" className="py-24 px-6 md:px-12 lg:px-24 bg-[#fafbfd]">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {impactStats.map((stat, i) => (
+            <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm text-center group hover:border-[#0099ff]/20 transition-all">
+              <div className="w-12 h-12 rounded-xl bg-[#0099ff]/[0.06] text-[#0099ff] flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                {stat.icon}
               </div>
-            ))}
-          </div>
+              <div className="text-4xl font-black text-gray-900 mb-2">{stat.num}</div>
+              <div className="text-gray-400 text-xs font-bold uppercase tracking-widest">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Donation Causes */}
-      <section className="py-20">
-        <div className="w-[85%] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Where Your Donation Goes
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Your contribution directly supports these important initiatives
-              that make transportation better for everyone.
-            </p>
+      {/* Causes Matrix */}
+      <section className="py-32 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-20 space-y-4">
+            <h2 className="text-3xl lg:text-6xl font-black tracking-tight">Deployment Pillars</h2>
+            <p className="text-gray-500 font-medium">Transparent distribution across four key mobility vectors.</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {donationCauses.map((cause, index) => (
-              <div key={index} className="bg-gray-50 p-6 rounded-lg shadow-lg">
-                <div className="flex items-start space-x-4">
-                  <div className="text-yellow-500 mt-1">{cause.icon}</div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-3">
-                      {cause.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4">{cause.description}</p>
-                    <div className="bg-yellow-100 p-3 rounded-lg">
-                      <p className="text-sm font-medium text-yellow-800">
-                        {cause.impact}
-                      </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            {donationCauses.map((cause, i) => (
+              <div key={i} className="bg-slate-50 p-12 rounded-[3.5rem] border border-gray-50 hover:bg-white hover:border-[#0099ff]/20 hover:shadow-2xl transition-all group">
+                <div className="flex gap-8">
+                  <div className="w-16 h-16 rounded-2xl bg-[#0099ff]/10 text-[#0099ff] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                    {cause.icon}
+                  </div>
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-black">{cause.title}</h3>
+                    <p className="text-gray-500 leading-relaxed font-medium">{cause.desc}</p>
+                    <div className="inline-block px-4 py-2 rounded-xl bg-[#0099ff]/[0.06] text-[#0099ff] text-xs font-black uppercase tracking-widest">
+                      {cause.impact}
                     </div>
                   </div>
                 </div>
@@ -216,182 +135,60 @@ export default function DonatePage() {
         </div>
       </section>
 
-      {/* Donation Amounts */}
-      <section className="py-20 bg-gray-50">
-        <div className="w-[85%] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              Choose Your Impact
-            </h2>
-            <p className="text-xl text-gray-600">
-              Every donation, no matter the size, makes a difference
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {donationAmounts.map((donation, index) => (
-              <button
-                key={index}
-                className="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow border-2 border-transparent hover:border-yellow-500"
-              >
-                <div className="text-2xl font-bold text-yellow-500 mb-2">
-                  {donation.amount}
-                </div>
-                <p className="text-gray-600">{donation.description}</p>
+      {/* Donation Presets */}
+      <section className="py-32 px-6 md:px-12 lg:px-24 bg-gray-900 text-white rounded-[5rem] mx-6 md:mx-12 lg:mx-24 mb-32 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0099ff]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="max-w-6xl mx-auto relative z-10 text-center">
+          <h2 className="text-3xl lg:text-6xl font-black mb-16 tracking-tighter">Choose Your <span className="text-[#0099ff]">Impact Level</span></h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { amt: "₦10,000", label: "Driver Micro-Grant", desc: "Covers one week of emergency fuel & welfare." },
+              { amt: "₦50,000", label: "Satefy Uplift", desc: "Funds full diagnostic & vetting for 5 vehicles." },
+              { amt: "₦250k+", label: "Community Catalyst", desc: "Sponsors mobility mapping for a new V.I. zone." }
+            ].map((p, i) => (
+              <button key={i} className="bg-white/5 border border-white/10 p-10 rounded-[3rem] hover:bg-white hover:text-gray-900 transition-all group text-left">
+                <div className="text-[#0099ff] text-3xl font-black mb-4 group-hover:text-[#0099ff]">{p.amt}</div>
+                <div className="text-lg font-black mb-2">{p.label}</div>
+                <p className="text-gray-400 text-sm font-medium group-hover:text-gray-500">{p.desc}</p>
               </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Donate */}
-      <section className="py-20">
-        <div className="w-[85%] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-                Why Donate to Lagos Drivers Link?
-              </h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-yellow-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">
-                      Transparent Use of Funds
-                    </h3>
-                    <p className="text-gray-600">
-                      We provide detailed reports on how every naira is spent,
-                      ensuring maximum impact.
-                    </p>
+      {/* Trust Blocks */}
+      <section className="py-32 px-6 md:px-12 lg:px-24">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-24 items-center">
+          <div className="space-y-12">
+            <h2 className="text-4xl lg:text-6xl font-black tracking-tighter leading-none">Radical <span className="text-[#0099ff]">Transparency.</span></h2>
+            <div className="space-y-8">
+              {[
+                "Audited annual impact reports published online",
+                "0% platform fee on all driver welfare donations",
+                "Direct verification of driver beneficiaries",
+                "Tax-deductible receipts issued instantly"
+              ].map((t, i) => (
+                <div key={i} className="flex items-center gap-5">
+                  <div className="w-6 h-6 rounded-full bg-[#0099ff] flex items-center justify-center text-white flex-shrink-0">
+                    <CheckCircle2 className="w-4 h-4" />
                   </div>
+                  <span className="text-xl font-bold text-gray-900">{t}</span>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-yellow-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">Local Impact</h3>
-                    <p className="text-gray-600">
-                      Your donation directly benefits Lagos communities and
-                      improves local transportation.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-yellow-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">
-                      Sustainable Growth
-                    </h3>
-                    <p className="text-gray-600">
-                      We focus on long-term solutions that create lasting
-                      positive change.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-yellow-500 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="font-semibold text-lg mb-2">
-                      Community Driven
-                    </h3>
-                    <p className="text-gray-600">
-                      Our initiatives are developed with input from drivers and
-                      community members.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <Image
-                src="/portrait-of-a-confident-young-black-man-for-lifestyle-or-fashion-marketing-free-photo.jpeg"
-                alt="Community Impact"
-                width={500}
-                height={400}
-                className="rounded-lg shadow-lg"
-              />
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-20 bg-gray-50">
-        <div className="w-[85%] mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-              What Our Donors Say
-            </h2>
-            <p className="text-xl text-gray-600">
-              Hear from people who support our mission
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-                <div className="flex mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-5 w-5 text-yellow-500 fill-current"
-                    />
-                  ))}
-                </div>
-                <p className="text-gray-600 mb-4 italic">
-                  "{testimonial.content}"
-                </p>
-                <div>
-                  <p className="font-semibold">{testimonial.name}</p>
-                  <p className="text-gray-500 text-sm">{testimonial.role}</p>
-                </div>
-              </div>
-            ))}
+          <div className="relative aspect-[4/3] rounded-[4rem] overflow-hidden shadow-2xl">
+            <Image src="/portrait-of-a-confident-young-black-man-for-lifestyle-or-fashion-marketing-free-photo.jpeg" alt="Transparency" fill className="object-cover" />
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-black text-white">
-        <div className="w-[85%] mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Make a Difference Today
-          </h2>
-          <p className="text-xl mb-8 text-gray-300">
-            Join hundreds of supporters who are helping us improve
-            transportation in Lagos.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-yellow-500 text-black px-8 py-4 rounded-lg font-semibold hover:bg-yellow-600 transition-colors flex items-center justify-center">
-              <Heart className="h-5 w-5 mr-2" />
-              Donate Now
-            </button>
-            <Link
-              href="/contact"
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Tax Information */}
-      <section className="py-16 bg-gray-50">
-        <div className="w-[85%] mx-auto text-center">
-          <div className="max-w-2xl mx-auto">
-            <h3 className="text-xl font-semibold mb-4">
-              Tax-Deductible Donations
-            </h3>
-            <p className="text-gray-600 mb-4">
-              Lagos Drivers Link is a registered non-profit organization. All
-              donations are tax-deductible to the full extent allowed by law.
-              You will receive a receipt for your donation.
-            </p>
-            <p className="text-sm text-gray-500">
-              Tax ID: LAG-DRIVERS-2025 | Registered in Nigeria
-            </p>
-          </div>
-        </div>
+      {/* Footer CTA */}
+      <section className="py-32 px-6 text-center">
+        <Link href="/contact" className="inline-flex items-center gap-4 text-[#0099ff] font-black text-2xl group">
+          Have questions about donating?
+          <ArrowRight className="w-8 h-8 group-hover:translate-x-3 transition-transform" />
+        </Link>
       </section>
     </div>
   );

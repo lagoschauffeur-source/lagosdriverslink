@@ -1,13 +1,8 @@
 "use client";
 
-import {
-  Sparkles,
-  CheckCircle2,
-  Car,
-  ShieldCheck,
-  BadgeCheck,
-} from "lucide-react";
+import { Sparkles, CheckCircle2, Car, ShieldCheck, BadgeCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function ExtraHighlightOne() {
   const bullets = [
@@ -17,96 +12,78 @@ export default function ExtraHighlightOne() {
   ];
 
   return (
-    <section className="bg-black py-14">
-      <div className="w-[85%] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+    <section className="bg-white py-24 relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#0099ff]/[0.02] rounded-full blur-[80px] translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-6 sm:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 text-yellow-400 font-semibold mb-3">
-              <Sparkles className="w-5 h-5" /> Why Lagos Drivers Link
-            </div>
-            <h3 className="text-3xl md:text-4xl font-extrabold text-white">
-              Reliable, Verified, Ready to Drive
+            <span className="inline-flex items-center gap-2 text-blue-600 text-sm font-bold bg-blue-50 px-4 py-1.5 rounded-full mb-5">
+              <Sparkles className="w-3.5 h-3.5" /> Why Our Clients Trust Us
+            </span>
+            <h3 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tighter leading-none">
+              Your Safety is <br />Our Priority.
             </h3>
-            <p className="text-yellow-100/80 mt-3 max-w-xl">
-              Get matched with trusted, background-checked drivers. We handle
-              the vetting so you can focus on what matters.
+            <p className="text-gray-500 mt-6 text-lg font-medium max-w-md leading-relaxed">
+              We don't just find you a driver; we find you a partner for the road. Every professional in our pool undergoes rigorous background checks and emotional intelligence training.
             </p>
 
-            <ul className="mt-6 space-y-3">
-              {bullets.map((b, i) => (
-                <li key={i} className="flex items-start gap-3 text-yellow-100">
-                  <CheckCircle2 className="w-5 h-5 text-yellow-400 mt-0.5" />
+            <ul className="mt-8 space-y-4">
+              {[
+                "Highly experienced & vetted professionals",
+                "Instant matching based on your location",
+                "Fair pricing with no hidden charges",
+              ].map((b, i) => (
+                <li key={i} className="flex items-center gap-3 text-gray-900 font-bold text-base">
+                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                  </div>
                   <span>{b}</span>
                 </li>
               ))}
             </ul>
-
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-yellow-500/40 bg-yellow-500/10 px-4 py-2 text-yellow-200 text-sm">
-              <Sparkles className="w-4 h-4" /> Seamless driver placement
-              experience
-            </div>
           </div>
 
           <div className="relative">
-            <div className="relative overflow-hidden rounded-2xl border border-yellow-500/30 bg-gradient-to-br from-yellow-900/20 to-yellow-600/10 p-6">
-              <div className="pointer-events-none absolute -top-16 -left-16 w-56 h-56 rounded-full bg-yellow-400/15 blur-3xl" />
-              <div className="pointer-events-none absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-yellow-300/10 blur-3xl" />
+            <div className="bg-gradient-to-br from-[#f0f7ff] to-white rounded-3xl p-6 border border-gray-100">
+              <div className="rounded-2xl overflow-hidden mb-5">
+                <Image
+                  src="/confident-professional-driver-side-view-600nw-2149539983.webp"
+                  alt="Professional driver"
+                  width={600}
+                  height={400}
+                  className="w-full h-48 object-cover"
+                />
+              </div>
 
               <motion.div
-                className="relative z-10 grid grid-cols-3 gap-4"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ staggerChildren: 0.08 }}
+                className="grid grid-cols-3 gap-2.5"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
               >
-                <IllustrationTile
-                  icon={<ShieldCheck className="w-6 h-6 text-yellow-300" />}
-                  title="Verified"
-                />
-                <IllustrationTile
-                  icon={<Car className="w-6 h-6 text-yellow-300" />}
-                  title="Placement"
-                />
-                <IllustrationTile
-                  icon={<BadgeCheck className="w-6 h-6 text-yellow-300" />}
-                  title="Qualified"
-                />
-                <IllustrationTile
-                  icon={<CheckCircle2 className="w-6 h-6 text-yellow-300" />}
-                  title="Trained"
-                />
-                <IllustrationTile
-                  icon={<Sparkles className="w-6 h-6 text-yellow-300" />}
-                  title="Vetted"
-                />
-                <IllustrationTile
-                  icon={<Car className="w-6 h-6 text-yellow-300" />}
-                  title="Ready"
-                />
+                {[
+                  { icon: <ShieldCheck className="w-5 h-5" />, label: "Verified" },
+                  { icon: <Car className="w-5 h-5" />, label: "Placement" },
+                  { icon: <BadgeCheck className="w-5 h-5" />, label: "Qualified" },
+                  { icon: <CheckCircle2 className="w-5 h-5" />, label: "Trained" },
+                  { icon: <Sparkles className="w-5 h-5" />, label: "Vetted" },
+                  { icon: <Car className="w-5 h-5" />, label: "Ready" },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="bg-white rounded-xl border border-gray-100 p-4 flex flex-col items-center text-center hover:border-[#0099ff]/20 hover:shadow-sm transition-all duration-200"
+                  >
+                    <div className="text-[#0099ff] mb-1.5">{item.icon}</div>
+                    <span className="text-gray-700 text-xs font-semibold">{item.label}</span>
+                  </div>
+                ))}
               </motion.div>
-
-              <div className="relative z-10 mt-6 text-yellow-300/80 text-xs">
-                Abstract driver services illustration
-              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function IllustrationTile({
-  icon,
-  title,
-}: {
-  icon: React.ReactNode;
-  title: string;
-}) {
-  return (
-    <div className="rounded-xl border border-yellow-500/30 bg-yellow-500/5 px-4 py-6 flex flex-col items-center justify-center text-center">
-      <div className="mb-2">{icon}</div>
-      <div className="text-yellow-100 text-sm font-semibold">{title}</div>
-    </div>
   );
 }

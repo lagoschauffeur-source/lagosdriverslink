@@ -3,37 +3,140 @@
 @tailwind utilities;
 
 :root {
-  --color-background: #000000;
-  --color-foreground: #ededed;
-  --color-card: #0a0a0a;
-  --color-card-foreground: #fafafa;
-  --color-popover: #0a0a0a;
-  --color-popover-foreground: #fafafa;
-  --color-primary: #eab308;
-  --color-primary-foreground: #171717;
-  --color-secondary: #262626;
-  --color-secondary-foreground: #fafafa;
-  --color-muted: #262626;
-  --color-muted-foreground: #a3a3a3;
-  --color-accent: #262626;
-  --color-accent-foreground: #fafafa;
-  --color-destructive: #7f1d1d;
-  --color-destructive-foreground: #fafafa;
-  --color-border: #262626;
-  --color-input: #262626;
-  --color-ring: #eab308;
-  --color-chart-1: #3b82f6;
-  --color-chart-2: #10b981;
-  --color-chart-3: #f59e0b;
-  --color-chart-4: #8b5cf6;
-  --color-chart-5: #ef4444;
-  --radius: 0.5rem;
-  --font-family-sans: var(--font-poppins), system-ui, sans-serif;
-  --font-family-mono: var(--font-geist-mono);
+  /* LagRide-inspired sky blue palette on clean white */
+  --color-background: #ffffff;
+  --color-foreground: #1a1a2e;
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1a2e;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1a1a2e;
+  --color-primary: #0099ff;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #f0f7ff;
+  --color-secondary-foreground: #1a1a2e;
+  --color-muted: #f5f8fc;
+  --color-muted-foreground: #6b7c93;
+  --color-accent: #e8f4ff;
+  --color-accent-foreground: #006fcc;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-border: #e8edf5;
+  --color-input: #e8edf5;
+  --color-ring: #0099ff;
+  --radius: 0.75rem;
+  --font-family-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Ultra-Clean Base ─── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-family-sans);
+}
+
+/* ─── Super Clean Glassmorphism ─── */
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Premium Gradient Meshes ─── */
+.mesh-gradient {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(0, 153, 255, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 180, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(0, 120, 255, 0.03) 0%, transparent 50%),
+    #ffffff;
+}
+
+/* ─── Subtle Glow ─── */
+.glow-blue {
+  box-shadow: 0 0 24px rgba(0, 153, 255, 0.15), 0 0 64px rgba(0, 153, 255, 0.06);
+}
+
+/* ─── Premium Shadows ─── */
+.shadow-premium {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-premium-lg {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02), 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.shadow-premium-hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03), 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Premium Keyframes ─── */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes gentle-pulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(0, 153, 255, 0.15);
+  color: #006fcc;
+}
+
+/* ─── Scrollbar (WebKit) ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }

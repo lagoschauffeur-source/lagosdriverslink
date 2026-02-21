@@ -13,6 +13,7 @@ import {
   List,
   Pen,
   ArrowLeft,
+  CheckCircle2,
 } from "lucide-react";
 import { DriverRequestConfirmationEmail } from "../../emails/DriverRequestConfirmationEmail";
 import DriverRequestEmail from "../../emails/DriverRequestEmail";
@@ -72,7 +73,7 @@ export default function DriverRequestForm() {
   ) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
-    
+
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -198,319 +199,285 @@ export default function DriverRequestForm() {
   };
 
   return (
-    <div className="text-white w-full max-w-md mx-auto px-4 py-8">
-      <div className="mb-6">
-        <Link
-          href="/"
-          className="inline-flex items-center text-sm text-gray-400 hover:text-yellow-500 transition-colors"
-          aria-label="Return to home page"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" /> Back to home
-        </Link>
-      </div>
-
-      <div className="text-center mb-8">
-        <div className="flex justify-center mb-4">
-          <Car className="h-10 w-10 text-yellow-500" aria-hidden="true" />
-        </div>
-        <h1 className="text-3xl font-extrabold text-yellow-100">
-          Hire a Pro Driver in Lagos
-        </h1>
-        <p className="text-yellow-200 mt-1 text-sm">
-          Pre-vetted professionals for all driving needs. Choose your preferred
-          plan below or use the general form.
-        </p>
-      </div>
-
-      {/* Plan Selection Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <Link
-          href="/driver-request/daily"
-          className="block p-4 bg-gray-800 border border-gray-700 rounded-lg hover:border-yellow-500 transition-colors"
-        >
-          <h3 className="text-lg font-semibold text-yellow-400 mb-2">
-            Daily Driver
-          </h3>
-          <p className="text-2xl font-bold text-white mb-1">₦30,000</p>
-          <p className="text-sm text-gray-400">/day</p>
-          <p className="text-xs text-gray-300 mt-2">
-            Perfect for one-time needs
-          </p>
-        </Link>
-
-        <Link
-          href="/driver-request/weekday"
-          className="block p-4 bg-gray-800 border border-gray-700 rounded-lg hover:border-yellow-500 transition-colors"
-        >
-          <h3 className="text-lg font-semibold text-yellow-400 mb-2">
-            Weekday Driver
-          </h3>
-          <p className="text-2xl font-bold text-white mb-1">₦175,000</p>
-          <p className="text-sm text-gray-400">/month</p>
-          <p className="text-xs text-gray-300 mt-2">
-            Mon-Fri professional service
-          </p>
-        </Link>
-
-        <Link
-          href="/driver-request/weekdayPlus"
-          className="block p-4 bg-gray-800 border border-gray-700 rounded-lg hover:border-yellow-500 transition-colors"
-        >
-          <h3 className="text-lg font-semibold text-yellow-400 mb-2">
-            Weekday+ Driver
-          </h3>
-          <p className="text-2xl font-bold text-white mb-1">₦195,000</p>
-          <p className="text-sm text-gray-400">/month</p>
-          <p className="text-xs text-gray-300 mt-2">
-            Mon-Sat extended coverage
-          </p>
-        </Link>
-      </div>
-
-      <div className="text-center mb-6">
-        <p className="text-yellow-300 text-sm">
-          Or use the general form below to submit your request
-        </p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label htmlFor="fullName" className="block text-sm text-yellow-300">
-            Full Name
-          </label>
-          <div className="relative mt-1">
-            <User
-              className="absolute left-3 top-3 h-5 w-5 text-yellow-500"
-              aria-hidden="true"
-            />
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              placeholder="John Doe"
-              className="w-full bg-black border border-yellow-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              required
-              aria-invalid={!!errors.fullName}
-              aria-describedby={errors.fullName ? "fullName-error" : undefined}
-            />
-          </div>
-          {errors.fullName && (
-            <p id="fullName-error" className="mt-1 text-sm text-red-400">
-              {errors.fullName}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="email" className="block text-sm text-yellow-300">
-            Email Address
-          </label>
-          <div className="relative mt-1">
-            <Mail
-              className="absolute left-3 top-3 h-5 w-5 text-yellow-500"
-              aria-hidden="true"
-            />
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="you@example.com"
-              className="w-full bg-black border border-yellow-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              required
-              aria-invalid={!!errors.email}
-              aria-describedby={errors.email ? "email-error" : undefined}
-            />
-          </div>
-          {errors.email && (
-            <p id="email-error" className="mt-1 text-sm text-red-400">
-              {errors.email}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="phone" className="block text-sm text-yellow-300">
-            Phone Number
-          </label>
-          <div className="relative mt-1">
-            <Phone
-              className="absolute left-3 top-3 h-5 w-5 text-yellow-500"
-              aria-hidden="true"
-            />
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="+234 123 456 7890"
-              className="w-full bg-black border border-yellow-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              required
-              aria-invalid={!!errors.phone}
-              aria-describedby={errors.phone ? "phone-error" : undefined}
-            />
-          </div>
-          {errors.phone && (
-            <p id="phone-error" className="mt-1 text-sm text-red-400">
-              {errors.phone}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="location" className="block text-sm text-yellow-300">
-            Location
-          </label>
-          <div className="relative mt-1">
-            <MapPin
-              className="absolute left-3 top-3 h-5 w-5 text-yellow-500"
-              aria-hidden="true"
-            />
-            <input
-              type="text"
-              id="location"
-              name="location"
-              value={formData.location}
-              onChange={handleChange}
-              placeholder="Lagos, Nigeria"
-              className="w-full bg-black border border-yellow-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              required
-              aria-invalid={!!errors.location}
-              aria-describedby={errors.location ? "location-error" : undefined}
-            />
-          </div>
-          {errors.location && (
-            <p id="location-error" className="mt-1 text-sm text-red-400">
-              {errors.location}
-            </p>
-          )}
-        </div>
-
-        <div>
-          <label htmlFor="plan" className="block text-sm text-yellow-300">
-            Selected Plan
-          </label>
-          <div className="relative mt-1">
-            <List
-              className="absolute left-3 top-3 h-5 w-5 text-yellow-500"
-              aria-hidden="true"
-            />
-            <select
-              id="plan"
-              name="plan"
-              value={formData.plan}
-              onChange={handleChange}
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 appearance-none"
-              aria-label="Selected driver plan"
-            >
-              <option value="daily">Daily Driver Service - ₦30,000/day</option>
-              <option value="weekday">
-                Weekday Driver (Mon-Fri) - ₦175,000/month
-              </option>
-              <option value="weekdayPlus">
-                Weekday+ Driver (Mon-Sat) - ₦195,000/month
-              </option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label
-            htmlFor="additionalNotes"
-            className="block text-sm text-yellow-300"
+    <div className="bg-white min-h-screen">
+      <div className="w-full max-w-4xl mx-auto px-4 py-12">
+        <div className="mb-8">
+          <Link
+            href="/"
+            className="inline-flex items-center text-sm text-gray-500 hover:text-blue-600 transition-colors font-medium"
+            aria-label="Return to home page"
           >
-            Additional Notes
-          </label>
-          <div className="relative mt-1">
-            <Pen
-              className="absolute left-3 top-3 h-5 w-5 text-yellow-500"
-              aria-hidden="true"
-            />
-            <textarea
-              id="additionalNotes"
-              name="additionalNotes"
-              value={formData.additionalNotes}
-              onChange={handleChange}
-              placeholder="Any specific requirements..."
-              className="w-full bg-black border border-yellow-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              rows={4}
-              aria-label="Additional notes about your driver request"
-            />
-          </div>
+            <ArrowLeft className="h-4 w-4 mr-2" /> Back to home
+          </Link>
         </div>
 
-        <div>
-          <label className="flex items-center space-x-2 cursor-pointer">
-            <input
-              type="checkbox"
-              name="hasAccommodation"
-              checked={formData.hasAccommodation || false}
-              onChange={handleChange}
-              className="w-4 h-4 text-yellow-500 bg-gray-800 border-gray-700 rounded focus:ring-yellow-500"
-            />
-            <span className="text-sm text-yellow-300">
-              Has Accommodation for Driver
-            </span>
-          </label>
-          <p className="text-xs text-gray-400 mt-1 ml-6">
-            Check this if you have accommodation available for the driver
+        <div className="text-center mb-12">
+          <div className="flex justify-center mb-6">
+            <div className="p-3 bg-blue-50 rounded-2xl">
+              <Car className="h-10 w-10 text-blue-600" aria-hidden="true" />
+            </div>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+            Need a professional driver? We&apos;ve got you covered.
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            Our drivers are safe, polite, and know Lagos roads very well.
+            Choose a plan that fits your life and we&apos;ll handle the rest.
           </p>
         </div>
 
-        {errors.form && (
-          <div className="p-4 bg-red-500/20 text-red-300 rounded-lg text-center">
-            {errors.form}
-          </div>
-        )}
+        {/* Plan Selection Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <Link
+            href="/driver-request/daily"
+            className="group block p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-xl font-bold text-gray-900">Daily Driver</h3>
+              <CheckCircle2 className="h-5 w-5 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="flex items-baseline mb-4">
+              <span className="text-3xl font-extrabold text-blue-600">₦30,000</span>
+              <span className="text-gray-500 ml-1">/day</span>
+            </div>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Perfect for one-time trips or busy days.
+            </p>
+          </Link>
 
-        {success && (
-          <div className="p-4 bg-green-500/20 text-green-300 rounded-lg text-center">
-            Request submitted successfully! You&apos;ll be redirected shortly.
-          </div>
-        )}
+          <Link
+            href="/driver-request/weekday"
+            className="group block p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-xl font-bold text-gray-900">Weekday</h3>
+              <CheckCircle2 className="h-5 w-5 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="flex items-baseline mb-4">
+              <span className="text-3xl font-extrabold text-blue-600">₦175k</span>
+              <span className="text-gray-500 ml-1">/month</span>
+            </div>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Professional service from Monday to Friday.
+            </p>
+          </Link>
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className={`w-full py-3 px-4 rounded-lg font-semibold text-black bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 focus:ring-offset-gray-900 transition-all duration-200 ${
-            isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-          }`}
-          aria-busy={isSubmitting}
-        >
-          {isSubmitting ? (
-            <span className="flex items-center justify-center">
-              <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-yellow-900"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-              Submitting...
-            </span>
-          ) : (
-            "Submit Request"
-          )}
-        </button>
-      </form>
+          <Link
+            href="/driver-request/weekdayPlus"
+            className="group block p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1"
+          >
+            <div className="flex justify-between items-start mb-4">
+              <h3 className="text-xl font-bold text-gray-900">Weekday+</h3>
+              <CheckCircle2 className="h-5 w-5 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </div>
+            <div className="flex items-baseline mb-4">
+              <span className="text-3xl font-extrabold text-blue-600">₦195k</span>
+              <span className="text-gray-500 ml-1">/month</span>
+            </div>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              Extended coverage from Monday to Saturday.
+            </p>
+          </Link>
+        </div>
+
+        <div className="bg-gray-50 rounded-3xl p-8 md:p-12 shadow-inner">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold text-gray-900">Quick Request Form</h2>
+            <p className="text-gray-500 mt-2">Just fill this out and we&apos;ll call you back.</p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-8 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="fullName" className="text-sm font-semibold text-gray-700 ml-1">
+                  Full Name
+                </label>
+                <div className="relative group">
+                  <User
+                    className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors"
+                    aria-hidden="true"
+                  />
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    placeholder="Your Name"
+                    className="w-full bg-white border border-gray-200 rounded-xl py-4 pl-12 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-semibold text-gray-700 ml-1">
+                  Email Address
+                </label>
+                <div className="relative group">
+                  <Mail
+                    className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors"
+                    aria-hidden="true"
+                  />
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="name@email.com"
+                    className="w-full bg-white border border-gray-200 rounded-xl py-4 pl-12 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <label htmlFor="phone" className="text-sm font-semibold text-gray-700 ml-1">
+                  Phone Number
+                </label>
+                <div className="relative group">
+                  <Phone
+                    className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors"
+                    aria-hidden="true"
+                  />
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="080 123 4567"
+                    className="w-full bg-white border border-gray-200 rounded-xl py-4 pl-12 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="location" className="text-sm font-semibold text-gray-700 ml-1">
+                  Where in Lagos?
+                </label>
+                <div className="relative group">
+                  <MapPin
+                    className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors"
+                    aria-hidden="true"
+                  />
+                  <input
+                    type="text"
+                    id="location"
+                    name="location"
+                    value={formData.location}
+                    onChange={handleChange}
+                    placeholder="Ikeja, Lekki, Surulere..."
+                    className="w-full bg-white border border-gray-200 rounded-xl py-4 pl-12 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="plan" className="text-sm font-semibold text-gray-700 ml-1">
+                Choose Your Plan
+              </label>
+              <div className="relative group">
+                <List
+                  className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors"
+                  aria-hidden="true"
+                />
+                <select
+                  id="plan"
+                  name="plan"
+                  value={formData.plan}
+                  onChange={handleChange}
+                  className="w-full bg-white border border-gray-200 rounded-xl py-4 pl-12 pr-10 text-gray-900 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm cursor-pointer"
+                >
+                  <option value="daily">Daily Driver - ₦30,000/day</option>
+                  <option value="weekday">Weekday (Mon-Fri) - ₦175,000/month</option>
+                  <option value="weekdayPlus">Weekday+ (Mon-Sat) - ₦195,000/month</option>
+                </select>
+                <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                  <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label htmlFor="additionalNotes" className="text-sm font-semibold text-gray-700 ml-1">
+                Anything else we should know?
+              </label>
+              <div className="relative group">
+                <Pen
+                  className="absolute left-4 top-6 h-5 w-5 text-gray-400 group-focus-within:text-blue-500 transition-colors"
+                  aria-hidden="true"
+                />
+                <textarea
+                  id="additionalNotes"
+                  name="additionalNotes"
+                  value={formData.additionalNotes}
+                  onChange={handleChange}
+                  placeholder="Tell us about your car or any specific needs..."
+                  className="w-full bg-white border border-gray-200 rounded-xl py-4 pl-12 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm min-h-[120px]"
+                />
+              </div>
+            </div>
+
+            <div className="flex items-center px-1">
+              <label className="relative flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="hasAccommodation"
+                  checked={formData.hasAccommodation || false}
+                  onChange={handleChange}
+                  className="peer sr-only"
+                />
+                <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-100 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                <span className="ml-3 text-sm font-medium text-gray-700">
+                  I have accommodation for the driver
+                </span>
+              </label>
+            </div>
+
+            {errors.form && (
+              <div className="p-4 bg-red-50 text-red-600 rounded-xl text-center font-medium border border-red-100">
+                {errors.form}
+              </div>
+            )}
+
+            {success && (
+              <div className="p-4 bg-green-50 text-green-600 rounded-xl text-center font-medium border border-green-100">
+                Excellent! Request sent. Redirecting you now...
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full py-4 px-6 rounded-xl font-bold text-white shadow-lg transition-all duration-300 ${isSubmitting
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 hover:shadow-blue-200 transform hover:-translate-y-0.5 active:translate-y-0"
+                }`}
+            >
+              {isSubmitting ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Working on it...
+                </span>
+              ) : (
+                "Send My Request"
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
