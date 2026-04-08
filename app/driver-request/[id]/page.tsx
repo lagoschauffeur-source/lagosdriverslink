@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { render } from "@react-email/render";
-import Link from "next/link";
 import {
   Car,
   User,
@@ -11,7 +10,6 @@ import {
   Phone,
   MapPin,
   Pen,
-  ArrowLeft,
   CheckCircle,
   Star,
   Clock,
@@ -186,36 +184,38 @@ export default function DriverPlanPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-yellow-500 to-yellow-600 text-black py-4">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-2">
-              <Car className="h-8 w-8" />
-              <span className="text-xl font-bold">Lagos Drivers Link</span>
-            </Link>
-            <Link
-              href="/"
-              className="inline-flex items-center text-sm font-medium hover:underline"
-            >
-              <ArrowLeft className="h-4 w-4 mr-2" /> Back to Home
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div className="min-h-screen bg-[#f7fbff] text-gray-900">
+      <div className="max-w-7xl mx-auto px-4 py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
           {/* Left Column - Plan Details */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Plan Card */}
-            <div className="bg-gray-900 rounded-xl p-6 border border-yellow-500/20">
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-500 rounded-full mb-4">
-                  <Car className="h-8 w-8 text-black" />
+          <div className="space-y-6">
+            <div className="rounded-[2rem] overflow-hidden border border-gray-100 shadow-xl bg-white">
+              <div className="relative h-[360px]">
+                <img
+                  src="/img_.png"
+                  alt="Professional driver support in Lagos"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#003a66]/85 via-[#0077cc]/35 to-transparent" />
+                <div className="absolute bottom-0 p-6 text-white">
+                  <h2 className="text-2xl font-black leading-tight">
+                    Safe, Verified Drivers in Lagos
+                  </h2>
+                  <p className="mt-2 text-sm text-blue-50 leading-relaxed">
+                    Tell us what you need and we will match you with a trusted
+                    driver quickly.
+                  </p>
                 </div>
-                <h1 className="text-2xl font-bold text-yellow-400 mb-2">
+              </div>
+            </div>
+
+            {/* Plan Card */}
+            <div className="bg-gradient-to-br from-[#0099ff] to-[#0077cc] rounded-3xl p-6 md:p-8 border border-[#0099ff]/20 text-white lg:sticky lg:top-6">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-[#0099ff] rounded-full mb-4">
+                  <Car className="h-8 w-8 text-white" />
+                </div>
+                <h1 className="text-2xl font-bold text-white mb-2">
                   {currentPlan.name}
                 </h1>
                 <p className="text-gray-300 text-sm mb-4">
@@ -230,49 +230,49 @@ export default function DriverPlanPage() {
               </div>
 
               <div className="space-y-3">
-                <h3 className="text-lg font-semibold text-yellow-400 mb-3">
+                <h3 className="text-lg font-semibold text-white mb-3">
                   What&apos;s Included:
                 </h3>
                 {currentPlan.features.map((feature, index) => (
                   <div key={index} className="flex items-center space-x-3">
                     <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
-                    <span className="text-gray-300 text-sm">{feature}</span>
+                    <span className="text-blue-50 text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
 
               {/* Trust Indicators */}
-              <div className="mt-6 pt-6 border-t border-gray-700">
+              <div className="mt-6 pt-6 border-t border-white/20">
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div className="flex flex-col items-center">
-                    <Shield className="h-6 w-6 text-yellow-400 mb-2" />
-                    <span className="text-xs text-gray-400">Verified</span>
+                    <Shield className="h-6 w-6 text-[#69c2ff] mb-2" />
+                    <span className="text-xs text-blue-100">Verified</span>
                   </div>
                   <div className="flex flex-col items-center">
-                    <Award className="h-6 w-6 text-yellow-400 mb-2" />
-                    <span className="text-xs text-gray-400">Professional</span>
+                    <Award className="h-6 w-6 text-[#69c2ff] mb-2" />
+                    <span className="text-xs text-blue-100">Professional</span>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Ad Space */}
-            <div className="bg-gradient-to-br from-yellow-500/10 to-yellow-600/10 rounded-xl p-6 border border-yellow-500/20">
+            <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm">
               <div className="text-center">
-                <h3 className="text-lg font-semibold text-yellow-400 mb-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   Why Choose Us?
                 </h3>
-                <div className="space-y-3 text-sm text-gray-300">
+                <div className="space-y-3 text-sm text-gray-600">
                   <div className="flex items-center justify-center space-x-2">
-                    <Star className="h-4 w-4 text-yellow-400" />
+                    <Star className="h-4 w-4 text-[#0099ff]" />
                     <span>4.9/5 Customer Rating</span>
                   </div>
                   <div className="flex items-center justify-center space-x-2">
-                    <Clock className="h-4 w-4 text-yellow-400" />
+                    <Clock className="h-4 w-4 text-[#0099ff]" />
                     <span>24/7 Customer Support</span>
                   </div>
                   <div className="flex items-center justify-center space-x-2">
-                    <Shield className="h-4 w-4 text-yellow-400" />
+                    <Shield className="h-4 w-4 text-[#0099ff]" />
                     <span>Fully Insured Drivers</span>
                   </div>
                 </div>
@@ -281,13 +281,13 @@ export default function DriverPlanPage() {
           </div>
 
           {/* Right Column - Form */}
-          <div className="lg:col-span-2">
-            <div className="bg-gray-900 rounded-xl p-8 border border-yellow-500/20">
+          <div className="bg-white rounded-3xl border border-gray-100 shadow-sm">
+            <div className="h-[75vh] lg:h-[calc(100vh-170px)] overflow-y-auto p-6 md:p-8">
               <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-white mb-2">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
                   Book Your {currentPlan.name}
                 </h2>
-                <p className="text-gray-400">
+                <p className="text-gray-500">
                   Fill out the form below and we&apos;ll connect you with a
                   professional driver
                 </p>
@@ -298,7 +298,7 @@ export default function DriverPlanPage() {
                   <div>
                     <label
                       htmlFor="fullName"
-                      className="block text-sm font-medium text-gray-300 mb-2"
+                      className="block text-sm font-medium text-gray-700 mb-2"
                     >
                       Full Name *
                     </label>
@@ -311,7 +311,7 @@ export default function DriverPlanPage() {
                         value={formData.fullName}
                         onChange={handleChange}
                         placeholder="John Doe"
-                        className="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                        className="w-full bg-white border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0099ff]/20 focus:border-[#0099ff]"
                         required
                         aria-invalid={!!errors.fullName}
                         aria-describedby={
@@ -322,7 +322,7 @@ export default function DriverPlanPage() {
                     {errors.fullName && (
                       <p
                         id="fullName-error"
-                        className="mt-1 text-sm text-red-400"
+                        className="mt-1 text-sm text-red-500"
                       >
                         {errors.fullName}
                       </p>
@@ -332,7 +332,7 @@ export default function DriverPlanPage() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-300 mb-2"
+                      className="block text-sm font-medium text-gray-700 mb-2"
                     >
                       Email Address *
                     </label>
@@ -345,7 +345,7 @@ export default function DriverPlanPage() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="you@example.com"
-                        className="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                        className="w-full bg-white border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0099ff]/20 focus:border-[#0099ff]"
                         required
                         aria-invalid={!!errors.email}
                         aria-describedby={
@@ -354,7 +354,7 @@ export default function DriverPlanPage() {
                       />
                     </div>
                     {errors.email && (
-                      <p id="email-error" className="mt-1 text-sm text-red-400">
+                      <p id="email-error" className="mt-1 text-sm text-red-500">
                         {errors.email}
                       </p>
                     )}
@@ -365,7 +365,7 @@ export default function DriverPlanPage() {
                   <div>
                     <label
                       htmlFor="phone"
-                      className="block text-sm font-medium text-gray-300 mb-2"
+                      className="block text-sm font-medium text-gray-700 mb-2"
                     >
                       Phone Number *
                     </label>
@@ -378,7 +378,7 @@ export default function DriverPlanPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+234 123 456 7890"
-                        className="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                        className="w-full bg-white border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0099ff]/20 focus:border-[#0099ff]"
                         required
                         aria-invalid={!!errors.phone}
                         aria-describedby={
@@ -387,7 +387,7 @@ export default function DriverPlanPage() {
                       />
                     </div>
                     {errors.phone && (
-                      <p id="phone-error" className="mt-1 text-sm text-red-400">
+                      <p id="phone-error" className="mt-1 text-sm text-red-500">
                         {errors.phone}
                       </p>
                     )}
@@ -396,7 +396,7 @@ export default function DriverPlanPage() {
                   <div>
                     <label
                       htmlFor="location"
-                      className="block text-sm font-medium text-gray-300 mb-2"
+                      className="block text-sm font-medium text-gray-700 mb-2"
                     >
                       Location *
                     </label>
@@ -409,7 +409,7 @@ export default function DriverPlanPage() {
                         value={formData.location}
                         onChange={handleChange}
                         placeholder="Lagos, Nigeria"
-                        className="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                        className="w-full bg-white border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0099ff]/20 focus:border-[#0099ff]"
                         required
                         aria-invalid={!!errors.location}
                         aria-describedby={
@@ -420,7 +420,7 @@ export default function DriverPlanPage() {
                     {errors.location && (
                       <p
                         id="location-error"
-                        className="mt-1 text-sm text-red-400"
+                        className="mt-1 text-sm text-red-500"
                       >
                         {errors.location}
                       </p>
@@ -431,7 +431,7 @@ export default function DriverPlanPage() {
                 <div>
                   <label
                     htmlFor="additionalNotes"
-                    className="block text-sm font-medium text-gray-300 mb-2"
+                    className="block text-sm font-medium text-gray-700 mb-2"
                   >
                     Additional Notes
                   </label>
@@ -443,7 +443,7 @@ export default function DriverPlanPage() {
                       value={formData.additionalNotes}
                       onChange={handleChange}
                       placeholder="Any specific requirements, preferred pickup times, or special instructions..."
-                      className="w-full bg-gray-800 border border-gray-700 rounded-lg py-3 pl-10 pr-4 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+                      className="w-full bg-white border border-gray-200 rounded-xl py-3 pl-10 pr-4 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#0099ff]/20 focus:border-[#0099ff]"
                       rows={4}
                       aria-label="Additional notes about your driver request"
                     />
@@ -457,25 +457,25 @@ export default function DriverPlanPage() {
                       name="hasAccommodation"
                       checked={formData.hasAccommodation || false}
                       onChange={handleChange}
-                      className="w-4 h-4 text-yellow-500 bg-gray-800 border-gray-700 rounded focus:ring-yellow-500"
+                      className="w-4 h-4 text-[#0099ff] bg-white border-gray-300 rounded focus:ring-[#0099ff]"
                     />
-                    <span className="text-sm text-gray-300">
+                    <span className="text-sm text-gray-700">
                       Has Accommodation for Driver
                     </span>
                   </label>
-                  <p className="text-xs text-gray-400 mt-1 ml-6">
+                  <p className="text-xs text-gray-500 mt-1 ml-6">
                     Check this if you have accommodation available for the driver
                   </p>
                 </div>
 
                 {errors.form && (
-                  <div className="p-4 bg-red-500/20 border border-red-500/50 text-red-300 rounded-lg">
+                  <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-xl">
                     {errors.form}
                   </div>
                 )}
 
                 {success && (
-                  <div className="p-4 bg-green-500/20 border border-green-500/50 text-green-300 rounded-lg">
+                  <div className="p-4 bg-green-50 border border-green-200 text-green-600 rounded-xl">
                     Request submitted successfully! You&apos;ll be redirected
                     shortly.
                   </div>
@@ -484,7 +484,7 @@ export default function DriverPlanPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-4 px-6 rounded-lg font-semibold text-black bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 focus:ring-offset-gray-900 transition-all duration-200 ${
+                  className={`w-full py-4 px-6 rounded-xl font-semibold text-white bg-[#0099ff] hover:bg-[#0088ee] focus:outline-none focus:ring-2 focus:ring-[#0099ff]/30 transition-all duration-200 ${
                     isSubmitting ? "opacity-70 cursor-not-allowed" : ""
                   }`}
                   aria-busy={isSubmitting}
@@ -492,7 +492,7 @@ export default function DriverPlanPage() {
                   {isSubmitting ? (
                     <span className="flex items-center justify-center">
                       <svg
-                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-black"
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"

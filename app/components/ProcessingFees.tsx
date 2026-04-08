@@ -6,7 +6,7 @@ export default function ProcessingFees() {
   const plans = [
     {
       name: "Managed Service Plan",
-      fee: "₦50,000",
+      fee: "₦70,000",
       highlights: [
         "LagosDriversLink handles all HR administration",
         "Driver remains our qualified staff",
@@ -18,7 +18,7 @@ export default function ProcessingFees() {
     },
     {
       name: "Direct Employment Plan",
-      fee: "₦70,000",
+      fee: "₦100,000",
       highlights: [
         "Driver becomes your direct employee",
         "Complete background checks documentation",

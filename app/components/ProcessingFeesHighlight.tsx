@@ -11,7 +11,7 @@ export default function ProcessingFeesHighlight() {
   const plans = [
     {
       name: "Managed Service Plan",
-      fee: "₦50,000",
+      fee: "₦70,000",
       bullets: [
         "LagosDriversLink handles all HR administration",
         "Driver remains our qualified staff",
@@ -32,7 +32,7 @@ Flexible Replacement Policy — Should replacement be necessary, we provide qual
     },
     {
       name: "Direct Employment Plan",
-      fee: "₦70,000",
+      fee: "₦100,000",
       bullets: [
         "Driver becomes your direct employee",
         "Full background audit documentation",
@@ -43,7 +43,7 @@ Flexible Replacement Policy — Should replacement be necessary, we provide qual
       popular: false,
       detailedInfo: `This plan provides a verified driver to individuals and companies who want complete control over the welfare of the driver. This is a one-off service where the driver subsequently becomes your direct employee.
 
-Cost: A one-off service charge of ₦70,000 to be paid before deployment. You get 2 drivers to select from. The background check details and personal data of the selected driver will be transferred to you.
+Cost: A one-off service charge of ₦100,000 to be paid before deployment. You get 2 drivers to select from. The background check details and personal data of the selected driver will be transferred to you.
 
 Background check details include:
 • Driver Proof of Address

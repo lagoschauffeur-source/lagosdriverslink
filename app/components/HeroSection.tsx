@@ -7,20 +7,20 @@ import { ArrowRight, Star, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 const slides = [
   {
-    title: "Your Trusted Chauffeur for Your Daily Commute",
-    subtitle: "Experience stress-free travel with our pre-vetted, professional drivers tailored to your family and personal needs in Lagos.",
+    title: "Trusted Drivers for Your Everyday Movement",
+    subtitle: "Move around Lagos without stress. We match you with trained and verified drivers for your home and family needs.",
     image: "/Whisk_cto1gtyyqgn4kjm40inxedotuwy3qtlhr2yi1yy.jpeg",
     tagline: "Personal & Family Driving",
   },
   {
-    title: "Premium Corporate Driving for Your Business",
-    subtitle: "Reliable logistics for your executive team. We provide polished, professional chauffeurs who understand corporate standards.",
+    title: "Reliable Business Drivers for Your Company",
+    subtitle: "Need drivers for work trips and office movement? We provide professional drivers who understand corporate standards.",
     image: "/confident-professional-driver-side-view-600nw-2149539983.webp",
     tagline: "Corporate & Executive Service",
   },
   {
-    title: "Vetted Drivers for School & Special Occasions",
-    subtitle: "Safety first. Our background-checked drivers ensure your loved ones get to their destination securely and on time.",
+    title: "Verified Drivers for School Runs and Events",
+    subtitle: "Safety comes first. Our background-checked drivers help your loved ones get to their destination safely and on time.",
     image: "/young-black-handsome-cab-driver-600nw-1434428810.webp",
     tagline: "Safe & Reliable Transport",
   },
@@ -78,14 +78,14 @@ export default function HeroSection() {
                     href="/hire"
                     className="group px-10 py-5 bg-blue-600 text-white rounded-[24px] font-black text-base hover:bg-blue-700 transition-all shadow-2xl shadow-blue-500/20 hover:shadow-blue-500/40 hover:-translate-y-1 flex items-center justify-center gap-3"
                   >
-                    Hire Your Driver
+                    Hire a Driver
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </a>
                   <a
                     href="/operators"
                     className="px-10 py-5 bg-gray-50 text-gray-900 rounded-[24px] font-bold text-base hover:bg-white hover:shadow-xl transition-all border border-gray-100 flex items-center justify-center"
                   >
-                    Explore Drivers
+                    View Drivers
                   </a>
                 </div>
 
@@ -105,7 +105,7 @@ export default function HeroSection() {
                     <div className="flex items-center gap-1 text-yellow-500 mb-0.5">
                       {[1, 2, 3, 4, 5].map((s) => <Star key={s} className="w-4 h-4 fill-current" />)}
                     </div>
-                    <p className="text-sm font-bold text-gray-900">Trusted by 500+ Residents</p>
+                    <p className="text-sm font-bold text-gray-900">Trusted by 500+ Lagos Residents</p>
                   </div>
                 </div>
               </motion.div>
@@ -143,10 +143,10 @@ export default function HeroSection() {
                 >
                   <div className="flex items-center gap-2 mb-2">
                     <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Current Ready Pool</span>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">Drivers Available</span>
                   </div>
                   <div className="text-4xl font-black text-blue-600 leading-none">47+</div>
-                  <p className="text-xs font-bold text-gray-500 mt-2">Vetted Drivers Available Today</p>
+                  <p className="text-xs font-bold text-gray-500 mt-2">Verified drivers available today</p>
                 </motion.div>
 
                 <motion.div

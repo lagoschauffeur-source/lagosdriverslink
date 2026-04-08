@@ -7,29 +7,29 @@ import { motion, AnimatePresence } from "framer-motion";
 const testimonials = [
   {
     name: "Tehilah Adekunle",
-    role: "Proprietor, High-End Hospitality",
-    quote: "Reliability is everything for my business. My driver is consistently on time, professional, and handles Lagos traffic with incredible patience and skill.",
+    role: "Hospitality Business Owner",
+    quote: "For my business, reliability is very important. My driver is always on time, respectful, and handles Lagos traffic very well.",
     photo: "/Fanta_blog_2020-08-28-Traore-29-Edit-800x533.jpg",
     rating: 5
   },
   {
     name: "Emmanuel Kalu",
     role: "Executive Director",
-    quote: "Finding a driver who understands executive standards is tough, but Lagos Drivers Link made it easy. Our driver is polished, discrete, and highly professional.",
+    quote: "It is hard to find a driver who understands executive work, but Lagos Drivers Link made it easy. Our driver is calm, discreet, and very professional.",
     photo: "/360_F_246149382_KHkt8Mw8pptlmVuiqmhavvHBC4SEqBu1.jpg",
     rating: 5
   },
   {
     name: "Tolulope Adebayo",
     role: "Fleet Operations Manager",
-    quote: "The depth of vetting here is unmatched. We saved time and costs while significantly improving the quality and safety of our travel experience.",
+    quote: "Their driver checks are thorough. We saved time and cost, and our trips are now safer and better organized.",
     photo: "/rose.jpeg",
     rating: 5
   },
   {
     name: "Chinedu Okoro",
     role: "Chief Medical Consultant",
-    quote: "After long clinical shifts, the last thing I want is to drive in traffic. My driver manages the road with such skill that I can finally relax on my way home.",
+    quote: "After long hospital shifts, I do not have strength to drive in traffic. My driver handles the road well, so I can rest on my way home.",
     photo: "/istockphoto-1081381240-612x612.jpg",
     rating: 5
   },
@@ -70,12 +70,12 @@ export default function Testimonials() {
             viewport={{ once: true }}
             className="space-y-10"
           >
-            <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-xs font-black uppercase tracking-widest leading-none">Trusted by Leaders</span>
+            <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-xs font-black uppercase tracking-widest leading-none">What Our Clients Say</span>
             <h2 className="text-4xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-none">
-              Loved by our <br /><span className="text-blue-600">Community.</span>
+              Trusted by People <br /><span className="text-blue-600">Across Lagos.</span>
             </h2>
             <p className="text-xl text-gray-500 font-medium leading-relaxed max-w-lg">
-              We take pride in every match we make. Read how Lagos residents and businesses are transforming their daily travel.
+              We are proud of every driver we place. See what Lagos families and businesses are saying about our service.
             </p>
             <div className="flex gap-8 items-center pt-8 border-t border-gray-100">
               <div className="flex -space-x-3">
@@ -89,7 +89,7 @@ export default function Testimonials() {
                 <div className="flex items-center gap-1 text-blue-600 mb-1">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
                 </div>
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Top Rated Service</p>
+                <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Top Rated by Clients</p>
               </div>
             </div>
           </motion.div>

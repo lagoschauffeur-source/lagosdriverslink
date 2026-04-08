@@ -6,10 +6,10 @@ import { motion } from "framer-motion";
 export default function SalaryPlansHighlight() {
   const plans = [
     { title: "Daily Chauffeur", amount: "₦30k", subtitle: "Per shift", icon: <Clock className="w-5 h-5" />, popular: false },
-    { title: "Weekdays (M-F)", amount: "₦175k", subtitle: "Standard", icon: <Calendar className="h-5 w-5" />, popular: false },
-    { title: "Extended (M-S)", amount: "₦195k", subtitle: "Gold Cover", icon: <Calendar className="h-5 w-5" />, popular: true },
-    { title: "Full Week (M-S)", amount: "₦225k", subtitle: "Elite Tier", icon: <Calendar className="h-5 w-5" />, popular: false },
-    { title: "VIP Specialist", amount: "₦280k", subtitle: "Tactical", icon: <Shield className="h-5 w-5" />, popular: false },
+    { title: "Weekdays (M-F)", amount: "₦195k", subtitle: "Standard", icon: <Calendar className="h-5 w-5" />, popular: false },
+    { title: "Extended (M-S)", amount: "₦230k", subtitle: "Gold Cover", icon: <Calendar className="h-5 w-5" />, popular: true },
+    { title: "Full Week (M-S)", amount: "₦250k", subtitle: "Elite Tier", icon: <Calendar className="h-5 w-5" />, popular: false },
+    { title: "VIP Specialist", amount: "₦335k", subtitle: "Tactical", icon: <Shield className="h-5 w-5" />, popular: false },
   ];
 
   return (
@@ -36,10 +36,10 @@ export default function SalaryPlansHighlight() {
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
           {[
             { title: "Daily Driver", amount: "₦30k", subtitle: "Per Day", icon: <Clock className="w-5 h-5" />, popular: false },
-            { title: "Standard (M-F)", amount: "₦175k", subtitle: "Monthly", icon: <Calendar className="h-5 w-5" />, popular: false },
-            { title: "Premium (M-S)", amount: "₦195k", subtitle: "Most Trusted", icon: <Calendar className="h-5 w-5" />, popular: true },
-            { title: "Professional (M-S)", amount: "₦225k", subtitle: "Full-Time", icon: <Calendar className="h-5 w-5" />, popular: false },
-            { title: "Elite Executive", amount: "₦280k", subtitle: "Specialized", icon: <Shield className="h-5 w-5" />, popular: false },
+            { title: "Standard (M-F)", amount: "₦195k", subtitle: "Monthly", icon: <Calendar className="h-5 w-5" />, popular: false },
+            { title: "Premium (M-S)", amount: "₦230k", subtitle: "Most Trusted", icon: <Calendar className="h-5 w-5" />, popular: true },
+            { title: "Professional (M-S)", amount: "₦250k", subtitle: "Full-Time", icon: <Calendar className="h-5 w-5" />, popular: false },
+            { title: "Elite Executive", amount: "₦335k", subtitle: "Specialized", icon: <Shield className="h-5 w-5" />, popular: false },
           ].map((p, i) => (
             <motion.div
               key={i}

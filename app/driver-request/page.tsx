@@ -200,7 +200,31 @@ export default function DriverRequestForm() {
 
   return (
     <div className="bg-white min-h-screen">
-      <div className="w-full max-w-4xl mx-auto px-4 py-12">
+      <div className="w-full max-w-7xl mx-auto px-4 py-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+          <div className="hidden lg:block lg:sticky lg:top-8">
+            <div className="rounded-[2rem] overflow-hidden border border-gray-100 shadow-xl bg-white">
+              <div className="relative h-[540px]">
+                <img
+                  src="/img_.png"
+                  alt="Professional driver support in Lagos"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#003a66]/85 via-[#0077cc]/35 to-transparent" />
+                <div className="absolute bottom-0 p-8 text-white">
+                  <h2 className="text-3xl font-black leading-tight">
+                    Safe, Verified Drivers in Lagos
+                  </h2>
+                  <p className="mt-3 text-sm text-blue-50 leading-relaxed">
+                    Tell us what you need and we will match you with a trusted
+                    driver quickly.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
         <div className="mb-8">
           <Link
             href="/"
@@ -227,56 +251,74 @@ export default function DriverRequestForm() {
         </div>
 
         {/* Plan Selection Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6 mb-12">
           <Link
             href="/driver-request/daily"
-            className="group block p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1"
+            className="group block rounded-3xl border border-gray-100 bg-white p-6 md:p-7 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-bold text-gray-900">Daily Driver</h3>
-              <CheckCircle2 className="h-5 w-5 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="flex justify-between items-start mb-5">
+              <h3 className="text-lg md:text-xl font-black text-gray-900">Daily Driver</h3>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-blue-50 text-blue-600">
+                <CheckCircle2 className="h-3.5 w-3.5" />
+                On Demand
+              </span>
             </div>
-            <div className="flex items-baseline mb-4">
-              <span className="text-3xl font-extrabold text-blue-600">₦30,000</span>
-              <span className="text-gray-500 ml-1">/day</span>
+            <div className="flex items-end gap-1 mb-4">
+              <span className="text-3xl md:text-4xl font-black tracking-tight text-blue-600">₦30,000</span>
+              <span className="text-gray-500 text-sm mb-1">/day</span>
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed mb-5">
               Perfect for one-time trips or busy days.
             </p>
+            <div className="pt-4 border-t border-gray-100 text-xs font-bold text-blue-600 uppercase tracking-wider">
+              Tap to continue
+            </div>
           </Link>
 
           <Link
             href="/driver-request/weekday"
-            className="group block p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1"
+            className="group block rounded-3xl border border-blue-200 bg-gradient-to-b from-blue-50/50 to-white p-6 md:p-7 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 hover:-translate-y-1"
           >
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-bold text-gray-900">Weekday</h3>
-              <CheckCircle2 className="h-5 w-5 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="flex justify-between items-start mb-5">
+              <h3 className="text-lg md:text-xl font-black text-gray-900">Weekday</h3>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-blue-600 text-white">
+                <CheckCircle2 className="h-3.5 w-3.5" />
+                Popular
+              </span>
             </div>
-            <div className="flex items-baseline mb-4">
-              <span className="text-3xl font-extrabold text-blue-600">₦175k</span>
-              <span className="text-gray-500 ml-1">/month</span>
+            <div className="flex items-end gap-1 mb-4">
+              <span className="text-3xl md:text-4xl font-black tracking-tight text-blue-600">₦195k</span>
+              <span className="text-gray-500 text-sm mb-1">/month</span>
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed mb-5">
               Professional service from Monday to Friday.
             </p>
+            <div className="pt-4 border-t border-blue-100 text-xs font-bold text-blue-600 uppercase tracking-wider">
+              Tap to continue
+            </div>
           </Link>
 
           <Link
             href="/driver-request/weekdayPlus"
-            className="group block p-6 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 transform hover:-translate-y-1"
+            className="group block rounded-3xl border border-gray-100 bg-white p-6 md:p-7 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 hover:-translate-y-1 sm:col-span-2 xl:col-span-1"
           >
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-bold text-gray-900">Weekday+</h3>
-              <CheckCircle2 className="h-5 w-5 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="flex justify-between items-start mb-5">
+              <h3 className="text-lg md:text-xl font-black text-gray-900">Weekday+</h3>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-blue-50 text-blue-600">
+                <CheckCircle2 className="h-3.5 w-3.5" />
+                Extended
+              </span>
             </div>
-            <div className="flex items-baseline mb-4">
-              <span className="text-3xl font-extrabold text-blue-600">₦195k</span>
-              <span className="text-gray-500 ml-1">/month</span>
+            <div className="flex items-end gap-1 mb-4">
+              <span className="text-3xl md:text-4xl font-black tracking-tight text-blue-600">₦230k</span>
+              <span className="text-gray-500 text-sm mb-1">/month</span>
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed mb-5">
               Extended coverage from Monday to Saturday.
             </p>
+            <div className="pt-4 border-t border-gray-100 text-xs font-bold text-blue-600 uppercase tracking-wider">
+              Tap to continue
+            </div>
           </Link>
         </div>
 
@@ -396,8 +438,8 @@ export default function DriverRequestForm() {
                   className="w-full bg-white border border-gray-200 rounded-xl py-4 pl-12 pr-10 text-gray-900 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm cursor-pointer"
                 >
                   <option value="daily">Daily Driver - ₦30,000/day</option>
-                  <option value="weekday">Weekday (Mon-Fri) - ₦175,000/month</option>
-                  <option value="weekdayPlus">Weekday+ (Mon-Sat) - ₦195,000/month</option>
+                  <option value="weekday">Weekday (Mon-Fri) - ₦195,000/month</option>
+                  <option value="weekdayPlus">Weekday+ (Mon-Sat) - ₦230,000/month</option>
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                   <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -476,6 +518,8 @@ export default function DriverRequestForm() {
               )}
             </button>
           </form>
+        </div>
+          </div>
         </div>
       </div>
     </div>

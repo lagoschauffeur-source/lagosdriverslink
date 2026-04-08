@@ -14,35 +14,35 @@ export default function HirePlansSection() {
       salaryRange: "₦30k/day",
       features: ["12-hour shift deployment", "Flexible zone coverage", "Event & VIP Logistics", "Same-day activation"],
       planValue: "daily",
-      description: "Optimized for high-profile events, airport protocols, or short-term logistics support.",
+      description: "Best for events, airport pickups, or short-term driving needs.",
       icon: <Clock className="h-5 w-5" />,
     },
     {
       title: "Weekday Pro",
       badge: "Mon – Fri",
-      salaryRange: "₦175k/mo",
-      features: ["Dedicated executive driver", "Consistent commute protocol", "Professional & Punctual", "Quarterly skill audit"],
+      salaryRange: "₦195k/mo",
+      features: ["Dedicated executive driver", "Consistent commute routine", "Professional & Punctual", "Quarterly skill audit"],
       planValue: "weekday",
-      description: "Standard corporate arrangement for daily commutes and business travel cycles.",
+      description: "A good option for weekday office movement and regular business trips.",
       icon: <Calendar className="h-5 w-5" />,
       popular: true,
     },
     {
       title: "Extended Cover",
       badge: "Mon – Sat",
-      salaryRange: "₦195k/mo",
+      salaryRange: "₦230k/mo",
       features: ["6-day operational week", "Weekend errands logistics", "Priority replacement desk", "Inter-state capability"],
       planValue: "extended-weekday",
-      description: "Extended coverage for busy individuals and families with weekend requirements.",
+      description: "Great for busy people and families who also need Saturday coverage.",
       icon: <Calendar className="h-5 w-5" />,
     },
     {
       title: "Full Ecosystem",
       badge: "Mon – Sun",
-      salaryRange: "₦225k/mo",
+      salaryRange: "₦250k/mo",
       features: ["7-day total availability", "24/7 dedicated chauffeur", "Full weekend logistics", "Elite Tier service"],
       planValue: "full-week",
-      description: "Uncompromising weekly coverage for high-net-worth individuals and elite fleets.",
+      description: "Full weekly coverage for people and businesses that need a driver every day.",
       icon: <Calendar className="h-5 w-5" />,
     },
   ];
@@ -58,12 +58,12 @@ export default function HirePlansSection() {
         {/* Header */}
         <div className="text-center mb-20 space-y-4">
           <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <span className="inline-block px-4 py-2 bg-[#0099ff]/10 text-[#0099ff] rounded-full text-xs font-black uppercase tracking-widest">Pricing Matrix</span>
+            <span className="inline-block px-4 py-2 bg-[#0099ff]/10 text-[#0099ff] rounded-full text-xs font-black uppercase tracking-widest">Pricing Plans</span>
             <h2 className="text-4xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-none">
-              Deployment <span className="text-[#0099ff]">Levels.</span>
+              Driver Plan <span className="text-[#0099ff]">Options.</span>
             </h2>
             <p className="text-xl text-gray-500 font-medium max-w-2xl mx-auto leading-relaxed">
-              Select a professional arrangement engineered for your specific logistical requirements.
+              Pick the plan that fits your schedule and budget.
             </p>
           </motion.div>
         </div>
@@ -77,9 +77,9 @@ export default function HirePlansSection() {
           className="grid grid-cols-3 gap-6 mb-20"
         >
           {[
-            { t: "Select Protocol", desc: "Choose your tier" },
-            { t: "Sync Metadata", desc: "Submit requirements" },
-            { t: "Elite Match", desc: "Meet your chauffeur" }
+            { t: "Choose a Plan", desc: "Pick what suits you" },
+            { t: "Send Details", desc: "Tell us what you need" },
+            { t: "Get Matched", desc: "Meet your driver" }
           ].map((step, i) => (
             <motion.div key={i} variants={fadeUp} className="text-center bg-white border border-gray-100 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
               <div className="w-12 h-12 mx-auto rounded-2xl bg-gray-950 text-[#0099ff] font-black text-xl flex items-center justify-center mb-4 transition-transform hover:scale-110">
@@ -107,7 +107,7 @@ export default function HirePlansSection() {
             >
               {pkg.popular && (
                 <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full text-xs font-black bg-[#0099ff] text-white shadow-xl">
-                  Most Recommended
+                  Most Popular
                 </span>
               )}
 
@@ -142,7 +142,7 @@ export default function HirePlansSection() {
                   : "bg-[#0099ff]/[0.05] text-[#0099ff] border border-transparent hover:border-[#0099ff]/20 hover:bg-white hover:shadow-xl"
                   }`}
               >
-                Select Protocol <ChevronRight className="h-4 w-4" />
+                Choose Plan <ChevronRight className="h-4 w-4" />
               </button>
             </motion.div>
           ))}
@@ -164,18 +164,18 @@ export default function HirePlansSection() {
                   <Shield className="h-8 w-8 text-[#0099ff]" />
                 </div>
                 <div>
-                  <h3 className="text-3xl lg:text-5xl font-black tracking-tighter">Tactical Specialist.</h3>
+                  <h3 className="text-3xl lg:text-5xl font-black tracking-tighter">Specialist Driver.</h3>
                   <div className="flex items-center gap-4 mt-2">
-                    <span className="text-[#0099ff] font-black text-2xl tracking-tight">₦280k/mo</span>
+                    <span className="text-[#0099ff] font-black text-2xl tracking-tight">₦335k/mo</span>
                     <span className="px-3 py-1 bg-[#0099ff]/20 text-[#0099ff] text-[10px] font-black uppercase tracking-widest rounded-full border border-[#0099ff]/30">Elite Tier</span>
                   </div>
                 </div>
               </div>
               <p className="text-xl text-gray-400 font-medium leading-relaxed">
-                Specially trained professionals with law enforcement and defensive tactical backgrounds. Engineered for high-stress executive protection and emergency mobility.
+                Specially trained drivers for high-security movement, executive protection, and emergency situations.
               </p>
               <div className="flex flex-wrap gap-3">
-                {["Offensive Driving", "Protocol Mastery", "High-Asset Security", "First-Responder Certified"].map((f, i) => (
+                {["Offensive Driving", "Security Procedures", "High-Asset Security", "First-Responder Certified"].map((f, i) => (
                   <div key={i} className="flex items-center gap-2 px-5 py-2 bg-white/5 border border-white/10 text-gray-300 text-xs rounded-full font-bold">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#0099ff]" /> {f}
                   </div>

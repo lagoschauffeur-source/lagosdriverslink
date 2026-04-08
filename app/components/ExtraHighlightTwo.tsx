@@ -26,21 +26,21 @@ export default function ExtraHighlightTwo() {
             viewport={{ once: true }}
           >
             <span className="inline-flex items-center gap-2 text-blue-600 text-xs font-black bg-blue-50 px-4 py-2 rounded-full mb-8 uppercase tracking-widest leading-none">
-              <ShieldCheck className="w-3.5 h-3.5" /> Premium Standards
+              <ShieldCheck className="w-3.5 h-3.5" /> Trusted Standards
             </span>
             <h3 className="text-4xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-none mb-8">
-              Reliability You Can <br /><span className="text-blue-600">Trust.</span>
+              Reliable Service You Can <br /><span className="text-blue-600">Trust.</span>
             </h3>
             <p className="text-xl text-gray-500 max-w-lg leading-relaxed font-medium mb-12">
-              We go beyond matching. We provide continuous support to ensure your daily commute is seamless. Every driver is a professional committed to your peace of mind.
+              We do not stop after matching. Our team supports you so your daily movement stays smooth. Every driver is trained to keep you safe and comfortable.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-6 mb-12">
               {[
-                { icon: CheckCircle2, text: "Professional & Personal Chauffeurs" },
-                { icon: Star, text: "Top-Rated by Lagos Residents" },
-                { icon: Clock, text: "Reliable Support for Every Trip" },
-                { icon: BadgeCheck, text: "Verified Operational History" },
+                { icon: CheckCircle2, text: "Drivers for personal and business use" },
+                { icon: Star, text: "Loved by Lagos residents" },
+                { icon: Clock, text: "Support for every trip" },
+                { icon: BadgeCheck, text: "Verified driving records" },
               ].map(({ icon: Icon, text }, i) => (
                 <div key={i} className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-transparent hover:border-blue-600/10 hover:bg-white hover:shadow-xl transition-all group">
                   <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-blue-600 group-hover:scale-110 transition-transform">
@@ -55,7 +55,7 @@ export default function ExtraHighlightTwo() {
               href="/hire"
               className="inline-flex px-10 py-5 bg-blue-600 text-white rounded-2xl font-black text-[15px] hover:bg-blue-700 transition-all shadow-2xl shadow-blue-500/30 hover:-translate-y-1 gap-3 items-center group"
             >
-              Get Started Now
+              Get Started
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -79,10 +79,10 @@ export default function ExtraHighlightTwo() {
 
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { title: "Fully Vetted", sub: "Deep Background Checks", icon: <ShieldCheck className="w-4 h-4 text-blue-600" /> },
-                  { title: "Highly Rated", sub: "Member Satisfaction", icon: <Star className="w-4 h-4 text-blue-600" /> },
-                  { title: "24/7 Support", sub: "Always Here to Help", icon: <Clock className="w-4 h-4 text-blue-600" /> },
-                  { title: "Certified", sub: "Verified Credentials", icon: <BadgeCheck className="w-4 h-4 text-blue-600" /> },
+                  { title: "Fully Checked", sub: "Background Verification", icon: <ShieldCheck className="w-4 h-4 text-blue-600" /> },
+                  { title: "Well Rated", sub: "Customer Satisfaction", icon: <Star className="w-4 h-4 text-blue-600" /> },
+                  { title: "24/7 Support", sub: "Always Ready to Help", icon: <Clock className="w-4 h-4 text-blue-600" /> },
+                  { title: "Certified", sub: "Verified Documents", icon: <BadgeCheck className="w-4 h-4 text-blue-600" /> },
                 ].map((item, i) => (
                   <div
                     key={i}
@@ -98,7 +98,7 @@ export default function ExtraHighlightTwo() {
             {/* Stat Badge */}
             <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-[2rem] shadow-2xl border border-gray-50 max-w-[180px]">
               <div className="text-3xl font-black text-blue-600 leading-none mb-1">500+</div>
-              <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Residents Found Drivers</div>
+              <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">People matched with drivers</div>
             </div>
           </motion.div>
         </div>

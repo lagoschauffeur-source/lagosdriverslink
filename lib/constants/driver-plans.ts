@@ -18,7 +18,7 @@ export const driverPlans = {
     name: "Weekday Driver (Mon-Fri)",
     description:
       "Professional driver for your weekday needs. Perfect for work commutes and business meetings.",
-    baseRate: 175000,
+    baseRate: 195000,
     features: [
       "Daily schedule",
       "Familiarity with Lagos routes",
@@ -32,7 +32,7 @@ export const driverPlans = {
     name: "Weekday+ Driver (Mon-Sat)",
     description:
       "Extended coverage including Saturdays. Ideal for professionals with weekend commitments.",
-    baseRate: 195000,
+    baseRate: 230000,
     features: [
       "Defensive driving",
       "Flexible scheduling",

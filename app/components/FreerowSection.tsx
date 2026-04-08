@@ -25,24 +25,24 @@ export default function FreerowSection({
     "Thoroughly verified & background-indexed drivers",
     "Rapid placement within 3-10 business days",
     "Comprehensive HR management included",
-    "Premium replacement guarantee protocol",
+    "Premium replacement guarantee",
   ];
 
   const packageOptions = [
     {
       title: "Managed Service Plan",
-      price: "₦50,000",
+      price: "₦70,000",
       features: [
         "Full HR & Payroll administration",
         "Driver remains LDL qualified staff",
         "Ongoing training & verification",
-        "Subsidized replacement protocol",
+        "Subsidized replacement support",
       ],
       bestFor: "Enterprise & Private Fleet Oversight",
     },
     {
       title: "Direct Employment Plan",
-      price: "₦70,000",
+      price: "₦100,000",
       features: [
         "Driver becomes your direct employee",
         "Full background audit documentation",
@@ -149,13 +149,13 @@ export default function FreerowSection({
               {[
                 {
                   title: "Managed Service Plan",
-                  price: "₦50k",
+                  price: "₦70k",
                   features: ["Full HR & Payroll support", "Qualified LDL staff members", "Ongoing skills training", "Seamless replacement service"],
                   bestFor: "Families & Businesses",
                 },
                 {
                   title: "Direct Employment Plan",
-                  price: "₦70k",
+                  price: "₦100k",
                   features: ["Driver joins your direct team", "Full background audit shared", "Complete personal control", "One-time expert matching"],
                   bestFor: "Private Households",
                 },

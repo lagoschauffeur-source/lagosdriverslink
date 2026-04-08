@@ -45,7 +45,7 @@ export default async function HomePage() {
 
   const freerowProps = {
     heroTitle: "Hire a Pro Driver in Lagos",
-    heroSubtitle: "Pre-vetted professionals for all driving needs",
+    heroSubtitle: "Verified drivers for your personal and business driving needs",
     heroImage:
       data?.heroImage?.asset?.url ??
       `${BASE_URL}/Whisk_cto1gtyyqgn4kjm40inxedotuwy3qtlhr2yi1yy.jpeg`,

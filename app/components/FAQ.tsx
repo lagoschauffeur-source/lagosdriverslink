@@ -7,20 +7,20 @@ import Link from "next/link";
 
 const faqs = [
   {
-    question: "How do I hire a professional driver?",
-    answer: "It's simple. Start by sharing your requirements through our hire form. We'll help you choose the best plan and match you with a vetted driver who fits your schedule.",
+    question: "How do I hire a driver?",
+    answer: "It is simple. Fill the hire form with your needs, and we will help you choose the right plan and match you with a verified driver.",
   },
   {
-    question: "How do you verify your drivers?",
-    answer: "Every driver undergoes a rigorous 4-step verification: background checks, criminal record clearance, home address verification, and a hands-on driving skills assessment.",
+    question: "How do you check your drivers?",
+    answer: "Every driver passes through 4 key checks: background checks, criminal record check, address verification, and practical driving test.",
   },
   {
-    question: "What makes your Premium Drivers special?",
-    answer: "Our premium drivers are the best in the city—highly experienced, professionally trained in defensive driving, and experts at navigating Lagos traffic with poise and safety.",
+    question: "What is special about your premium drivers?",
+    answer: "Our premium drivers are highly experienced, trained in defensive driving, and very familiar with Lagos roads and traffic.",
   },
   {
-    question: "Can I hire a driver for just a few days?",
-    answer: "Absolutely. We offer flexible plans ranging from daily event support to long-term dedicated driving, tailored to your specific needs.",
+    question: "Can I hire a driver for only a few days?",
+    answer: "Yes, you can. We have flexible plans from daily support to long-term monthly options.",
   },
 ];
 
@@ -42,12 +42,12 @@ export default function FAQ() {
             className="space-y-12"
           >
             <div className="space-y-6">
-              <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-xs font-black uppercase tracking-widest leading-none">Support & Guidance</span>
+              <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-xs font-black uppercase tracking-widest leading-none">Help and Support</span>
               <h2 className="text-4xl lg:text-7xl font-black text-gray-900 tracking-tighter leading-none">
-                Common <br /><span className="text-blue-600">Questions.</span>
+                Frequently Asked <br /><span className="text-blue-600">Questions.</span>
               </h2>
               <p className="text-xl text-gray-500 font-medium leading-relaxed max-w-lg">
-                Everything you need to know about our vetting process, matching standards, and getting started.
+                Everything you need to know before you hire a driver from us.
               </p>
             </div>
 
@@ -58,7 +58,7 @@ export default function FAQ() {
                 </div>
                 <div>
                   <div className="text-lg font-black text-gray-900 leading-none mb-1">24/7 Support</div>
-                  <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">We're always here for you</div>
+                  <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">We are always here to help</div>
                 </div>
               </div>
               <div className="flex items-center gap-6 group">
@@ -66,15 +66,15 @@ export default function FAQ() {
                   <ShieldCheck className="w-6 h-6" />
                 </div>
                 <div>
-                  <div className="text-lg font-black text-gray-900 leading-none mb-1">Safe & Secure</div>
-                  <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Premium Safety Standards</div>
+                  <div className="text-lg font-black text-gray-900 leading-none mb-1">Safe and Secure</div>
+                  <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Strong safety standards</div>
                 </div>
               </div>
             </div>
 
             <div className="pt-8">
               <Link href="/contact" className="inline-flex items-center gap-3 text-blue-600 font-black uppercase text-xs tracking-[0.2em] group">
-                Talk to our Team <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
+                Talk to Our Team <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
               </Link>
             </div>
           </motion.div>

@@ -19,20 +19,20 @@ export default function ExtraHighlightOne() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="inline-flex items-center gap-2 text-blue-600 text-sm font-bold bg-blue-50 px-4 py-1.5 rounded-full mb-5">
-              <Sparkles className="w-3.5 h-3.5" /> Why Our Clients Trust Us
+              <Sparkles className="w-3.5 h-3.5" /> Why People Choose Us
             </span>
             <h3 className="text-4xl sm:text-5xl font-black text-gray-900 tracking-tighter leading-none">
-              Your Safety is <br />Our Priority.
+              Your Safety is <br />Our First Priority.
             </h3>
             <p className="text-gray-500 mt-6 text-lg font-medium max-w-md leading-relaxed">
-              We don't just find you a driver; we find you a partner for the road. Every professional in our pool undergoes rigorous background checks and emotional intelligence training.
+              We do more than assign a driver. We help you get someone reliable and respectful. Every driver goes through proper checks and training.
             </p>
 
             <ul className="mt-8 space-y-4">
               {[
-                "Highly experienced & vetted professionals",
-                "Instant matching based on your location",
-                "Fair pricing with no hidden charges",
+                "Experienced and verified drivers",
+                "Quick matching based on your location",
+                "Clear pricing with no hidden charges",
               ].map((b, i) => (
                 <li key={i} className="flex items-center gap-3 text-gray-900 font-bold text-base">
                   <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
