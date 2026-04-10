@@ -19,7 +19,11 @@ import {
 import { DriverRequestConfirmationEmail } from "../../../emails/DriverRequestConfirmationEmail";
 import DriverRequestEmail from "../../../emails/DriverRequestEmail";
 import { validateEmail, validatePhone } from "../../../lib/validators";
-import { driverPlans, type DriverPlanId } from "@/lib/constants/driver-plans";
+import {
+  driverPlans,
+  resolveDriverPlanId,
+  type DriverPlanId,
+} from "@/lib/constants/driver-plans";
 
 // Force dynamic rendering to disable prerendering
 export const dynamic = "force-dynamic";
@@ -41,7 +45,9 @@ type FormErrors = Partial<Record<keyof FormData, string>> & {
 export default function DriverPlanPage() {
   const router = useRouter();
   const params = useParams();
-  const planId = params.id as DriverPlanId;
+  const rawPlanId = params.id as string;
+  const planId: DriverPlanId =
+    resolveDriverPlanId(rawPlanId) ?? "daily";
 
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -49,7 +55,7 @@ export default function DriverPlanPage() {
     phone: "",
     location: "",
     additionalNotes: "",
-    plan: planId || "daily",
+    plan: planId,
     hasAccommodation: false,
   });
 
@@ -58,7 +64,7 @@ export default function DriverPlanPage() {
   const [success, setSuccess] = useState(false);
 
   // Get plan details
-  const currentPlan = driverPlans[planId] || driverPlans.daily;
+  const currentPlan = driverPlans[planId];
 
   useEffect(() => {
     setFormData((prev) => ({ ...prev, plan: planId }));
@@ -224,7 +230,7 @@ export default function DriverPlanPage() {
                 <div className="text-3xl font-bold text-white mb-2">
                   {formatPrice(currentPlan.baseRate)}
                   <span className="text-sm text-gray-400 ml-1">
-                    {planId === "daily" ? "/day" : "/month"}
+                    {currentPlan.billingPeriod === "day" ? "/day" : "/month"}
                   </span>
                 </div>
               </div>

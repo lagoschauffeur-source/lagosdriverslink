@@ -9,6 +9,7 @@ import {
   Star,
 } from "lucide-react";
 import Image from "next/image";
+import { corporateMonthlyPlans, formatNgn } from "@/lib/constants/pricing";
 
 export default function CorporatePage() {
   const features = [
@@ -38,7 +39,7 @@ export default function CorporatePage() {
   const pricingPlans = [
     {
       name: "Basic Corporate",
-      price: "₦150,000",
+      price: formatNgn(corporateMonthlyPlans.basic),
       period: "/month",
       features: [
         "1 Dedicated Driver",
@@ -50,7 +51,7 @@ export default function CorporatePage() {
     },
     {
       name: "Premium Corporate",
-      price: "₦300,000",
+      price: formatNgn(corporateMonthlyPlans.premium),
       period: "/month",
       features: [
         "2 Dedicated Drivers",

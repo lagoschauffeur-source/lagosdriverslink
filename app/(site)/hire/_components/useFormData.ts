@@ -2,6 +2,7 @@
 
 // _components/useFormData.ts
 import { useState, ChangeEvent } from "react";
+import { salaryRates } from "@/lib/constants/driver-plans";
 
 interface PersonalDetails {
   fullName: string;
@@ -55,7 +56,7 @@ const initialFormData: FormDataType = {
   projectDetails: {
     driverType: "personal",
     contractDuration: "6-months",
-    salaryPackage: "175000",
+    salaryPackage: "195000",
     workSchedule: "weekdays",
     dutiesDescription: "",
     resumptionDate: "",
@@ -76,14 +77,6 @@ const initialFormData: FormDataType = {
     officeAddress: "",
     hasAccommodation: false,
   },
-};
-
-const salaryRates = {
-  weekdays: 175000,
-  weekdaysSaturday: 195000,
-  fullWeek: 225000,
-  spyPolice: 280000,
-  shift: 30000,
 };
 
 export default function useFormData() {

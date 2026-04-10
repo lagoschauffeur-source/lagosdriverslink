@@ -11,6 +11,7 @@ import {
   Row,
   Column,
 } from "@react-email/components";
+import { getDriverPlanLabel } from "@/lib/constants/driver-plans";
 
 type Props = {
   fullName: string;
@@ -84,19 +85,7 @@ export default function DriverRequestEmail({
                 <Row style={rowSpacing}>
                   <Column width="50%">
                     <Text style={label}>Selected Plan</Text>
-                    <Text style={value}>
-                      {plan === "daily"
-                        ? "Daily Driver"
-                        : plan === "weekday"
-                        ? "Weekday Driver (Mon-Fri)"
-                        : plan === "weekdayPlus"
-                        ? "Weekday+ Driver (Mon-Sat)"
-                        : plan === "fullWeek"
-                        ? "Full Week Driver"
-                        : plan === "vipSpy"
-                        ? "VIP Spy Police Driver"
-                        : plan}
-                    </Text>
+                    <Text style={value}>{getDriverPlanLabel(plan || "")}</Text>
                   </Column>
                   <Column width="50%">
                     <Text style={label}>Has Accommodation</Text>

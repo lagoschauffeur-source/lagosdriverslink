@@ -8,7 +8,7 @@ function formatWorkScheduleForEmail(schedule: string, salaryPackage: string): st
     weekdays: `Monday-Friday (₦${parseInt(salaryPackage || "0").toLocaleString()})`,
     weekdaysSaturday: `Monday-Saturday (₦${parseInt(salaryPackage || "0").toLocaleString()})`,
     fullWeek: `Monday-Sunday (₦${parseInt(salaryPackage || "0").toLocaleString()})`,
-    spyPolice: `Spy Police Driver (₦${parseInt(salaryPackage || "0").toLocaleString()})`,
+    spyPolice: `Specialist Driver (₦${parseInt(salaryPackage || "0").toLocaleString()})`,
     shift: `Daily Service (₦${parseInt(salaryPackage || "0").toLocaleString()})`,
   };
   return scheduleMap[schedule] || schedule;

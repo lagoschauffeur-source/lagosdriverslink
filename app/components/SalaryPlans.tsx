@@ -1,26 +1,23 @@
 "use client";
 
 import { BadgeCheck, CalendarDays, Wallet, Info } from "lucide-react";
+import { driverPlans, driverRequestPlanOrder } from "@/lib/constants/driver-plans";
+import { formatNgn } from "@/lib/constants/pricing";
+
+const monthlyPlanIds = driverRequestPlanOrder.filter(
+  (id) => driverPlans[id].billingPeriod === "month"
+);
 
 export default function SalaryPlans() {
-  const salaries = [
-    {
-      title: "Mon – Fri",
-      amount: "₦175,000",
-      subtitle: "Standard weekday placement",
-    },
-    {
-      title: "Mon – Sat",
-      amount: "₦195,000",
-      subtitle: "Extended to Saturdays",
-      popular: true,
-    },
-    {
-      title: "Mon – Sun",
-      amount: "₦225,000",
-      subtitle: "Full week placement",
-    },
-  ];
+  const salaries = monthlyPlanIds.map((id) => {
+    const p = driverPlans[id];
+    return {
+      title: p.name,
+      amount: formatNgn(p.baseRate),
+      subtitle: `Typical monthly salary — ${p.scheduleBadge}`,
+      popular: id === "extended-weekday",
+    };
+  });
 
   return (
     <section className="bg-zinc-50 py-16">
@@ -40,7 +37,7 @@ export default function SalaryPlans() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {salaries.map((s, idx) => (
             <div
               key={idx}
@@ -73,4 +70,3 @@ export default function SalaryPlans() {
     </section>
   );
 }
-

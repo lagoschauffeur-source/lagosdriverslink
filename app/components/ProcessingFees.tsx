@@ -1,12 +1,13 @@
 "use client";
 
 import { ShieldCheck, Info, CheckCircle } from "lucide-react";
+import { formatNgn, placementProcessingFees } from "@/lib/constants/pricing";
 
 export default function ProcessingFees() {
   const plans = [
     {
       name: "Managed Service Plan",
-      fee: "₦70,000",
+      fee: formatNgn(placementProcessingFees.managedService),
       highlights: [
         "LagosDriversLink handles all HR administration",
         "Driver remains our qualified staff",
@@ -18,7 +19,7 @@ export default function ProcessingFees() {
     },
     {
       name: "Direct Employment Plan",
-      fee: "₦100,000",
+      fee: formatNgn(placementProcessingFees.directEmployment),
       highlights: [
         "Driver becomes your direct employee",
         "Complete background checks documentation",

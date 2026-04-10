@@ -23,7 +23,7 @@ import { useFormSubmission } from "@/lib/forms/useFormSubmission";
 import { useToast } from "@/lib/hooks/useToast";
 import { formValidators } from "@/lib/forms/validators";
 import type { FormDataLike } from "@/lib/forms";
-import { driverPlans } from "@/lib/constants/driver-plans";
+import { driverPlans, resolveDriverPlanId } from "@/lib/constants/driver-plans";
 import { apiEndpoints } from "@/lib/constants/api-endpoints";
 
 // Force dynamic rendering to disable prerendering
@@ -49,8 +49,9 @@ export default function RefactoredDriverRequestForm() {
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const selectedPlan = searchParams.get("plan");
-    if (selectedPlan && selectedPlan in driverPlans) {
-      setPlan(selectedPlan);
+    if (selectedPlan) {
+      const resolved = resolveDriverPlanId(selectedPlan);
+      if (resolved) setPlan(resolved);
     }
   }, []);
 

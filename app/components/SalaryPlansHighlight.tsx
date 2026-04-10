@@ -2,15 +2,29 @@
 
 import { Wallet, Calendar, Clock, Shield, BadgeCheck, Zap } from "lucide-react";
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
+import { driverPlans, driverRequestPlanOrder, type DriverPlanId } from "@/lib/constants/driver-plans";
+import { formatNgnThousandsK } from "@/lib/constants/pricing";
+
+const planIcons: Record<DriverPlanId, ReactNode> = {
+  daily: <Clock className="w-5 h-5" />,
+  weekday: <Calendar className="h-5 w-5" />,
+  "extended-weekday": <Calendar className="h-5 w-5" />,
+  "full-week": <Calendar className="h-5 w-5" />,
+  vip: <Shield className="h-5 w-5" />,
+};
 
 export default function SalaryPlansHighlight() {
-  const plans = [
-    { title: "Daily Chauffeur", amount: "₦30k", subtitle: "Per shift", icon: <Clock className="w-5 h-5" />, popular: false },
-    { title: "Weekdays (M-F)", amount: "₦195k", subtitle: "Standard", icon: <Calendar className="h-5 w-5" />, popular: false },
-    { title: "Extended (M-S)", amount: "₦230k", subtitle: "Gold Cover", icon: <Calendar className="h-5 w-5" />, popular: true },
-    { title: "Full Week (M-S)", amount: "₦250k", subtitle: "Elite Tier", icon: <Calendar className="h-5 w-5" />, popular: false },
-    { title: "VIP Specialist", amount: "₦335k", subtitle: "Tactical", icon: <Shield className="h-5 w-5" />, popular: false },
-  ];
+  const highlights = driverRequestPlanOrder.map((id) => {
+    const p = driverPlans[id];
+    return {
+      title: p.name,
+      amount: formatNgnThousandsK(p.baseRate),
+      subtitle: id === "daily" ? "Per day" : p.scheduleBadge,
+      icon: planIcons[id],
+      popular: id === "extended-weekday",
+    };
+  });
 
   return (
     <section className="bg-white py-32 relative overflow-hidden">
@@ -34,15 +48,9 @@ export default function SalaryPlansHighlight() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-6">
-          {[
-            { title: "Daily Driver", amount: "₦30k", subtitle: "Per Day", icon: <Clock className="w-5 h-5" />, popular: false },
-            { title: "Standard (M-F)", amount: "₦195k", subtitle: "Monthly", icon: <Calendar className="h-5 w-5" />, popular: false },
-            { title: "Premium (M-S)", amount: "₦230k", subtitle: "Most Trusted", icon: <Calendar className="h-5 w-5" />, popular: true },
-            { title: "Professional (M-S)", amount: "₦250k", subtitle: "Full-Time", icon: <Calendar className="h-5 w-5" />, popular: false },
-            { title: "Elite Executive", amount: "₦335k", subtitle: "Specialized", icon: <Shield className="h-5 w-5" />, popular: false },
-          ].map((p, i) => (
+          {highlights.map((p, i) => (
             <motion.div
-              key={i}
+              key={p.title}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

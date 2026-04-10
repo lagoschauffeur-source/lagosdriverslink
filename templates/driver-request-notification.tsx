@@ -12,6 +12,7 @@ import {
   Row,
   Column,
 } from "@react-email/components";
+import { driverRequestPlanDescriptionMap } from "@/lib/constants/pricing";
 
 interface DriverRequestNotificationProps {
   selectedPlan: string;
@@ -30,13 +31,7 @@ interface DriverRequestNotificationProps {
   additionalRequirements?: string;
 }
 
-const planDescriptions: Record<string, string> = {
-  daily: "Daily Driver Service (₦30,000 per day)",
-  weekday: "Weekday Driver Service (₦175,000 per month)",
-  weekdayPlus: "Weekday+ Driver Service (₦195,000 per month)",
-  fullWeek: "Full Week Driver Service (₦225,000 per month)",
-  vipSpy: "VIP Security Driver Service (₦280,000 per month)",
-};
+const planDescriptions = driverRequestPlanDescriptionMap();
 
 export function DriverRequestNotificationEmail({
   selectedPlan,
@@ -47,12 +42,13 @@ export function DriverRequestNotificationEmail({
   vehicleInformation,
   additionalRequirements,
 }: DriverRequestNotificationProps) {
+  const planLine =
+    planDescriptions[selectedPlan] ?? `Driver service (${selectedPlan})`;
+
   return (
     <Html>
       <Head />
-      <Preview>
-        New Driver Service Request - {planDescriptions[selectedPlan]}
-      </Preview>
+      <Preview>New Driver Service Request - {planLine}</Preview>
       <Body className="bg-black text-white font-sans p-5">
         <Container className="max-w-2xl mx-auto bg-gray-900 rounded-lg p-6">
           <Section className="pb-6 border-b border-gray-800 mb-6">
@@ -61,9 +57,7 @@ export function DriverRequestNotificationEmail({
                 <Heading className="text-2xl font-bold text-yellow-400 mb-2">
                   🚗 New Driver Service Request
                 </Heading>
-                <Text className="text-gray-400 text-sm">
-                  {planDescriptions[selectedPlan]}
-                </Text>
+                <Text className="text-gray-400 text-sm">{planLine}</Text>
               </Column>
             </Row>
           </Section>
@@ -81,9 +75,7 @@ export function DriverRequestNotificationEmail({
                   <Text className="text-gray-400 text-sm font-medium mb-1">
                     Selected Service Plan
                   </Text>
-                  <Text className="text-white font-semibold mb-4">
-                    {planDescriptions[selectedPlan]}
-                  </Text>
+                  <Text className="text-white font-semibold mb-4">{planLine}</Text>
                 </Column>
               </Row>
               <Row className="mt-4">

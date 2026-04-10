@@ -3,6 +3,11 @@
 import { MapPin, CheckCircle2, ArrowRight, Zap, Globe, Shield } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import {
+  formatNgn,
+  formatNgnThousandsK,
+  placementProcessingFees,
+} from "@/lib/constants/pricing";
 
 export default function FreerowSection({
   heroTitle,
@@ -31,7 +36,7 @@ export default function FreerowSection({
   const packageOptions = [
     {
       title: "Managed Service Plan",
-      price: "₦70,000",
+      price: formatNgn(placementProcessingFees.managedService),
       features: [
         "Full HR & Payroll administration",
         "Driver remains LDL qualified staff",
@@ -42,7 +47,7 @@ export default function FreerowSection({
     },
     {
       title: "Direct Employment Plan",
-      price: "₦100,000",
+      price: formatNgn(placementProcessingFees.directEmployment),
       features: [
         "Driver becomes your direct employee",
         "Full background audit documentation",
@@ -149,13 +154,13 @@ export default function FreerowSection({
               {[
                 {
                   title: "Managed Service Plan",
-                  price: "₦70k",
+                  price: formatNgnThousandsK(placementProcessingFees.managedService),
                   features: ["Full HR & Payroll support", "Qualified LDL staff members", "Ongoing skills training", "Seamless replacement service"],
                   bestFor: "Families & Businesses",
                 },
                 {
                   title: "Direct Employment Plan",
-                  price: "₦100k",
+                  price: formatNgnThousandsK(placementProcessingFees.directEmployment),
                   features: ["Driver joins your direct team", "Full background audit shared", "Complete personal control", "One-time expert matching"],
                   bestFor: "Private Households",
                 },

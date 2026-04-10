@@ -1,4 +1,5 @@
 import React from "react";
+import { getDriverPlanLabel } from "@/lib/constants/driver-plans";
 
 interface DriverRequestConfirmationEmailProps {
   plan: string;
@@ -57,7 +58,7 @@ export const DriverRequestConfirmationEmail: React.FC<
           }}
         >
           We have successfully received your driver request for the{" "}
-          <strong>{plan}</strong> plan.
+          <strong>{getDriverPlanLabel(plan)}</strong> plan.
         </p>
 
         <p

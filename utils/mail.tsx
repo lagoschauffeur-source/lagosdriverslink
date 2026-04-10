@@ -2,6 +2,7 @@ import React from "react";
 import { render } from "@react-email/render";
 import { resend } from "@/lib/resend";
 import DriverRequestEmail from "@/emails/DriverRequestEmail";
+import { getChauffeurPricingTeaser } from "@/lib/constants/pricing";
 
 // Admin Email (with HTML content)
 export const sendDriverRequestMail = async ({
@@ -160,7 +161,10 @@ export const sendCustomerEmail = async ({
             }}
           >
             <li>Our team will review your requirements within 24 hours</li>
-            <li>We'll contact you to discuss driver options and pricing</li>
+            <li>
+              We&apos;ll contact you to discuss driver options.{" "}
+              {getChauffeurPricingTeaser()}
+            </li>
             <li>We'll arrange driver interviews and background checks</li>
             <li>Final placement and onboarding process</li>
           </ul>

@@ -115,7 +115,7 @@ export default function DriverRequirementsForm({
                 Monday-Sunday (₦{salaryRates.fullWeek.toLocaleString()})
               </option>
               <option value="spyPolice">
-                Spy Police Driver (₦{salaryRates.spyPolice.toLocaleString()})
+                Specialist Driver (₦{salaryRates.spyPolice.toLocaleString()})
               </option>
               <option value="shift">
                 Daily Service (₦{salaryRates.shift.toLocaleString()})

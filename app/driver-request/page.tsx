@@ -18,6 +18,13 @@ import {
 import { DriverRequestConfirmationEmail } from "../../emails/DriverRequestConfirmationEmail";
 import DriverRequestEmail from "../../emails/DriverRequestEmail";
 import { validateEmail, validatePhone } from "../../lib/validators";
+import {
+  driverPlans,
+  driverRequestPlanOrder,
+  resolveDriverPlanId,
+  type DriverPlanId,
+} from "@/lib/constants/driver-plans";
+import { formatNgn, formatNgnThousandsK } from "@/lib/constants/pricing";
 
 // Force dynamic rendering to disable prerendering
 export const dynamic = "force-dynamic";
@@ -36,15 +43,39 @@ type FormErrors = Partial<Record<keyof FormData, string>> & {
   form?: string;
 };
 
+function formatSelectOptionPrice(baseRate: number, billingPeriod: "day" | "month") {
+  const formatted = formatNgn(baseRate);
+  return billingPeriod === "day" ? `${formatted}/day` : `${formatted}/month`;
+}
+
+function planCardAmountLabel(baseRate: number, billingPeriod: "day" | "month") {
+  if (billingPeriod === "day") return formatNgn(baseRate);
+  return formatNgnThousandsK(baseRate);
+}
+
+const PLAN_CARD_BADGES: Partial<
+  Record<
+    DriverPlanId,
+    { label: string; variant: "popular" | "extended" | "elite" | "ondemand" }
+  >
+> = {
+  daily: { label: "On Demand", variant: "ondemand" },
+  weekday: { label: "Popular", variant: "popular" },
+  "extended-weekday": { label: "Extended", variant: "extended" },
+  "full-week": { label: "7-Day", variant: "extended" },
+  vip: { label: "Elite", variant: "elite" },
+};
+
 export default function DriverRequestForm() {
   const router = useRouter();
-  const [plan, setPlan] = useState("daily");
+  const [plan, setPlan] = useState<DriverPlanId>("daily");
 
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const selectedPlan = searchParams.get("plan");
     if (selectedPlan) {
-      setPlan(selectedPlan);
+      const resolved = resolveDriverPlanId(selectedPlan);
+      if (resolved) setPlan(resolved);
     }
   }, []);
 
@@ -54,7 +85,7 @@ export default function DriverRequestForm() {
     phone: "",
     location: "",
     additionalNotes: "",
-    plan: "daily",
+    plan: "daily" as DriverPlanId,
     hasAccommodation: false,
   });
 
@@ -250,76 +281,70 @@ export default function DriverRequestForm() {
           </p>
         </div>
 
-        {/* Plan Selection Cards */}
+        {/* Plan Selection Cards — pricing aligned with HirePlansSection */}
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6 mb-12">
-          <Link
-            href="/driver-request/daily"
-            className="group block rounded-3xl border border-gray-100 bg-white p-6 md:p-7 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 hover:-translate-y-1"
-          >
-            <div className="flex justify-between items-start mb-5">
-              <h3 className="text-lg md:text-xl font-black text-gray-900">Daily Driver</h3>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-blue-50 text-blue-600">
-                <CheckCircle2 className="h-3.5 w-3.5" />
-                On Demand
-              </span>
-            </div>
-            <div className="flex items-end gap-1 mb-4">
-              <span className="text-3xl md:text-4xl font-black tracking-tight text-blue-600">₦30,000</span>
-              <span className="text-gray-500 text-sm mb-1">/day</span>
-            </div>
-            <p className="text-gray-600 text-sm leading-relaxed mb-5">
-              Perfect for one-time trips or busy days.
-            </p>
-            <div className="pt-4 border-t border-gray-100 text-xs font-bold text-blue-600 uppercase tracking-wider">
-              Tap to continue
-            </div>
-          </Link>
+          {driverRequestPlanOrder.map((planId) => {
+            const p = driverPlans[planId];
+            const badge = PLAN_CARD_BADGES[planId];
+            const isPopular = badge?.variant === "popular";
+            const isElite = badge?.variant === "elite";
+            const borderClass = isPopular
+              ? "border-blue-200 bg-gradient-to-b from-blue-50/50 to-white"
+              : isElite
+                ? "border-gray-900 bg-gradient-to-b from-slate-900 to-slate-800 text-white"
+                : "border-gray-100 bg-white";
+            const titleClass = isElite ? "text-white" : "text-gray-900";
+            const priceClass = isElite ? "text-[#69c2ff]" : "text-blue-600";
+            const descClass = isElite ? "text-slate-300" : "text-gray-600";
+            const footerBorder = isPopular ? "border-blue-100" : isElite ? "border-white/10" : "border-gray-100";
+            const badgeNeutral = "bg-blue-50 text-blue-600";
+            const badgePopular = "bg-blue-600 text-white";
+            const badgeExtended = "bg-blue-50 text-blue-600";
+            const badgeElite = "bg-white/10 text-[#69c2ff] border border-white/20";
 
-          <Link
-            href="/driver-request/weekday"
-            className="group block rounded-3xl border border-blue-200 bg-gradient-to-b from-blue-50/50 to-white p-6 md:p-7 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 hover:-translate-y-1"
-          >
-            <div className="flex justify-between items-start mb-5">
-              <h3 className="text-lg md:text-xl font-black text-gray-900">Weekday</h3>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-blue-600 text-white">
-                <CheckCircle2 className="h-3.5 w-3.5" />
-                Popular
-              </span>
-            </div>
-            <div className="flex items-end gap-1 mb-4">
-              <span className="text-3xl md:text-4xl font-black tracking-tight text-blue-600">₦195k</span>
-              <span className="text-gray-500 text-sm mb-1">/month</span>
-            </div>
-            <p className="text-gray-600 text-sm leading-relaxed mb-5">
-              Professional service from Monday to Friday.
-            </p>
-            <div className="pt-4 border-t border-blue-100 text-xs font-bold text-blue-600 uppercase tracking-wider">
-              Tap to continue
-            </div>
-          </Link>
+            const badgeClass =
+              badge?.variant === "popular"
+                ? badgePopular
+                : badge?.variant === "elite"
+                  ? badgeElite
+                  : badge?.variant === "extended"
+                    ? badgeExtended
+                    : badgeNeutral;
 
-          <Link
-            href="/driver-request/weekdayPlus"
-            className="group block rounded-3xl border border-gray-100 bg-white p-6 md:p-7 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 hover:-translate-y-1 sm:col-span-2 xl:col-span-1"
-          >
-            <div className="flex justify-between items-start mb-5">
-              <h3 className="text-lg md:text-xl font-black text-gray-900">Weekday+</h3>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full bg-blue-50 text-blue-600">
-                <CheckCircle2 className="h-3.5 w-3.5" />
-                Extended
-              </span>
-            </div>
-            <div className="flex items-end gap-1 mb-4">
-              <span className="text-3xl md:text-4xl font-black tracking-tight text-blue-600">₦230k</span>
-              <span className="text-gray-500 text-sm mb-1">/month</span>
-            </div>
-            <p className="text-gray-600 text-sm leading-relaxed mb-5">
-              Extended coverage from Monday to Saturday.
-            </p>
-            <div className="pt-4 border-t border-gray-100 text-xs font-bold text-blue-600 uppercase tracking-wider">
-              Tap to continue
-            </div>
-          </Link>
+            return (
+              <Link
+                key={planId}
+                href={`/driver-request/${planId}`}
+                className={`group block rounded-3xl border p-6 md:p-7 shadow-sm hover:shadow-xl hover:border-blue-300 transition-all duration-300 hover:-translate-y-1 ${borderClass}`}
+              >
+                <div className="flex justify-between items-start mb-5">
+                  <h3 className={`text-lg md:text-xl font-black ${titleClass}`}>{p.name}</h3>
+                  {badge && (
+                    <span
+                      className={`inline-flex items-center gap-1.5 text-[11px] font-bold px-3 py-1 rounded-full ${badgeClass}`}
+                    >
+                      <CheckCircle2 className="h-3.5 w-3.5" />
+                      {badge.label}
+                    </span>
+                  )}
+                </div>
+                <div className="flex items-end gap-1 mb-4">
+                  <span className={`text-3xl md:text-4xl font-black tracking-tight ${priceClass}`}>
+                    {planCardAmountLabel(p.baseRate, p.billingPeriod)}
+                  </span>
+                  <span className={`text-sm mb-1 ${isElite ? "text-slate-400" : "text-gray-500"}`}>
+                    {p.billingPeriod === "day" ? "/day" : "/month"}
+                  </span>
+                </div>
+                <p className={`text-sm leading-relaxed mb-5 ${descClass}`}>{p.description}</p>
+                <div
+                  className={`pt-4 border-t text-xs font-bold uppercase tracking-wider ${isElite ? "text-[#69c2ff]" : "text-blue-600"} ${footerBorder}`}
+                >
+                  Tap to continue
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
         <div className="bg-gray-50 rounded-3xl p-8 md:p-12 shadow-inner">
@@ -437,9 +462,15 @@ export default function DriverRequestForm() {
                   onChange={handleChange}
                   className="w-full bg-white border border-gray-200 rounded-xl py-4 pl-12 pr-10 text-gray-900 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm cursor-pointer"
                 >
-                  <option value="daily">Daily Driver - ₦30,000/day</option>
-                  <option value="weekday">Weekday (Mon-Fri) - ₦195,000/month</option>
-                  <option value="weekdayPlus">Weekday+ (Mon-Sat) - ₦230,000/month</option>
+                  {driverRequestPlanOrder.map((planId) => {
+                    const p = driverPlans[planId];
+                    const price = formatSelectOptionPrice(p.baseRate, p.billingPeriod);
+                    return (
+                      <option key={planId} value={planId}>
+                        {p.name} — {price}
+                      </option>
+                    );
+                  })}
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
                   <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">

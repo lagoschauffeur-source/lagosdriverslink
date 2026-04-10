@@ -1,51 +1,40 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { motion, Variants } from "framer-motion";
-import { Shield, Zap, Star, ChevronRight, Clock, Calendar, BadgeCheck, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
+import { Shield, ChevronRight, Clock, Calendar, ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { driverPlans } from "@/lib/constants/driver-plans";
+import {
+  hireGridPlanIds,
+  formatChauffeurRateDisplay,
+  formatNgnThousandsK,
+} from "@/lib/constants/pricing";
+import type { DriverPlanId } from "@/lib/constants/driver-plans";
+
+const planIcons: Record<Exclude<DriverPlanId, "vip">, ReactNode> = {
+  daily: <Clock className="h-5 w-5" />,
+  weekday: <Calendar className="h-5 w-5" />,
+  "extended-weekday": <Calendar className="h-5 w-5" />,
+  "full-week": <Calendar className="h-5 w-5" />,
+};
 
 export default function HirePlansSection() {
   const router = useRouter();
 
-  const packages = [
-    {
-      title: "Daily Chauffeur",
-      badge: "On-Demand",
-      salaryRange: "₦30k/day",
-      features: ["12-hour shift deployment", "Flexible zone coverage", "Event & VIP Logistics", "Same-day activation"],
-      planValue: "daily",
-      description: "Best for events, airport pickups, or short-term driving needs.",
-      icon: <Clock className="h-5 w-5" />,
-    },
-    {
-      title: "Weekday Pro",
-      badge: "Mon – Fri",
-      salaryRange: "₦195k/mo",
-      features: ["Dedicated executive driver", "Consistent commute routine", "Professional & Punctual", "Quarterly skill audit"],
-      planValue: "weekday",
-      description: "A good option for weekday office movement and regular business trips.",
-      icon: <Calendar className="h-5 w-5" />,
-      popular: true,
-    },
-    {
-      title: "Extended Cover",
-      badge: "Mon – Sat",
-      salaryRange: "₦230k/mo",
-      features: ["6-day operational week", "Weekend errands logistics", "Priority replacement desk", "Inter-state capability"],
-      planValue: "extended-weekday",
-      description: "Great for busy people and families who also need Saturday coverage.",
-      icon: <Calendar className="h-5 w-5" />,
-    },
-    {
-      title: "Full Ecosystem",
-      badge: "Mon – Sun",
-      salaryRange: "₦250k/mo",
-      features: ["7-day total availability", "24/7 dedicated chauffeur", "Full weekend logistics", "Elite Tier service"],
-      planValue: "full-week",
-      description: "Full weekly coverage for people and businesses that need a driver every day.",
-      icon: <Calendar className="h-5 w-5" />,
-    },
-  ];
+  const packages = hireGridPlanIds.map((id) => {
+    const p = driverPlans[id];
+    return {
+      title: p.name,
+      badge: p.scheduleBadge,
+      salaryRange: formatChauffeurRateDisplay(id),
+      features: [...p.features],
+      planValue: id,
+      description: p.description,
+      icon: planIcons[id],
+      popular: "hireGridPopular" in p && p.hireGridPopular === true,
+    };
+  });
 
   const stagger: Variants = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.1 } } };
   const fadeUp: Variants = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
@@ -103,7 +92,7 @@ export default function HirePlansSection() {
             <motion.div
               key={i}
               variants={fadeUp}
-              className={`rounded-[3rem] p-10 bg-white border flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group ${pkg.popular ? "border-[#0099ff]/30 shadow-2xl scale-[1.02] z-10" : "border-gray-100"}`}
+              className={`relative rounded-[3rem] p-10 bg-white border flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 group ${pkg.popular ? "border-[#0099ff]/30 shadow-2xl scale-[1.02] z-10" : "border-gray-100"}`}
             >
               {pkg.popular && (
                 <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full text-xs font-black bg-[#0099ff] text-white shadow-xl">
@@ -166,7 +155,9 @@ export default function HirePlansSection() {
                 <div>
                   <h3 className="text-3xl lg:text-5xl font-black tracking-tighter">Specialist Driver.</h3>
                   <div className="flex items-center gap-4 mt-2">
-                    <span className="text-[#0099ff] font-black text-2xl tracking-tight">₦335k/mo</span>
+                    <span className="text-[#0099ff] font-black text-2xl tracking-tight">
+                      {formatNgnThousandsK(driverPlans.vip.baseRate)}/mo
+                    </span>
                     <span className="px-3 py-1 bg-[#0099ff]/20 text-[#0099ff] text-[10px] font-black uppercase tracking-widest rounded-full border border-[#0099ff]/30">Elite Tier</span>
                   </div>
                 </div>
